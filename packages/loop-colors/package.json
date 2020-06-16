@@ -1,10 +1,22 @@
 {
-  "name": "color-loop",
+  "name": "loop-colors",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/bluelovers/ws-color/tree/master/packages/loop-colors#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-color/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-color.git"
+  },
   "license": "ISC",
   "author": "bluelovers",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "lint": "ynpx --quiet eslint -- **/*.ts",
     "test": "jest",
