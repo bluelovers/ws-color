@@ -1,32 +1,66 @@
 import type from './type';
 import { IColorBrewer } from '../colors/colorbrewer';
+import { isNumber } from './type-is';
+import typePredicates from 'ts-type-predicates';
 const { log, pow, floor, abs } = Math;
 
 declare module '../chroma'
 {
 	interface chroma
 	{
-		analyze(data, key?)
+		analyze: typeof analyze;
+
+		/**
+		 * Helper function that computes class breaks based on data.
+		 * Mode:
+		 *  <li>equidistant <code>'e'</code> breaks are computed by dividing the total range of the data into n groups
+		 *  of equal size.
+		 *  <li>quantile <code>'q'</code> input domain is divided by quantile ranges.
+		 *  <li>logarithmic <code>'l'</code> breaks are equidistant breaks but on a logarithmic scale.
+		 *  <li>k-means <code>'k'</code> breaks use the 1-dimensional
+		 *  [k-means clustering algorithm]{@link https://en.wikipedia.org/wiki/K-means_clustering} to find (roughly) n
+		 *  groups of "similar" values. Note that this k-means implementation does not guarantee to find exactly n groups.
+		 */
+		limits: typeof limits;
 	}
 }
 
-export const analyze = (data, key = null) =>
+export type ILimitsMode = 'e' | 'q' | 'l' | 'k' | 'equal'
+
+export interface IReturnTypeAnalyze
+{
+	min: number;
+	max: number;
+	sum: number;
+	values: number[];
+	count: number;
+	domain: [number, number],
+	limits(mode: ILimitsMode, num: number)
+}
+
+export function analyze<T extends number, K extends keyof T>(data: T[] | Record<any, T | Record<any, number>>, key?: K): IReturnTypeAnalyze
 {
 	const r = {
 		min: Number.MAX_VALUE,
 		max: Number.MAX_VALUE * -1,
 		sum: 0,
-		values: [],
+		values: [] as number[],
 		count: 0,
-	};
+	} as IReturnTypeAnalyze;
+
 	if (type(data) === 'object')
 	{
 		data = Object.values(data);
 	}
-	data.forEach(val =>
+
+	(data as T[]).forEach(val =>
 	{
-		if (key && type(val) === 'object') val = val[key];
-		if (val !== undefined && val !== null && !isNaN(val))
+		if (key && type(val) === 'object')
+		{
+			val = val[key] as any
+		}
+
+		if (val !== undefined && val !== null && isNumber(val as any))
 		{
 			r.values.push(val);
 			r.sum += val;
@@ -39,27 +73,29 @@ export const analyze = (data, key = null) =>
 	return {
 		...r,
 		domain: [r.min, r.max],
-		limits(mode: ILimitsMode, num: number) {
+		limits(mode: ILimitsMode, num: number)
+		{
 			return limits(r, mode, num)
-		}
+		},
 	};
-};
-
-export type ILimitsMode = 'e' | 'q' | 'l' | 'k' | 'equal'
-
-declare module '../chroma'
-{
-	interface chroma
-	{
-		limits(data: number[], mode: ILimitsMode, c: number): number[];
-	}
 }
 
-export const limits = (data, mode: ILimitsMode = 'equal', num = 7) =>
+/**
+ * Helper function that computes class breaks based on data.
+ * Mode:
+ *  <li>equidistant <code>'e'</code> breaks are computed by dividing the total range of the data into n groups
+ *  of equal size.
+ *  <li>quantile <code>'q'</code> input domain is divided by quantile ranges.
+ *  <li>logarithmic <code>'l'</code> breaks are equidistant breaks but on a logarithmic scale.
+ *  <li>k-means <code>'k'</code> breaks use the 1-dimensional
+ *  [k-means clustering algorithm]{@link https://en.wikipedia.org/wiki/K-means_clustering} to find (roughly) n
+ *  groups of "similar" values. Note that this k-means implementation does not guarantee to find exactly n groups.
+ */
+export function limits(data: IReturnTypeAnalyze | unknown[], mode: ILimitsMode = 'equal', num = 7): [number, number] | number[]
 {
 	if (Array.isArray(data))
 	{
-		data = analyze(data);
+		data = analyze(data as any);
 	}
 	const { min, max } = data;
 	const values = data.values.sort((a, b) => a - b);
@@ -67,7 +103,7 @@ export const limits = (data, mode: ILimitsMode = 'equal', num = 7) =>
 	if (num === 1)
 	{ return [min, max]; }
 
-	const limits = [];
+	const limits: number[] = [];
 
 	if (mode.substr(0, 1) === 'c')
 	{ // continuous

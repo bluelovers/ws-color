@@ -33,6 +33,12 @@ input.format.temp =
     Color_1.default.prototype[field] = function () {
         return rgb2temperature_1.default(this._rgb);
     };
+    /**
+     * Returns a color from the color temperature scale.
+     * light 2000K, bright sunlight 6000K.
+     * Based on Neil Bartlett's implementation.
+     * https://github.com/neilbartlett/color-temperature
+     */
     chroma_1.default[field] = (...args) => new Color_1.default(...args, 'temp');
     input_1.setupInputFormat(field, temperature2rgb_1.default);
 });

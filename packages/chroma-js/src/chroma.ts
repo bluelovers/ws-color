@@ -2,6 +2,9 @@ import Color from './Color';
 import { IChromaConstructor } from './types/internal';
 import colors from './colors/index';
 
+/**
+ * Chroma.js is a tiny library for all kinds of color conversions and color scales.
+ */
 export interface chroma extends IChromaConstructor
 {
 	(...args): Color,

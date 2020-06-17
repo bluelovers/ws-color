@@ -7,10 +7,10 @@ import { IColorSpaces } from '../../types';
 
 const { log } = Math;
 
-const temperature2rgb = (kelvin): IColorSpaces["rgba"] =>
+const temperature2rgb = (kelvin: number): IColorSpaces["rgba"] =>
 {
 	const temp = kelvin / 100;
-	let r, g, b;
+	let r: number, g: number, b: number;
 	if (temp < 66)
 	{
 		r = 255

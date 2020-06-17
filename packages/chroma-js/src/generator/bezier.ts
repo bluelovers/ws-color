@@ -90,6 +90,12 @@ declare module '../chroma'
 {
 	interface chroma
 	{
+		/**
+		 * Returns a function that
+		 * [bezier-interpolates]{@link https://www.vis4.net/blog/posts/mastering-multi-hued-color-scales/} between
+		 * colors in Lab space. The input range of the function is [0..1].
+		 * You can convert it to a scale instance by calling <code>chroma.bezier(...).scale()</code>
+		 */
 		bezier: typeof bezier
 	}
 }
@@ -101,7 +107,13 @@ export interface IBezier
 	scale(): IScale
 }
 
-const bezier = (colors: (string | Color)[]): IBezier =>
+/**
+ * Returns a function that
+ * [bezier-interpolates]{@link https://www.vis4.net/blog/posts/mastering-multi-hued-color-scales/} between
+ * colors in Lab space. The input range of the function is [0..1].
+ * You can convert it to a scale instance by calling <code>chroma.bezier(...).scale()</code>
+ */
+function bezier(colors: (string | Color)[]): IBezier
 {
 	const f = _bezier(colors);
 	f.scale = () => scale(f as any);

@@ -5,8 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.limits = exports.analyze = void 0;
 const type_1 = __importDefault(require("./type"));
+const type_is_1 = require("./type-is");
 const { log, pow, floor, abs } = Math;
-exports.analyze = (data, key = null) => {
+function analyze(data, key) {
     const r = {
         min: Number.MAX_VALUE,
         max: Number.MAX_VALUE * -1,
@@ -18,9 +19,10 @@ exports.analyze = (data, key = null) => {
         data = Object.values(data);
     }
     data.forEach(val => {
-        if (key && type_1.default(val) === 'object')
+        if (key && type_1.default(val) === 'object') {
             val = val[key];
-        if (val !== undefined && val !== null && !isNaN(val)) {
+        }
+        if (val !== undefined && val !== null && type_is_1.isNumber(val)) {
             r.values.push(val);
             r.sum += val;
             if (val < r.min)
@@ -34,13 +36,25 @@ exports.analyze = (data, key = null) => {
         ...r,
         domain: [r.min, r.max],
         limits(mode, num) {
-            return exports.limits(r, mode, num);
-        }
+            return limits(r, mode, num);
+        },
     };
-};
-exports.limits = (data, mode = 'equal', num = 7) => {
+}
+exports.analyze = analyze;
+/**
+ * Helper function that computes class breaks based on data.
+ * Mode:
+ *  <li>equidistant <code>'e'</code> breaks are computed by dividing the total range of the data into n groups
+ *  of equal size.
+ *  <li>quantile <code>'q'</code> input domain is divided by quantile ranges.
+ *  <li>logarithmic <code>'l'</code> breaks are equidistant breaks but on a logarithmic scale.
+ *  <li>k-means <code>'k'</code> breaks use the 1-dimensional
+ *  [k-means clustering algorithm]{@link https://en.wikipedia.org/wiki/K-means_clustering} to find (roughly) n
+ *  groups of "similar" values. Note that this k-means implementation does not guarantee to find exactly n groups.
+ */
+function limits(data, mode = 'equal', num = 7) {
     if (Array.isArray(data)) {
-        data = exports.analyze(data);
+        data = analyze(data);
     }
     const { min, max } = data;
     const values = data.values.sort((a, b) => a - b);
@@ -181,6 +195,7 @@ exports.limits = (data, mode = 'equal', num = 7) => {
         }
     }
     return limits;
-};
-exports.default = { analyze: exports.analyze, limits: exports.limits };
+}
+exports.limits = limits;
+exports.default = { analyze, limits };
 //# sourceMappingURL=analyze.js.map

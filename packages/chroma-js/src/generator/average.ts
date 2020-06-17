@@ -8,10 +8,18 @@ declare module '../chroma'
 {
 	interface chroma
 	{
+		/**
+		 * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
+		 * channel.
+		 */
 		average: typeof average
 	}
 }
 
+/**
+ * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
+ * channel.
+ */
 function average(colors: (string | Color)[], mode: IInterpolationMode = 'lrgb', weights?: number[]): Color
 {
 	const l = colors.length;

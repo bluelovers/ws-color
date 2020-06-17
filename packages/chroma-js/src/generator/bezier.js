@@ -61,10 +61,16 @@ const _bezier = function (colors) {
     }
     return I;
 };
-const bezier = (colors) => {
+/**
+ * Returns a function that
+ * [bezier-interpolates]{@link https://www.vis4.net/blog/posts/mastering-multi-hued-color-scales/} between
+ * colors in Lab space. The input range of the function is [0..1].
+ * You can convert it to a scale instance by calling <code>chroma.bezier(...).scale()</code>
+ */
+function bezier(colors) {
     const f = _bezier(colors);
     f.scale = () => scale_1.default(f);
     return f;
-};
+}
 exports.default = bezier;
 //# sourceMappingURL=bezier.js.map

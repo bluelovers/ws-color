@@ -7,26 +7,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.blend = void 0;
 require("../io/rgb");
 const chroma_1 = __importDefault(require("../chroma"));
-const blend = (bottom, top, mode) => {
+/**
+ * Blends two colors using RGB channel-wise blend functions.
+ */
+function blend(bottom, top, mode) {
     if (!blend[mode]) {
         throw new Error('unknown blend mode ' + mode);
     }
     return blend[mode](bottom, top);
-};
-const blend_f = (f) => (bottom, top) => {
-    const c0 = chroma_1.default(top).rgb();
-    const c1 = chroma_1.default(bottom).rgb();
-    return chroma_1.default.rgb(f(c0, c1));
-};
-const each = (f) => (c0, c1) => {
-    const out = [];
-    out[0] = f(c0[0], c1[0]);
-    out[1] = f(c0[1], c1[1]);
-    out[2] = f(c0[2], c1[2]);
-    return out;
-};
+}
+exports.blend = blend;
+function blend_f(f) {
+    return (bottom, top) => {
+        const c0 = chroma_1.default(top).rgb();
+        const c1 = chroma_1.default(bottom).rgb();
+        return chroma_1.default.rgb(f(c0, c1));
+    };
+}
+function each(f) {
+    return (c0, c1) => {
+        const out = [];
+        out[0] = f(c0[0], c1[0]);
+        out[1] = f(c0[1], c1[1]);
+        out[2] = f(c0[2], c1[2]);
+        return out;
+    };
+}
 const normal = (a) => a;
 const multiply = (a, b) => a * b / 255;
 const darken = (a, b) => a > b ? b : a;

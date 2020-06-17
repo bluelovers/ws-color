@@ -7,6 +7,10 @@ const Color_1 = __importDefault(require("../Color"));
 const clip_rgb_1 = __importDefault(require("../utils/clip_rgb"));
 const arr_to_colors_1 = __importDefault(require("../utils/arr-to-colors"));
 const ts_type_predicates_1 = __importDefault(require("ts-type-predicates"));
+/**
+ * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
+ * channel.
+ */
 function average(colors, mode = 'lrgb', weights) {
     const l = colors.length;
     if (!weights)

@@ -9,10 +9,10 @@ const RE_RGBA_PCT = /^rgba\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-
 const RE_HSL = /^hsl\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/;
 const RE_HSLA = /^hsla\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/;
 
-const css2rgb = (css): IColorSpaces["rgba"] =>
+const css2rgb = (css: string): IColorSpaces["rgba"] =>
 {
 	css = css.toLowerCase().trim();
-	let m;
+	let m: RegExpMatchArray;
 
 	if (input.format.named)
 	{
@@ -29,7 +29,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// rgb(250,20,0)
 	if ((m = css.match(RE_RGB)))
 	{
-		const rgb = m.slice(1, 4);
+		const rgb = m.slice(1, 4) as any as IColorSpaces["rgba"];
 		for (let i = 0; i < 3; i++)
 		{
 			rgb[i] = +rgb[i];
@@ -41,7 +41,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// rgba(250,20,0,0.4)
 	if ((m = css.match(RE_RGBA)))
 	{
-		const rgb = m.slice(1, 5);
+		const rgb = m.slice(1, 5) as any as IColorSpaces["rgba"];
 		for (let i = 0; i < 4; i++)
 		{
 			rgb[i] = +rgb[i]
@@ -52,7 +52,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// rgb(100%,0%,0%)
 	if ((m = css.match(RE_RGB_PCT)))
 	{
-		const rgb = m.slice(1, 4);
+		const rgb = m.slice(1, 4) as any as IColorSpaces["rgba"];
 		for (let i = 0; i < 3; i++)
 		{
 			rgb[i] = Math.round(rgb[i] * 2.55);
@@ -64,7 +64,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// rgba(100%,0%,0%,0.4)
 	if ((m = css.match(RE_RGBA_PCT)))
 	{
-		const rgb = m.slice(1, 5);
+		const rgb = m.slice(1, 5) as any as IColorSpaces["rgba"];
 		for (let i = 0; i < 3; i++)
 		{
 			rgb[i] = Math.round(rgb[i] * 2.55);
@@ -76,7 +76,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// hsl(0,100%,50%)
 	if ((m = css.match(RE_HSL)))
 	{
-		const hsl = m.slice(1, 4);
+		const hsl = m.slice(1, 4) as any as IColorSpaces["rgba"];
 		hsl[1] *= 0.01;
 		hsl[2] *= 0.01;
 		const rgb = hsl2rgb(hsl);
@@ -87,7 +87,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	// hsla(0,100%,50%,0.5)
 	if ((m = css.match(RE_HSLA)))
 	{
-		const hsl = m.slice(1, 4);
+		const hsl = m.slice(1, 4) as any as IColorSpaces["rgba"];
 		hsl[1] *= 0.01;
 		hsl[2] *= 0.01;
 		const rgb = hsl2rgb(hsl);
@@ -96,7 +96,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 	}
 }
 
-css2rgb.test = (s) =>
+css2rgb.test = (s): s is string =>
 {
 	return RE_RGB.test(s) ||
 		RE_RGBA.test(s) ||
