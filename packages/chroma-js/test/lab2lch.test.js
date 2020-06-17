@@ -1,6 +1,6 @@
 const vows = require('vows')
 const assert = require('assert');
-require('es6-shim');
+
 
 const lab2lch = require('../src/io/lch/lab2lch');
 

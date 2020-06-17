@@ -1,6 +1,6 @@
 const vows = require('vows')
 const assert = require('assert');
-require('es6-shim');
+
 
 
 const limit = require('../src/utils/limit');

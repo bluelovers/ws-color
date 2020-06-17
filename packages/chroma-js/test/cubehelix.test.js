@@ -1,4 +1,4 @@
-require('es6-shim');
+
 const vows = require('vows');
 const assert = require('assert');
 const cubehelix = require('../src/generator/cubehelix');

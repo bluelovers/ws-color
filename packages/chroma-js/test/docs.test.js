@@ -1,5 +1,5 @@
 // test all the snippets in docs/
-require('es6-shim');
+
 
 const vows = require('vows');
 const assert = require('assert');

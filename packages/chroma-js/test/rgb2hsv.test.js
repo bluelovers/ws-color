@@ -1,6 +1,6 @@
 const vows = require('vows')
 const assert = require('assert');
-require('es6-shim');
+
 
 const rgb2hsv = require('../src/io/hsv/rgb2hsv');
 
