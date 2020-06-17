@@ -73,7 +73,7 @@ chroma.bezier = bezier;
 chroma.blend = blend;
 chroma.cubehelix = cubehelix;
 chroma.mix = chroma.interpolate = mix;
-chroma.random = random;
+
 chroma.scale = scale;
 
 // other utility methods

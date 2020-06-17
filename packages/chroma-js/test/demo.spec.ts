@@ -23,6 +23,46 @@ test(`rand`, () =>
 
 });
 
+describe(`rand by other input value`, () =>
+{
+	test(`red`, () =>
+	{
+		let actual = chroma.random('red');
+
+		console.dir(actual.hex())
+		expect(actual).toBeTruthy();
+
+	});
+
+	test(`#0F0`, () =>
+	{
+		let actual = chroma.random('#0F0');
+
+		console.dir(actual.hex())
+		expect(actual).toBeTruthy();
+
+	});
+
+	test(`color`, () =>
+	{
+		let actual = chroma.random(chroma('blue'));
+
+		console.dir(actual.hex())
+		expect(actual).toBeTruthy();
+
+	});
+
+	test(`array`, () =>
+	{
+		let actual = chroma.random([5, 100, 200]);
+
+		console.dir(actual.hex())
+		expect(actual).toBeTruthy();
+
+	});
+
+})
+
 test(`empty`, () =>
 {
 

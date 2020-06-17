@@ -64,7 +64,6 @@ const bezier_1 = __importDefault(require("./generator/bezier"));
 const blend_1 = __importDefault(require("./generator/blend"));
 const cubehelix_1 = __importDefault(require("./generator/cubehelix"));
 const mix_1 = __importDefault(require("./generator/mix"));
-const random_1 = __importDefault(require("./generator/random"));
 const scale_1 = __importDefault(require("./generator/scale"));
 // other utility methods
 const analyze_1 = require("./utils/analyze");
@@ -78,7 +77,6 @@ chroma_1.default.bezier = bezier_1.default;
 chroma_1.default.blend = blend_1.default;
 chroma_1.default.cubehelix = cubehelix_1.default;
 chroma_1.default.mix = chroma_1.default.interpolate = mix_1.default;
-chroma_1.default.random = random_1.default;
 chroma_1.default.scale = scale_1.default;
 // other utility methods
 chroma_1.default.analyze = analyze_1.analyze;

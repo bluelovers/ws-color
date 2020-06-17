@@ -2,6 +2,8 @@
  * Created by user on 2020/6/17.
  */
 import { IColorSpaces, IRGBValue } from '../types';
+import Color from '../Color';
+import { IW3CX11ColorNames } from '../../../color-palette';
 
 const digits = '0123456789abcdef';
 
@@ -11,7 +13,7 @@ export interface IOptionsRand
 	includeAlpha?: boolean
 	round?: boolean,
 	length?: number,
-	rgba?: IRGBValue,
+	rgba?: IRGBValue | Color | keyof IW3CX11ColorNames,
 }
 
 export function _handleOptions<T extends IOptionsRand>(options?: T): T
@@ -25,10 +27,25 @@ export function _handleOptions<T extends IOptionsRand>(options?: T): T
 	}
 }
 
-export function rand(options?: IOptionsRand): IColorSpaces["rgba"]
+export function rand(options?: IOptionsRand | IRGBValue | Color | keyof IW3CX11ColorNames): IColorSpaces["rgba"]
 {
+	if (options instanceof Color || Array.isArray(options) || typeof options === 'string')
+	{
+		options = {
+			rgba: options,
+		}
+	}
 
 	let { rgba, fn, includeAlpha, round } = _handleOptions(options);
+
+	if (rgba instanceof Color)
+	{
+		rgba = rgba.rgba();
+	}
+	else if (typeof rgba === 'string')
+	{
+		rgba = new Color(rgba).rgba();
+	}
 
 	rgba = rgba?.slice?.() ?? [];
 
@@ -38,7 +55,7 @@ export function rand(options?: IOptionsRand): IColorSpaces["rgba"]
 		let value = rgba[i] ?? 255;
 		value |= 0;
 
-		value = fn(i, value, rgba as IColorSpaces["rgba"]) * (1 + value);
+		value = fn(i, value, rgba as IColorSpaces["rgba"]) * (value);
 
 		if (round === true)
 		{

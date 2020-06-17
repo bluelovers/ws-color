@@ -1,7 +1,7 @@
 
 import Color from '../Color';
-import { randomHex, IOptionsRand } from '../utils/rand';
-import colors from '../colors';
+import rand, { randomHex, IOptionsRand } from '../utils/rand';
+import chroma from '../chroma';
 
 declare module '../chroma'
 {
@@ -10,17 +10,31 @@ declare module '../chroma'
 		/**
 		 * Returns a random color.
 		 */
-		random(options?: IOptionsRand): Color
+		random(options?: IOptionsRand | IOptionsRand["rgba"]): Color
+		rand(options?: IOptionsRand | IOptionsRand["rgba"]): Color
 	}
 }
 
-export default (options?: IOptionsRand) =>
+export function random(options?: IOptionsRand | IOptionsRand["rgba"])
 {
+	if (options instanceof Color || Array.isArray(options) || typeof options === 'string' || typeof options !== 'object')
+	{
+		// @ts-ignore
+		options = {
+			rgba: options,
+		}
+	}
+
+	// @ts-ignore
 	if (options?.rgba)
 	{
-		return new Color(colors._default, 'rgba');
+		return new Color(rand(options), 'rgba');
 	}
 
 	let code = '#' + randomHex(options);
 	return new Color(code, 'hex');
 }
+
+chroma.random = chroma.rand = random;
+
+export default random
