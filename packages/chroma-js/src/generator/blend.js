@@ -29,10 +29,11 @@ function blend_f(f) {
 }
 function each(f) {
     return (c0, c1) => {
-        const out = [];
-        out[0] = f(c0[0], c1[0]);
-        out[1] = f(c0[1], c1[1]);
-        out[2] = f(c0[2], c1[2]);
+        const out = [
+            f(c0[0], c1[0]),
+            f(c0[1], c1[1]),
+            f(c0[2], c1[2]),
+        ];
         return out;
     };
 }

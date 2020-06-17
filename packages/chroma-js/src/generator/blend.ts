@@ -41,10 +41,11 @@ function each(f: (a: number, b?: number) => number)
 {
 	return (c0: IRGB, c1: IRGB) =>
 	{
-		const out: IRGB = []
-		out[0] = f(c0[0], c1[0]);
-		out[1] = f(c0[1], c1[1]);
-		out[2] = f(c0[2], c1[2]);
+		const out: IRGB = [
+			f(c0[0], c1[0]),
+			f(c0[1], c1[1]),
+			f(c0[2], c1[2]),
+		]
 		return out;
 	};
 }
