@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.4...@bluelovers/chroma-js@2.1.5) (2020-06-17)
+
+
+### 🐛　Bug Fixes
+
+* 修正檢查是否為 transparent 時的錯誤 ([c4bdd8d](https://github.com/bluelovers/ws-color/commit/c4bdd8d00cd8937f4bd8efff52e9d44f4d300868))
+* 不檢查 rgb 內含有 null 與 _ 開頭 的 color name (透明例外) ([a21cd4a](https://github.com/bluelovers/ws-color/commit/a21cd4a92f5c99c4172b599a7ffeb4124d2d3f59))
+
+
+### ✨　Features
+
+* 更改 閾值 來接近 idea 判定方式 ([6b07b6f](https://github.com/bluelovers/ws-color/commit/6b07b6f3b0c79ab5f90f82557207b136b05ed3be))
+* get contrast color for use as front text color ([27b2d21](https://github.com/bluelovers/ws-color/commit/27b2d218888bd2528e1ef815b5ce487a761dcd49))
+
+
+
+
+
 ## [2.1.4](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.3...@bluelovers/chroma-js@2.1.4) (2020-06-17)
 
 
