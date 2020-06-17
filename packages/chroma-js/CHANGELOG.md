@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.3...@bluelovers/chroma-js@2.1.4) (2020-06-17)
+
+
+### 🐛　Bug Fixes
+
+* **publish:** re-publish ([494a09c](https://github.com/bluelovers/ws-color/commit/494a09c8e41674c78f627c08d16d66e0bfb3a992))
+
+
+
+
+
 ## [2.1.3](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.1...@bluelovers/chroma-js@2.1.3) (2020-06-17)
 
 
