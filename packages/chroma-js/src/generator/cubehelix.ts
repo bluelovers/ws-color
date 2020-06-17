@@ -2,77 +2,167 @@
 // based on D.A. Green "A colour scheme for the display of astronomical intensity images"
 // http://astron-soc.in/bulletin/11June/289392011.pdf
 
-const {type, clip_rgb, TWOPI} = require('../utils');
-const {pow,sin,cos} = Math;
-const chroma = require('../chroma');
+import Color from '../Color';
 
-module.exports = function(start=300, rotations=-1.5, hue=1, gamma=1, lightness=[0,1]) {
-    let dh = 0, dl;
-    if (type(lightness) === 'array') {
-        dl = lightness[1] - lightness[0];
-    } else {
-        dl = 0;
-        lightness = [lightness, lightness];
-    }
 
-    const f = function(fract) {
-        const a = TWOPI * (((start+120)/360) + (rotations * fract));
-        const l = pow(lightness[0] + (dl * fract), gamma);
-        const h = dh !== 0 ? hue[0] + (fract * dh) : hue;
-        const amp = (h * l * (1-l)) / 2;
-        const cos_a = cos(a);
-        const sin_a = sin(a);
-        const r = l + (amp * ((-0.14861 * cos_a) + (1.78277* sin_a)));
-        const g = l + (amp * ((-0.29227 * cos_a) - (0.90649* sin_a)));
-        const b = l + (amp * (+1.97294 * cos_a));
-        return chroma(clip_rgb([r*255,g*255,b*255,1]));
-    };
+const { pow, sin, cos } = Math;
+import chroma from '../chroma';
+import { TWOPI } from '../utils';
+import clip_rgb from '../utils/clip_rgb';
+import { IScale } from './scale';
 
-    f.start = function(s) {
-        if ((s == null)) { return start; }
-        start = s;
-        return f;
-    };
+declare module '../chroma'
+{
+	interface chroma
+	{
+		cubehelix: typeof cubehelix
+	}
+}
 
-    f.rotations = function(r) {
-        if ((r == null)) { return rotations; }
-        rotations = r;
-        return f;
-    };
+export interface ICubehelix {
+	/**
+	 * Set start color for hue rotation, default=300
+	 */
+	start(): number;
+	start(s: number): ICubehelix;
 
-    f.gamma = function(g) {
-        if ((g == null)) { return gamma; }
-        gamma = g;
-        return f;
-    };
+	/**
+	 * number (and direction) of hue rotations (e.g. 1=360°, 1.5=`540°``), default=-1.5
+	 */
+	rotations(): number;
+	rotations(r: number): ICubehelix;
 
-    f.hue = function(h) {
-        if ((h == null)) { return hue; }
-        hue = h;
-        if (type(hue) === 'array') {
-            dh = hue[1] - hue[0];
-            if (dh === 0) { hue = hue[1]; }
-        } else {
-            dh = 0;
-        }
-        return f;
-    };
+	/**
+	 * gamma factor can be used to emphasise low or high intensity values, default=1
+	 */
+	gamma(): number;
+	gamma(g: number): ICubehelix;
 
-    f.lightness = function(h) {
-        if ((h == null)) { return lightness; }
-        if (type(h) === 'array') {
-            lightness = h;
-            dl = h[1] - h[0];
-        } else {
-            lightness = [h,h];
-            dl = 0;
-        }
-        return f;
-    };
+	/**
+	 * lightness range: default: [0,1] (black -> white)
+	 */
+	lightness(): number;
+	lightness(l: number[]): ICubehelix;
 
-    f.scale = () => chroma.scale(f);
+	/**
+	 * You can call cubehelix.scale() to use the cube-helix through the chroma.scale interface.
+	 */
+	scale(): IScale;
 
-    f.hue(hue);
+	hue(): number;
+	hue(hue: number | [number, number]): ICubehelix
+}
 
-    return f;
+function cubehelix(start = 300, rotations = -1.5, hue: number | [number, number] = 1, gamma = 1, lightness: number | number[] = [0, 1]): ICubehelix
+{
+	let dh = 0, dl;
+	if (Array.isArray(lightness))
+	{
+		dl = lightness[1] - lightness[0];
+	}
+	else
+	{
+		dl = 0;
+		lightness = [lightness, lightness];
+	}
+
+	const f = function (fract)
+	{
+		const a = TWOPI * (((start + 120) / 360) + (rotations * fract));
+		const l = pow(lightness[0] + (dl * fract), gamma);
+		const h = dh !== 0 ? hue[0] + (fract * dh) : hue;
+		const amp = (h * l * (1 - l)) / 2;
+		const cos_a = cos(a);
+		const sin_a = sin(a);
+		const r = l + (amp * ((-0.14861 * cos_a) + (1.78277 * sin_a)));
+		const g = l + (amp * ((-0.29227 * cos_a) - (0.90649 * sin_a)));
+		const b = l + (amp * (+1.97294 * cos_a));
+		return chroma(clip_rgb([r * 255, g * 255, b * 255, 1]));
+	} as any as ICubehelix;
+
+	// @ts-ignore
+	f.start = function (n?: number)
+	{
+		if (typeof n === 'number')
+		{
+			start = n;
+			return f;
+		}
+
+		return start;
+	};
+
+	// @ts-ignore
+	f.rotations = function (n?: number)
+	{
+		if (typeof n === 'number')
+		{
+			rotations = n;
+			return f;
+		}
+
+		return rotations;
+	};
+
+	// @ts-ignore
+	f.gamma = function (n?: number)
+	{
+		if (typeof n === 'number')
+		{
+			gamma = n;
+			return f;
+		}
+
+		return gamma;
+	};
+
+	// @ts-ignore
+	f.hue = function (h?: number | [number, number])
+	{
+		if (Array.isArray(h))
+		{
+			hue = h;
+
+			dh = hue[1] - hue[0];
+			if (dh === 0)
+			{ hue = hue[1]; }
+		}
+		else if (typeof hue === "number")
+		{
+			hue = h;
+			dh = 0;
+		}
+		else
+		{
+			return hue;
+		}
+
+		return f;
+	};
+
+	// @ts-ignore
+	f.lightness = function (h)
+	{
+		if ((h == null))
+		{ return lightness; }
+		if (Array.isArray(h))
+		{
+			lightness = h;
+			dl = h[1] - h[0];
+		}
+		else
+		{
+			lightness = [h, h];
+			dl = 0;
+		}
+		return f;
+	};
+
+	f.scale = () => chroma.scale(f);
+
+	f.hue(hue);
+
+	return f;
 };
+
+export default cubehelix

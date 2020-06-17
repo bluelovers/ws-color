@@ -1,35 +1,43 @@
-const chroma = require('../../chroma');
-const Color = require('../../Color');
-const input = require('../input');
-const {unpack, type} = require('../../utils');
-const {round} = Math;
+import chroma from '../../chroma';
+import Color from '../../Color';
+import input from '../input';
+import unpack from '../../utils/unpack';
+import type from '../../utils/type';
+import { IColorSpaces } from '../../types';
+const { round } = Math;
 
-Color.prototype.rgb = function(rnd=true) {
-    if (rnd === false) return this._rgb.slice(0,3);
-    return this._rgb.slice(0,3).map(round);
+Color.prototype.rgb = function (rnd = true): IColorSpaces["rgb"]
+{
+	if (rnd === false) return this._rgb.slice(0, 3) as any;
+	return this._rgb.slice(0, 3).map(round) as any;
 }
 
-Color.prototype.rgba = function(rnd=true) {
-    return this._rgb.slice(0,4).map((v,i) => {
-        return i<3 ? (rnd === false ? v : round(v)) : v;
-    });
+Color.prototype.rgba = function (rnd = true): IColorSpaces["rgba"]
+{
+	return this._rgb.slice(0, 4).map((v, i) =>
+	{
+		return i < 3 ? (rnd === false ? v : round(v)) : v;
+	}) as any;
 };
 
 chroma.rgb = (...args) => new Color(...args, 'rgb');
 
-input.format.rgb = (...args) => {
-    const rgba = unpack(args, 'rgba');
-    if (rgba[3] === undefined) rgba[3] = 1;
-    return rgba;
+input.format.rgb = (...args) =>
+{
+	const rgba = unpack(args, 'rgba');
+	if (rgba[3] === undefined) rgba[3] = 1;
+	return rgba;
 };
 
 input.autodetect.push({
-    p: 3,
-    test: (...args) => {
-        args = unpack(args, 'rgba');
-        if (type(args) === 'array' && (args.length === 3 ||
-            args.length === 4 && type(args[3]) == 'number' && args[3] >= 0 && args[3] <= 1)) {
-            return 'rgb';
-        }
-    }
+	p: 3,
+	test: (...args) =>
+	{
+		args = unpack(args, 'rgba');
+		if (Array.isArray(args) && (args.length === 3 ||
+			args.length === 4 && typeof args[3] === 'number' && args[3] >= 0 && args[3] <= 1))
+		{
+			return 'rgb';
+		}
+	},
 });

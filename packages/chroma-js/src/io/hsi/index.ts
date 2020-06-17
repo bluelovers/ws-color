@@ -1,24 +1,56 @@
-const {unpack, type} = require('../../utils');
-const chroma = require('../../chroma');
-const Color = require('../../Color');
-const input = require('../input');
+import unpack from '../../utils/unpack';
+import type from '../../utils/type';
+import chroma from '../../chroma';
+import Color from '../../Color';
+import input from '../input';
 
-const rgb2hsi = require('./rgb2hsi');
+import rgb2hsi from './rgb2hsi';
 
-Color.prototype.hsi = function() {
-    return rgb2hsi(this._rgb);
+import hsi2rgb from './hsi2rgb';
+import { IColorSpaces } from '../../types';
+import hcg2rgb from '../hcg/hcg2rgb';
+
+declare module '../../Color'
+{
+	interface Color
+	{
+		hsi(): IColorSpaces["hsi"];
+	}
+}
+
+declare module '../../chroma'
+{
+	interface chroma
+	{
+		hsi(...args): Color
+	}
+}
+
+declare module '../input'
+{
+	interface IColorInputObjectFormat
+	{
+		hsi: typeof hsi2rgb
+	}
+}
+
+Color.prototype.hsi = function ()
+{
+	return rgb2hsi(this._rgb);
 };
 
 chroma.hsi = (...args) => new Color(...args, 'hsi');
 
-input.format.hsi = require('./hsi2rgb');
+input.format.hsi = hsi2rgb;
 
 input.autodetect.push({
-    p: 2,
-    test: (...args) => {
-        args = unpack(args, 'hsi');
-        if (type(args) === 'array' && args.length === 3) {
-            return 'hsi';
-        }
-    }
+	p: 2,
+	test: (...args) =>
+	{
+		args = unpack(args, 'hsi');
+		if (Array.isArray(args) && args.length === 3)
+		{
+			return 'hsi';
+		}
+	},
 });

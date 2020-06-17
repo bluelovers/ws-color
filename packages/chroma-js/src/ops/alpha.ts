@@ -1,13 +1,27 @@
-const Color = require('../Color');
-const {type} = require('../utils');
+import Color from '../Color';
 
-Color.prototype.alpha = function(a, mutate=false) {
-    if (a !== undefined && type(a) === 'number') {
-        if (mutate) {
-            this._rgb[3] = a;
-            return this;
-        }
-        return new Color([this._rgb[0], this._rgb[1], this._rgb[2], a], 'rgb');
-    }
-    return this._rgb[3];
+
+declare module '../Color'
+{
+	interface Color
+	{
+		alpha(a: number, mutate: true): this
+		alpha(a: number, mutate?: boolean): Color
+		alpha(): number
+	}
+}
+
+// @ts-ignore
+Color.prototype.alpha = function (a?: number | undefined, mutate = false)
+{
+	if (typeof a === 'number')
+	{
+		if (mutate)
+		{
+			this._rgb[3] = a;
+			return this;
+		}
+		return new Color([this._rgb[0], this._rgb[1], this._rgb[2], a], 'rgb');
+	}
+	return this._rgb[3];
 }

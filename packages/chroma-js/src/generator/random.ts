@@ -1,12 +1,22 @@
-const Color = require('../Color');
+import Color from '../Color';
 const digits = '0123456789abcdef';
 
-const {floor,random} = Math;
+const { floor, random } = Math;
 
-module.exports = () => {
-    let code = '#';
-    for (let i=0; i<6; i++) {
-        code += digits.charAt(floor(random() * 16));
-    }
-    return new Color(code, 'hex');
+declare module '../chroma'
+{
+	interface chroma
+	{
+		random(): Color
+	}
+}
+
+export default () =>
+{
+	let code = '#';
+	for (let i = 0; i < 6; i++)
+	{
+		code += digits.charAt(floor(random() * 16));
+	}
+	return new Color(code, 'hex');
 }

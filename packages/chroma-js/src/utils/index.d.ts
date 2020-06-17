@@ -1,0 +1,24 @@
+import type from './type';
+import limit from './limit';
+import clip_rgb from './clip_rgb';
+import unpack from './unpack';
+import last from './last';
+export { clip_rgb, limit, type, unpack, last, };
+export declare const PI: number;
+export declare const TWOPI: number;
+export declare const PITHIRD: number;
+export declare const DEG2RAD: number;
+export declare const RAD2DEG: number;
+declare const _default: {
+    clip_rgb: (rgb: import("./clip_rgb").IRGB) => import("./clip_rgb").IRGB;
+    limit: typeof limit;
+    type: typeof type;
+    unpack: <K extends "rgb" | "rgba" | "hcg" | "hsl" | "hsla" | "hsv" | "hsi" | "lab" | "lch" | "lrgb" | "hcl" | "cmyk" | "gl">(args: any[], keyOrder?: K) => import("../types").IColorSpaces[K];
+    last: <T extends unknown>(args: T[] | [any, any, T, ...T[]]) => any;
+    PI: number;
+    TWOPI: number;
+    PITHIRD: number;
+    DEG2RAD: number;
+    RAD2DEG: number;
+};
+export default _default;

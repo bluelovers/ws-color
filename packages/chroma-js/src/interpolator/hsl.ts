@@ -1,11 +1,22 @@
-require('../io/hsl');
-const interpolate_hsx = require('./_hsx');
+import '../io/hsl';
+import interpolate_hsx from './_hsx';
 
-const hsl = (col1, col2, f) => {
+const hsl = (col1, col2, f) =>
+{
 	return interpolate_hsx(col1, col2, f, 'hsl');
 }
 
-// register interpolator
-require('./index').hsl = hsl;
+declare module './index'
+{
+	interface IInterpolator
+	{
+		hsl(col1: Color, col2: Color, f?: number): Color
+	}
+}
 
-module.exports = hsl;
+// register interpolator
+import interpolator from './index';
+import Color from '../Color';
+interpolator.hsl = hsl;
+
+export default hsl;

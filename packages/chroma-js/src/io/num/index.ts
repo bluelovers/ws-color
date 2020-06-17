@@ -1,24 +1,54 @@
-const chroma = require('../../chroma');
-const Color = require('../../Color');
-const input = require('../input');
-const {type} = require('../../utils');
+import chroma from '../../chroma';
+import Color from '../../Color';
+import input from '../input';
 
-const rgb2num = require('./rgb2num');
+import rgb2num from './rgb2num';
 
-Color.prototype.num = function() {
-    return rgb2num(this._rgb);
+import num2rgb from './num2rgb';
+import { IRgb2HexMode } from '../hex/rgb2hex';
+import hex2rgb from '../hex/hex2rgb';
+
+declare module '../../Color'
+{
+	interface Color
+	{
+		num(): number;
+	}
+}
+
+declare module '../../chroma'
+{
+	interface chroma
+	{
+		num(...args): Color
+	}
+}
+
+declare module '../input'
+{
+	interface IColorInputObjectFormat
+	{
+		num: typeof num2rgb
+	}
+}
+
+Color.prototype.num = function ()
+{
+	return rgb2num(this._rgb);
 };
 
 chroma.num = (...args) => new Color(...args, 'num');
 
-input.format.num = require('./num2rgb');
+input.format.num = num2rgb;
 
 input.autodetect.push({
-    p: 5,
-    test: (...args) => {
-        if (args.length === 1 && type(args[0]) === 'number' && args[0] >= 0 && args[0] <= 0xFFFFFF) {
-            return 'num';
-        }
-    }
+	p: 5,
+	test: (...args) =>
+	{
+		if (args.length === 1 && typeof args[0] === 'number' && args[0] >= 0 && args[0] <= 0xFFFFFF)
+		{
+			return 'num';
+		}
+	},
 });
 

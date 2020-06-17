@@ -1,24 +1,52 @@
-const chroma = require('../../chroma');
-const Color = require('../../Color');
-const input = require('../input');
-const {unpack, type} = require('../../utils');
+import chroma from '../../chroma';
+import Color from '../../Color';
+import input from '../input';
+import unpack from '../../utils/unpack';
+import rgb2cmyk from './rgb2cmyk';
+import { IColorSpaces } from '../../types';
+import cmyk2rgb from './cmyk2rgb';
 
-const rgb2cmyk = require('./rgb2cmyk');
+declare module '../../Color'
+{
+	interface Color
+	{
+		cmyk(): IColorSpaces["cmyk"];
+	}
+}
 
-Color.prototype.cmyk = function() {
-    return rgb2cmyk(this._rgb);
+declare module '../../chroma'
+{
+	interface chroma
+	{
+		cmyk(...args): Color
+	}
+}
+
+declare module '../input'
+{
+	interface IColorInputObjectFormat
+	{
+		cmyk: typeof cmyk2rgb
+	}
+}
+
+Color.prototype.cmyk = function ()
+{
+	return rgb2cmyk(this._rgb);
 };
 
 chroma.cmyk = (...args) => new Color(...args, 'cmyk');
 
-input.format.cmyk = require('./cmyk2rgb');
+input.format.cmyk = cmyk2rgb;
 
 input.autodetect.push({
-    p: 2,
-    test: (...args) => {
-        args = unpack(args, 'cmyk');
-        if (type(args) === 'array' && args.length === 4) {
-            return 'cmyk';
-        }
-    }
+	p: 2,
+	test: (...args) =>
+	{
+		args = unpack(args, 'cmyk');
+		if (Array.isArray(args) && args.length === 4)
+		{
+			return 'cmyk';
+		}
+	},
 });

@@ -1,5 +1,14 @@
-const Color = require('../Color');
+import Color from '../Color';
 
-Color.prototype.clipped = function() {
-    return this._rgb._clipped || false;
+declare module '../Color'
+{
+	interface Color
+	{
+		clipped(): boolean;
+	}
+}
+
+Color.prototype.clipped = function ()
+{
+	return this._rgb._clipped || false;
 }
