@@ -1,6 +1,6 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputFormat } from '../input';
 import rgb2temperature from './rgb2temperature';
 
 import temperature2rgb from './temperature2rgb';
@@ -35,6 +35,7 @@ declare module '../input'
 	}
 }
 
+/*
 Color.prototype.temp =
 	Color.prototype.kelvin =
 		Color.prototype.temperature = function ()
@@ -49,5 +50,24 @@ chroma.temp =
 input.format.temp =
 	input.format.kelvin =
 		input.format.temperature = temperature2rgb;
+*/
 
+([
+	'temp',
+	'kelvin',
+	'temperature',
+] as const)
+	.forEach(field => {
+
+		Color.prototype[field] = function ()
+		{
+			return rgb2temperature(this._rgb);
+		};
+
+		chroma[field] = (...args) => new Color(...args, 'temp');
+
+		setupInputFormat(field, temperature2rgb)
+
+	})
+;
 

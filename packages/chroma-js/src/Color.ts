@@ -4,15 +4,17 @@ import clip_rgb from './utils/clip_rgb';
 import last from './utils/last';
 import type from './utils/type';
 
-import _input from './io/input';
+import _input, { IColorInputObjectFormat } from './io/input';
 import { IRgb2HexMode } from './io/hex/rgb2hex';
-import { IColorSpaces, IRGB } from './types';
+import { IColorSpaces, IRGB, IInterpolationMode } from './types';
+import colors from './colors';
+import autodetect, { assertAutodetectReturn } from './utils/autodetect';
 
 export class Color
 {
 	_rgb: IRGB
 
-	hex?(mode?: IRgb2HexMode): string
+	//hex?(mode?: IRgb2HexMode): string
 
 	/**
 	 * Creates a color from a string representation (as supported in CSS).
@@ -48,7 +50,7 @@ export class Color
 
 		if (args.length === 0)
 		{
-			this._rgb = [null, null, null, null];
+			this._rgb = colors._empty.slice();
 
 			return this;
 		}
@@ -66,40 +68,11 @@ export class Color
 			return args[0].clone();
 		}
 
-		// last argument could be the mode
-		let mode = last(args);
-		let autodetect = false;
+		let ret = autodetect(args);
 
-		if (!mode)
-		{
-			autodetect = true;
-			if (!_input.sorted)
-			{
-				_input.autodetect = _input.autodetect.sort((a, b) => b.p - a.p);
-				_input.sorted = true;
-			}
-			// auto-detect format
-			for (let chk of _input.autodetect)
-			{
-				mode = chk.test(...args);
-				if (mode) break;
-			}
-		}
+		assertAutodetectReturn(ret);
 
-		if (_input.format[mode])
-		{
-			const rgb = _input.format[mode].apply(null, autodetect ? args : args.slice(0, -1));
-			me._rgb = clip_rgb(rgb);
-		}
-		else
-		{
-			console.dir(_input.format)
-
-			throw new Error('unknown format: ' + args);
-		}
-
-		// add alpha channel
-		if (me._rgb.length === 3) me._rgb.push(1);
+		me._rgb = ret._rgb
 	}
 
 	get _rgba()
@@ -114,6 +87,7 @@ export class Color
 
 	toString(): string
 	{
+		// @ts-ignore
 		if (typeof this.hex === 'function') return this.hex();
 		return `[${this._rgb.join(',')}]`;
 	}

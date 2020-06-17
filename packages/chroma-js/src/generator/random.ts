@@ -1,23 +1,23 @@
 
 import Color from '../Color';
-const digits = '0123456789abcdef';
-
-const { floor, random } = Math;
+import { randomHex, IOptionsRand } from '../utils/rand';
+import colors from '../colors';
 
 declare module '../chroma'
 {
 	interface chroma
 	{
-		random(): Color
+		random(options?: IOptionsRand): Color
 	}
 }
 
-export default () =>
+export default (options?: IOptionsRand) =>
 {
-	let code = '#';
-	for (let i = 0; i < 6; i++)
+	if (options?.rgba)
 	{
-		code += digits.charAt(floor(random() * 16));
+		return new Color(colors._default, 'rgba');
 	}
+
+	let code = '#' + randomHex(options);
 	return new Color(code, 'hex');
 }

@@ -3,7 +3,7 @@ import unpack from '../../utils/unpack';
 
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect } from '../input';
 import { IColorSpaces } from '../../types';
 
 import rgb2lab from './rgb2lab';
@@ -43,7 +43,7 @@ chroma.lab = (...args) => new Color(...args, 'lab');
 
 input.format.lab = lab2rgb;
 
-input.autodetect.push({
+setupInputAutodetect({
 	p: 2,
 	test(...args)
 	{

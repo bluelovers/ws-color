@@ -37,6 +37,7 @@ import './ops/mix';
 import './ops/premultiply';
 import './ops/saturate';
 import './ops/set';
+import './ops/rand';
 
 // interpolators
 import './interpolator/rgb';

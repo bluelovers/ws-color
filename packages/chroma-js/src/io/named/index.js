@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Color_1 = __importDefault(require("../../Color"));
-const input_1 = __importDefault(require("../input"));
+const input_1 = require("../input");
 const rgb2hex_1 = __importDefault(require("../hex/rgb2hex"));
 const named2rgb_1 = __importStar(require("./named2rgb"));
 Color_1.default.prototype.name = function () {
@@ -31,10 +31,10 @@ Color_1.default.prototype.name = function () {
     const hex = rgb2hex_1.default(this._rgb, 'rgb');
     return (_c = (_b = (_a = named2rgb_1.hex2name(hex)) === null || _a === void 0 ? void 0 : _a.toLowerCase) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : hex;
 };
-input_1.default.format.named = (name) => {
+input_1.setupInputFormat('named', (name) => {
     return named2rgb_1.default(name);
-};
-input_1.default.autodetect.push({
+});
+input_1.setupInputAutodetect({
     p: 5,
     test: (name, ...rest) => {
         var _a;

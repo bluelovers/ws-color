@@ -11,3 +11,27 @@ test(`pink.darken.saturate`, () =>
 
 });
 
+test(`rand`, () =>
+{
+
+	let actual = chroma().rand();
+
+	//expect(actual).toStrictEqual(expected);
+	//expect(actual).toBeInstanceOf(Date);
+	console.dir(actual)
+	expect(actual).toBeTruthy();
+
+});
+
+test(`empty`, () =>
+{
+
+	let actual = chroma();
+
+	//expect(actual).toStrictEqual(expected);
+	//expect(actual).toBeInstanceOf(Date);
+
+	expect(actual.toString()).toMatchSnapshot();
+	expect(actual).toMatchSnapshot();
+
+});

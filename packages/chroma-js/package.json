@@ -47,6 +47,7 @@
     "sort-package-json": "ynpx --quiet yarn-tool -- sort"
   },
   "dependencies": {
+    "array-hyper-unique": "^1.1.6",
     "lodash": "^4.17.15",
     "ts-type-predicates": "^1.0.3"
   },

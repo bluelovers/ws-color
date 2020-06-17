@@ -6,6 +6,7 @@ export interface IColorNames
 {
 	transparent: [null, null, null, 0],
 	_default: string,
+	_empty: [null, null, null, 1],
 }
 
 declare module '../chroma'
@@ -19,6 +20,7 @@ declare module '../chroma'
 const colors: IColorNames = {
 	transparent: [null, null, null, 0],
 	_default: "#ffffff",
+	_empty: [null, null, null, 1],
 }
 
 export default colors

@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Color_1 = __importDefault(require("../Color"));
-const digits = '0123456789abcdef';
-const { floor, random } = Math;
-exports.default = () => {
-    let code = '#';
-    for (let i = 0; i < 6; i++) {
-        code += digits.charAt(floor(random() * 16));
+const rand_1 = require("../utils/rand");
+const colors_1 = __importDefault(require("../colors"));
+exports.default = (options) => {
+    if (options === null || options === void 0 ? void 0 : options.rgba) {
+        return new Color_1.default(colors_1.default._default, 'rgba');
     }
+    let code = '#' + rand_1.randomHex(options);
     return new Color_1.default(code, 'hex');
 };
 //# sourceMappingURL=random.js.map

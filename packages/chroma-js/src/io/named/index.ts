@@ -1,5 +1,5 @@
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect, setupInputFormat } from '../input';
 import rgb2hex, { IRgb2HexMode } from '../hex/rgb2hex';
 
 import { IColorSpaces } from '../../types';
@@ -27,12 +27,12 @@ Color.prototype.name = function ()
 	return hex2name(hex)?.toLowerCase?.() ?? hex;
 };
 
-input.format.named = (name) =>
+setupInputFormat('named', (name) =>
 {
 	return named2rgb(name)
-}
+})
 
-input.autodetect.push({
+setupInputAutodetect({
 	p: 5,
 	test: (name, ...rest) =>
 	{

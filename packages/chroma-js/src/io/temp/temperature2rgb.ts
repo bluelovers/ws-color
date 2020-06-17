@@ -3,9 +3,11 @@
  * https://github.com/neilbartlett/color-temperature
  */
 
+import { IColorSpaces } from '../../types';
+
 const { log } = Math;
 
-const temperature2rgb = (kelvin) =>
+const temperature2rgb = (kelvin): IColorSpaces["rgba"] =>
 {
 	const temp = kelvin / 100;
 	let r, g, b;

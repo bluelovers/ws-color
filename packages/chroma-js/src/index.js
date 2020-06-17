@@ -47,6 +47,7 @@ require("./ops/mix");
 require("./ops/premultiply");
 require("./ops/saturate");
 require("./ops/set");
+require("./ops/rand");
 // interpolators
 require("./interpolator/rgb");
 require("./interpolator/lrgb");

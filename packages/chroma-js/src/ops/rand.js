@@ -7,8 +7,8 @@ const Color_1 = __importDefault(require("../Color"));
 const rand_1 = __importDefault(require("../utils/rand"));
 require("../io/rgb");
 // @ts-ignore
-Color_1.default.prototype.rand = function (options) {
-    return new Color_1.default(rand_1.default(this._rgb, options), 'rgba');
+Color_1.default.prototype.rand = function (options = {}) {
+    options.rgba = this._rgb;
+    return new Color_1.default(rand_1.default(options), 'rgba');
 };
-console.log(new Color_1.default().toString());
 //# sourceMappingURL=rand.js.map

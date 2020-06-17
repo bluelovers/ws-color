@@ -1,6 +1,6 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect, setupInputFormat } from '../input';
 import unpack from '../../utils/unpack';
 
 import { IColorSpaces } from '../../types';
@@ -20,16 +20,28 @@ Color.prototype.rgba = function (rnd = true): IColorSpaces["rgba"]
 	}) as any;
 };
 
-chroma.rgb = (...args) => new Color(...args, 'rgb');
+chroma.rgba = chroma.rgb = (...args) => new Color(...args, 'rgb');
 
+/*
 input.format.rgba = input.format.rgb = (...args) =>
 {
 	const rgba = unpack(args, 'rgba');
 	rgba[3] = rgba[3] ?? 1;
 	return rgba;
 };
+ */
 
-input.autodetect.push({
+setupInputFormat([
+	'rgba',
+	'rgb',
+], (...args) =>
+{
+	const rgba = unpack(args, 'rgba');
+	rgba[3] = rgba[3] ?? 1;
+	return rgba;
+})
+
+setupInputAutodetect({
 	p: 3,
 	test: (...args) =>
 	{

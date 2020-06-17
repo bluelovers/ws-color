@@ -1,6 +1,6 @@
 import Color from '../Color';
-import rand, { IRGBValue, IOptionsRand } from '../utils/rand';
-import { IColorSpaces } from '../types';
+import rand, { IOptionsRand } from '../utils/rand';
+import { IColorSpaces, IRGBValue } from '../types';
 import '../io/rgb';
 import colors from '../colors';
 
@@ -13,9 +13,9 @@ declare module '../Color'
 }
 
 // @ts-ignore
-Color.prototype.rand = function (options?: IOptionsRand)
+Color.prototype.rand = function (options: IOptionsRand = {})
 {
-	return new Color(rand(this._rgb, options), 'rgba');
-}
+	options.rgba = this._rgb
 
-console.log(new Color().toString())
+	return new Color(rand(options), 'rgba');
+}

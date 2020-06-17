@@ -1,6 +1,6 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect, setupInputFormat } from '../input';
 
 import rgb2num from './rgb2num';
 
@@ -39,9 +39,11 @@ Color.prototype.num = function ()
 
 chroma.num = (...args) => new Color(...args, 'num');
 
-input.format.num = num2rgb;
+//input.format.num = num2rgb;
 
-input.autodetect.push({
+setupInputFormat('num', num2rgb);
+
+setupInputAutodetect({
 	p: 5,
 	test: (...args) =>
 	{

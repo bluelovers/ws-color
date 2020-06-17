@@ -1,18 +1,19 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
 
-import input from '../input';
+import input, { setupInputAutodetect, setupInputFormat } from '../input';
 
 import rgb2hex from './rgb2hex';
 
 import hex2rgb from './hex2rgb';
 import { IRgb2HexMode } from './rgb2hex';
+import num2rgb from '../num/num2rgb';
 
 declare module '../../Color'
 {
 	interface Color
 	{
-		hex?(mode?: IRgb2HexMode): string;
+		hex(mode?: IRgb2HexMode): string;
 	}
 }
 
@@ -39,8 +40,11 @@ Color.prototype.hex = function (mode?: IRgb2HexMode)
 
 chroma.hex = (...args) => new Color(...args, 'hex');
 
-input.format.hex = hex2rgb;
-input.autodetect.push({
+//input.format.hex = hex2rgb;
+
+setupInputFormat('hex', hex2rgb);
+
+setupInputAutodetect({
 	p: 4,
 	test: (h, ...rest) =>
 	{

@@ -1,6 +1,6 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect } from '../input';
 
 
 import rgb2css from './rgb2css';
@@ -14,7 +14,7 @@ declare module '../../Color'
 
 	interface Color
 	{
-		css?(mode?: IRgb2CssMode): string;
+		css(mode?: IRgb2CssMode): string;
 	}
 
 }
@@ -44,7 +44,7 @@ chroma.css = (...args) => new Color(...args, 'css');
 
 input.format.css = css2rgb;
 
-input.autodetect.push({
+setupInputAutodetect({
 	p: 5,
 	test: (h, ...rest) =>
 	{

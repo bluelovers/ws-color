@@ -25,6 +25,7 @@ import './ops/mix';
 import './ops/premultiply';
 import './ops/saturate';
 import './ops/set';
+import './ops/rand';
 import './interpolator/rgb';
 import './interpolator/lrgb';
 import './interpolator/lab';

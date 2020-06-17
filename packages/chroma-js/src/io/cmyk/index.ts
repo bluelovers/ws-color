@@ -1,6 +1,6 @@
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect } from '../input';
 import unpack from '../../utils/unpack';
 import rgb2cmyk from './rgb2cmyk';
 import { IColorSpaces } from '../../types';
@@ -39,7 +39,7 @@ chroma.cmyk = (...args) => new Color(...args, 'cmyk');
 
 input.format.cmyk = cmyk2rgb;
 
-input.autodetect.push({
+setupInputAutodetect({
 	p: 2,
 	test: (...args) =>
 	{

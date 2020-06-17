@@ -2,7 +2,7 @@ import unpack from '../../utils/unpack';
 
 import chroma from '../../chroma';
 import Color from '../../Color';
-import input from '../input';
+import input, { setupInputAutodetect } from '../input';
 
 import rgb2hsv from './rgb2hsv';
 
@@ -17,7 +17,7 @@ chroma.hsv = (...args) => new Color(...args, 'hsv');
 
 input.format.hsv = hsv2rgb;
 
-input.autodetect.push({
+setupInputAutodetect({
 	p: 2,
 	test: (...args) =>
 	{

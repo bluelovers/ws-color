@@ -9,8 +9,6 @@ const RE_RGBA_PCT = /^rgba\(\s*(-?\d+(?:\.\d+)?)%,\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-
 const RE_HSL = /^hsl\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*\)$/;
 const RE_HSLA = /^hsla\(\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)%\s*,\s*(-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)$/;
 
-const { round } = Math;
-
 const css2rgb = (css): IColorSpaces["rgba"] =>
 {
 	css = css.toLowerCase().trim();
@@ -57,7 +55,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 		const rgb = m.slice(1, 4);
 		for (let i = 0; i < 3; i++)
 		{
-			rgb[i] = round(rgb[i] * 2.55);
+			rgb[i] = Math.round(rgb[i] * 2.55);
 		}
 		rgb[3] = 1;  // default alpha
 		return rgb;
@@ -69,7 +67,7 @@ const css2rgb = (css): IColorSpaces["rgba"] =>
 		const rgb = m.slice(1, 5);
 		for (let i = 0; i < 3; i++)
 		{
-			rgb[i] = round(rgb[i] * 2.55);
+			rgb[i] = Math.round(rgb[i] * 2.55);
 		}
 		rgb[3] = +rgb[3];
 		return rgb;

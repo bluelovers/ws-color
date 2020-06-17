@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`empty 1`] = `"#000000"`;
+
+exports[`empty 2`] = `
+Color {
+  "_rgb": Array [
+    null,
+    null,
+    null,
+    1,
+  ],
+}
+`;
+
 exports[`pink.darken.saturate 1`] = `
 Color {
   "_rgb": Array [

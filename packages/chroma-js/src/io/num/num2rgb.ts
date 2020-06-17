@@ -1,6 +1,6 @@
+import { IColorSpaces } from '../../types';
 
-
-const num2rgb = (num) =>
+const num2rgb = (num): IColorSpaces["rgba"] =>
 {
 	if (typeof num == "number" && num >= 0 && num <= 0xFFFFFF)
 	{

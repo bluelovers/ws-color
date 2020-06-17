@@ -1,8 +1,7 @@
-import { IRgb2HexMode } from './io/hex/rgb2hex';
+import './io/input';
 import { IColorSpaces, IRGB } from './types';
 export declare class Color {
     _rgb: IRGB;
-    hex?(mode?: IRgb2HexMode): string;
     /**
      * Creates a color from a string representation (as supported in CSS).
      * Creates a color from a number representation [0; 16777215]

@@ -1,20 +1,36 @@
 /**
  * Created by user on 2020/6/17.
  */
-import { IColorSpaces } from '../types';
+import { IColorSpaces, IRGBValue } from '../types';
 
-export type IRGBValue = IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];
+const digits = '0123456789abcdef';
 
 export interface IOptionsRand
 {
-	fn?(index: number, value: number, rgba: IColorSpaces["rgba"]): number,
+	fn?(index?: number, value?: number, rgba?: IColorSpaces["rgba"]): number,
 	includeAlpha?: boolean
+	round?: boolean,
+	length?: number,
+	rgba?: IRGBValue,
 }
 
-function rand(rgba?: IRGBValue, options?: IOptionsRand): IColorSpaces["rgba"]
+export function _handleOptions<T extends IOptionsRand>(options?: T): T
 {
-	rgba = rgba?.slice?.() ?? [];
 	let { fn = Math.random as typeof options.fn, includeAlpha } = options ?? {};
+
+	return {
+		...options,
+		fn,
+		includeAlpha,
+	}
+}
+
+export function rand(options?: IOptionsRand): IColorSpaces["rgba"]
+{
+
+	let { rgba, fn, includeAlpha, round } = _handleOptions(options);
+
+	rgba = rgba?.slice?.() ?? [];
 
 	let i: number;
 	for (i = 0; i < 3; i++)
@@ -22,7 +38,14 @@ function rand(rgba?: IRGBValue, options?: IOptionsRand): IColorSpaces["rgba"]
 		let value = rgba[i] ?? 255;
 		value |= 0;
 
-		rgba[i] = fn(i, value, rgba as IColorSpaces["rgba"]) * (1 + value);
+		value = fn(i, value, rgba as IColorSpaces["rgba"]) * (1 + value);
+
+		if (round === true)
+		{
+			value = Math.round(value)
+		}
+
+		rgba[i] = value;
 	}
 
 	rgba[3] = rgba[3] ?? 1;
@@ -37,6 +60,29 @@ function rand(rgba?: IRGBValue, options?: IOptionsRand): IColorSpaces["rgba"]
 	}
 
 	return rgba as any
+}
+
+export function _randomHex(options?: IOptionsRand)
+{
+	let { fn, includeAlpha, length } = _handleOptions(options);
+
+	length = length > 0 ? length : (includeAlpha ? 8 : 6);
+
+	let ls = [] as string[]
+	for (let i = 0; i < length; i++)
+	{
+		let code = digits.charAt(Math.floor(fn(i) * 16));
+		ls.push(code)
+	}
+
+	return ls.join('');
+}
+
+export function randomHex(options?: IOptionsRand)
+{
+	delete options?.length
+
+	return _randomHex(options)
 }
 
 export default rand

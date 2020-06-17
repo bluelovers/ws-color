@@ -83,3 +83,4 @@ export interface IRGB extends Array<number> {
     _clipped?: boolean;
     _unclipped?: number[];
 }
+export declare type IRGBValue = IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];
