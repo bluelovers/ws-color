@@ -10,5 +10,5 @@ export interface IBezier {
     (t: number): Color;
     scale(): IScale;
 }
-declare const bezier: (colors: string[]) => IBezier;
+declare const bezier: (colors: (string | Color)[]) => IBezier;
 export default bezier;
