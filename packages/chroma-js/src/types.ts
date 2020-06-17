@@ -121,9 +121,9 @@ export interface IRGB extends Array<number>
 	0: number,
 	1: number,
 	2: number,
-	3: number,
+	3?: number,
 	_clipped?: boolean,
 	_unclipped?: number[],
 }
 
-export type IRGBValue = IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];
+export type IRGBValue = IRGB | IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];

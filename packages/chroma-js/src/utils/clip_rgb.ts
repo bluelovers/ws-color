@@ -1,5 +1,5 @@
 import limit from './limit';
-import { IRGB } from '../types';
+import { IRGB, IRGBValue } from '../types';
 
 export default (rgb: IRGB) =>
 {

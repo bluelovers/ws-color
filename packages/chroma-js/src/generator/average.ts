@@ -1,6 +1,6 @@
 import Color from '../Color';
 import clip_rgb from '../utils/clip_rgb';
-import { IInterpolationMode } from '../types';
+import { IInterpolationMode, IRGB } from '../types';
 import arr2colors from '../utils/arr-to-colors';
 import typePredicates from 'ts-type-predicates';
 
@@ -101,7 +101,7 @@ function average(colors: (string | Color)[], mode: IInterpolationMode = 'lrgb', 
 function _average_lrgb(colors: Color[], weights: number[])
 {
 	const l = colors.length;
-	const xyz = [0, 0, 0, 0];
+	const xyz: IRGB = [0, 0, 0, 0];
 	for (let i = 0; i < colors.length; i++)
 	{
 		const col = colors[i];

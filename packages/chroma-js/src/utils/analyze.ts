@@ -2,6 +2,7 @@ import type from './type';
 import { IColorBrewer } from '../colors/colorbrewer';
 import { isNumber } from './type-is';
 import typePredicates from 'ts-type-predicates';
+
 const { log, pow, floor, abs } = Math;
 
 declare module '../chroma'
@@ -35,10 +36,24 @@ export interface IReturnTypeAnalyze
 	values: number[];
 	count: number;
 	domain: [number, number],
+
 	limits(mode: ILimitsMode, num: number)
 }
 
-export function analyze<T extends number, K extends keyof T>(data: T[] | Record<any, T | Record<any, number>>, key?: K): IReturnTypeAnalyze
+export type IAnalyzeInput01<T extends number> = T[]
+export type IAnalyzeInput02<T extends number> = Record<any, T>
+export type IAnalyzeInput03<T extends number> = Record<any, T>[]
+export type IAnalyzeInput04<T extends number> = Record<any, Record<any, T>>
+
+export type IAnalyzeInput<T extends number = number> =
+	IAnalyzeInput01<T>
+	| IAnalyzeInput02<T>
+	| IAnalyzeInput03<T>
+	| IAnalyzeInput04<T>;
+
+export function analyze<T extends number, K extends keyof T>(data: IAnalyzeInput<T>,
+	key?: K,
+): IReturnTypeAnalyze
 {
 	const r = {
 		min: Number.MAX_VALUE,
@@ -80,6 +95,19 @@ export function analyze<T extends number, K extends keyof T>(data: T[] | Record<
 	};
 }
 
+export type ILimitsInput01<T extends number> = T[]
+export type ILimitsInput02<T extends number> = (unknown | T)[]
+export type ILimitsInput03<T extends number> = [T, T]
+export type ILimitsInput04<T extends number> = IAnalyzeInput01<T> | IAnalyzeInput03<T>
+
+export type ILimitsInput<T extends number = number> =
+	ILimitsInput01<T>
+	| ILimitsInput02<T>
+	| ILimitsInput03<T>
+	| ILimitsInput04<T>
+	| IReturnTypeAnalyze
+	;
+
 /**
  * Helper function that computes class breaks based on data.
  * Mode:
@@ -91,11 +119,14 @@ export function analyze<T extends number, K extends keyof T>(data: T[] | Record<
  *  [k-means clustering algorithm]{@link https://en.wikipedia.org/wiki/K-means_clustering} to find (roughly) n
  *  groups of "similar" values. Note that this k-means implementation does not guarantee to find exactly n groups.
  */
-export function limits(data: IReturnTypeAnalyze | unknown[], mode: ILimitsMode = 'equal', num = 7): [number, number] | number[]
+export function limits(data: ILimitsInput,
+	mode: ILimitsMode = 'equal',
+	num = 7,
+): [number, number] | number[]
 {
 	if (Array.isArray(data))
 	{
-		data = analyze(data as any);
+		data = analyze(data as Extract<ILimitsInput, IAnalyzeInput>);
 	}
 	const { min, max } = data;
 	const values = data.values.sort((a, b) => a - b);
