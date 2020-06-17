@@ -1,5 +1,5 @@
 {
-  "name": "color-palette",
+  "name": "@bluelovers/color-palette",
   "version": "1.0.3",
   "description": "",
   "keywords": [],
@@ -24,5 +24,9 @@
     "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
     "ncu": "ynpx --quiet yarn-tool -- ncu -u",
     "sort-package-json": "ynpx --quiet yarn-tool -- sort"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "1a78c3b8852e8d1e72c7ee7d8bee4ae6c9cae1c7"
 }
