@@ -1,3 +1,51 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 2.1.1 (2020-06-17)
+
+
+### ✨　Features
+
+* Adding alpha functionality to bezier interpolation https://github.com/gka/chroma.js/pull/228 ([6656b99](https://github.com/bluelovers/ws-color/commit/6656b99fbc3793c2a9ab8c41352172e7194fde1f))
+* use setupInputAutodetect for make sure `input.autodetect` is sorted ([03877b8](https://github.com/bluelovers/ws-color/commit/03877b8b15cf7e40fc595f7f108cb3941f226155))
+* support color name `transparent` / clone color ([f8d6990](https://github.com/bluelovers/ws-color/commit/f8d69902f9510d33fd495d8761ad1b7caf17230c))
+
+
+### 📦　Code Refactoring
+
+* split color to separate package ([0532186](https://github.com/bluelovers/ws-color/commit/0532186a7dd31288377c86a1d752a4c0c961c2fe))
+* update type ([4662940](https://github.com/bluelovers/ws-color/commit/4662940ef7a3aa7e7332f5b2938efbe31ea2f39a))
+* update to typescript ([7238c6c](https://github.com/bluelovers/ws-color/commit/7238c6cd24a4a7f9e12b80ec3589ebcf66c40b26))
+* rename to ts ([929cc10](https://github.com/bluelovers/ws-color/commit/929cc10c00368a6c35e65cfff1086cc587263611))
+
+
+### 💎　Styles
+
+* **type:** update type ([5d1a6e5](https://github.com/bluelovers/ws-color/commit/5d1a6e54a8e523f70cba6fe2fd9dfdd7f1773a71))
+* **type:** update type ([3bc5362](https://github.com/bluelovers/ws-color/commit/3bc536239f41062150e1285435b36132f771362a))
+* **type:** update type ([4846d45](https://github.com/bluelovers/ws-color/commit/4846d451ef0bb61ee8f196e26f50ccf96ddeb211))
+
+
+### 🚨　Tests
+
+* update test ([5e0329f](https://github.com/bluelovers/ws-color/commit/5e0329f40b9ff7821fef6e081fd56d2439964fa6))
+
+
+### 🔖　Miscellaneous
+
+* Add 'packages/chroma-js/' from commit '552048f0f0b64aed69b2a953569de24ea2f6e426' ([eec583f](https://github.com/bluelovers/ws-color/commit/eec583fcc2a640f88b452ff42bff7622d9e62103))
+
+
+### BREAKING CHANGES
+
+* allow create empty `Color` object
+
+
+
+
+
 ## Changelog
 
 ### 2.0.3
