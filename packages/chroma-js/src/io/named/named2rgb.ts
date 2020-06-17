@@ -61,7 +61,7 @@ export function named2rgb(name: keyof IColorNames | string)
 
 export function rgba_is_transparent(rgba: IRGB)
 {
-	return rgba[0] === null && rgba[1] === null && rgba[2] === null && rgba[3] === 1
+	return rgba[0] === null && rgba[1] === null && rgba[2] === null && rgba[3] === 0
 }
 
 export default named2rgb

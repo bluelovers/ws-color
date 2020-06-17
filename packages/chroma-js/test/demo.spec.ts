@@ -79,14 +79,20 @@ test(`empty`, () =>
 test(`name check`, () =>
 {
 
-	['transparent', '_default', '_empty']
+	['_default', '_empty']
+		.forEach(color =>
+		{
 
-	let actual = chroma().named();
+			expect(chroma(color).named())
+				.not
+				.toStrictEqual(color)
+			;
 
-	//expect(actual).toStrictEqual(expected);
-	//expect(actual).toBeInstanceOf(Date);
+		})
+	;
 
-	expect(actual.toString()).toMatchSnapshot();
-	expect(actual).toMatchSnapshot();
+	expect(chroma('transparent').named())
+		.toStrictEqual('transparent')
+	;
 
 });

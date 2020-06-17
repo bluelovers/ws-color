@@ -47,7 +47,7 @@ function named2rgb(name) {
 }
 exports.named2rgb = named2rgb;
 function rgba_is_transparent(rgba) {
-    return rgba[0] === null && rgba[1] === null && rgba[2] === null && rgba[3] === 1;
+    return rgba[0] === null && rgba[1] === null && rgba[2] === null && rgba[3] === 0;
 }
 exports.rgba_is_transparent = rgba_is_transparent;
 exports.default = named2rgb;
