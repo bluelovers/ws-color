@@ -1,8 +1,7 @@
 const vows = require('vows')
 const assert = require('assert');
 
-
-const unpack = require('../src/utils/unpack');
+const unpack = require('../src/utils/unpack').default;
 
 // const round = (digits) => {
 //     const d = Math.pow(10,digits);
@@ -10,12 +9,12 @@ const unpack = require('../src/utils/unpack');
 // }
 
 vows
-    .describe('Testing unpack')
-    .addBatch({
-        'parse simple CMYK colors': {
-            args()    { return assert.deepEqual(unpack([1,2,3,4]), [1,2,3,4]); },
-            array()    { return assert.deepEqual(unpack([[1,2,3,4]]), [1,2,3,4]); },
-            object()    { return assert.deepEqual(unpack([{c:1,m:2,y:3,k:4}], 'cmyk'), [1,2,3,4]); },
-        }
-    })
-    .export(module);
+	.describe('Testing unpack')
+	.addBatch({
+		'parse simple CMYK colors': {
+			args() { return assert.deepEqual(unpack([1, 2, 3, 4]), [1, 2, 3, 4]); },
+			array() { return assert.deepEqual(unpack([[1, 2, 3, 4]]), [1, 2, 3, 4]); },
+			object() { return assert.deepEqual(unpack([{ c: 1, m: 2, y: 3, k: 4 }], 'cmyk'), [1, 2, 3, 4]); },
+		},
+	})
+	.export(module);

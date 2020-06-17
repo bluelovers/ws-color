@@ -1,15 +1,14 @@
-
 const vows = require('vows');
 const assert = require('assert');
-const chroma = require('../index');
-
+const chroma = require('../src/index').default;
 
 vows
-    .describe('Some tests for random colors')
+	.describe('Some tests for random colors')
 
-    .addBatch({
+	.addBatch({
 
-        'random colors': {
-            topic: chroma.random(),
-            'valid hex code'(topic) { return assert(/^#[0-9a-f]{6}$/i.test(topic.hex())); }
-        }}).export(module);
+		'random colors': {
+			topic: chroma.random(),
+			'valid hex code'(topic) { return assert(/^#[0-9a-f]{6}$/i.test(topic.hex())); },
+		},
+	}).export(module);
