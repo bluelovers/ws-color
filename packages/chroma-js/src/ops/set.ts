@@ -1,20 +1,23 @@
 import Color from '../Color';
+import splitModeChannel from '../utils/mode-channel-split';
+import { IInterpolationMode } from '../types';
 
 declare module '../Color'
 {
 	interface Color
 	{
-		set<T>(mc: string, value: string | number, mutate?: boolean): T;
+		set<T extends Color | ReturnType<Color[IInterpolationMode]> = ReturnType<Color[IInterpolationMode]>>(mc: string, value?: string | number, mutate?: boolean): T;
 	}
 }
 
+// @ts-ignore
 Color.prototype.set = function (mc, value, mutate = false)
 {
-	const [mode, channel] = mc.split('.');
+	const [mode, channel, i] = splitModeChannel(mc)
+
 	const src = this[mode]();
 	if (channel)
 	{
-		const i = mode.indexOf(channel);
 		if (i > -1)
 		{
 			if (typeof value === 'string')

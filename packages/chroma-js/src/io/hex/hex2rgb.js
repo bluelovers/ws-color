@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const RE_HEX = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-const RE_HEXA = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/;
+exports.RE_HEXA = exports.RE_HEX = void 0;
+exports.RE_HEX = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+exports.RE_HEXA = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/;
 const hex2rgb = (hex) => {
-    if (hex.match(RE_HEX)) {
+    if (hex.match(exports.RE_HEX)) {
         // remove optional leading #
         if (hex.length === 4 || hex.length === 7) {
             hex = hex.substr(1);
         }
         // expand short-notation to full six-digit
         if (hex.length === 3) {
-            // @ts-ignore
             hex = hex.split('');
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
         }
@@ -21,14 +21,13 @@ const hex2rgb = (hex) => {
         return [r, g, b, 1];
     }
     // match rgba hex format, eg #FF000077
-    if (hex.match(RE_HEXA)) {
+    if (hex.match(exports.RE_HEXA)) {
         if (hex.length === 5 || hex.length === 9) {
             // remove optional leading #
             hex = hex.substr(1);
         }
         // expand short-notation to full eight-digit
         if (hex.length === 4) {
-            // @ts-ignore
             hex = hex.split('');
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
         }

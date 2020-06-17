@@ -5,9 +5,10 @@
 // @requires utils lab
 import Color from '../Color';
 import '../io/lab';
-import scale, { IScale } from './scale';
+import scale from './scale';
 import arr2colors from '../utils/arr-to-colors';
 import typePredicates from 'ts-type-predicates';
+import { IScale } from '../types';
 
 const _bezier = function (colors: (Color | string)[]): IBezier
 {

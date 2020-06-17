@@ -4,16 +4,10 @@
 
 import chroma from '../chroma';
 import { IRGB } from '../utils/clip_rgb';
-import colorbrewer from '../colors/colorbrewer';
 import '../utils/limit';
-
-import { IColorBrewer } from '../colors/colorbrewer';
-
-import type from '../utils/type';
 import Color from '../Color';
-import { ICubehelix } from './cubehelix';
-import { IColorSpaces } from '../types';
-import { IInterpolationMode } from '../types';
+import { IScale, ICubehelix } from '../types';
+import typePredicates from 'ts-type-predicates';
 
 const { pow } = Math;
 
@@ -23,55 +17,6 @@ declare module '../chroma'
 	{
 		scale: typeof scale;
 	}
-}
-
-export interface IScale<OutType = Color>
-{
-	(c: string[]): IScale;
-
-	(value: number): OutType;
-
-	domain(d?: number[], n?: number, mode?: string): this;
-
-	mode(mode: IInterpolationMode): this;
-
-	gamma(g: number): this;
-
-	cache(use: boolean): boolean;
-
-	correctLightness(enable?: boolean): this;
-
-	padding(p: number | number[]): this;
-
-	/**
-	 * You can call scale.colors(n) to quickly grab `c` equi-distant colors from a color scale. If called with no
-	 * arguments, scale.colors returns the original array of colors used to create the scale.
-	 */
-	colors(c: number | undefined,
-		format: undefined | null | 'alpha' | 'darken' | 'brighten' | 'saturate' | 'desaturate',
-	): Color[];
-
-	colors(c: number | undefined, format: 'luminance' | 'temperature'): number[];
-
-	colors<K extends keyof IColorSpaces>(c: number | undefined, format: K): Array<IColorSpaces[K]>;
-
-	colors(c: number | undefined, format?: 'hex' | 'name'): string[];
-
-	/**
-	 * If you want the scale function to return a distinct set of colors instead of a continuous gradient, you can
-	 * use scale.classes. If you pass a number the scale will broken into equi-distant classes.
-	 * You can also define custom class breaks by passing them as array
-	 */
-	classes(c: number | number[]): this;
-
-	/**
-	 * Set out format for scale() call. Passing null will result in a scale which outputs colors.
-	 */
-	out(format: null): IScale;
-
-	out<K extends keyof IColorSpaces>(format: K): IScale<IColorSpaces[K]>;
-
-	out(format: 'hex'): IScale<string>;
 }
 
 function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, string, ...string[]],
@@ -85,10 +30,10 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 	let _spread = 0;
 	// const _fixed = false;
 	let _domain = [0, 1];
-	let _pos = [];
+	let _pos: number[] = [];
 	let _padding = [0, 0];
-	let _classes: boolean | unknown[] = false;
-	let _colors: (Color | string)[] | ((t: number) => Color) = [];
+	let _classes: number[];
+	let _colors: Color[] = [];
 	let _out = false;
 	let _min = 0;
 	let _max = 1;
@@ -128,12 +73,13 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 			}
 		}
 		resetCache();
-		return _colors = colors as (Color | string)[];
+
+		return _colors = colors as Color[];
 	};
 
-	const getClass = function (value)
+	const getClass = function (value: number)
 	{
-		if (_classes != null)
+		if (_classes)
 		{
 			const n = _classes.length - 1;
 			let i = 0;
@@ -161,16 +107,16 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 	//     return val;
 	// };
 
-	const getColor = function (val: number, bypassMap?)
+	const getColor = function (val: number, bypassMap?: boolean)
 	{
 		let col: Color, t: number;
-		if (bypassMap == null)
-		{ bypassMap = false; }
+
 		if (isNaN(val) || (val === null))
 		{ return _nacol; }
+
 		if (!bypassMap)
 		{
-			if (_classes && (_classes.length > 2))
+			if (_classes?.length > 2)
 			{
 				// find the class
 				const c = getClass(val);
@@ -240,7 +186,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 			}
 			else if (typeof _colors === 'function')
 			{
-				col = _colors(t);
+				col = (_colors as any)(t);
 			}
 			if (_useCache)
 			{ _colorCache[k] = col; }
@@ -250,7 +196,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 
 	var resetCache = () => _colorCache = {};
 
-	setColors(colors);
+	setColors(colors as any);
 
 	// public interface
 
@@ -263,7 +209,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 		{ return c; }
 	};
 
-	f.classes = function (classes)
+	f.classes = function (classes: number | number[])
 	{
 		if (classes != null)
 		{
@@ -302,7 +248,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 		if ((domain.length === k) && (_min !== _max))
 		{
 			// update positions
-			for (let d of Array.from(domain))
+			for (let d of Array.from<number>(domain))
 			{
 				_pos.push((d - _min) / (_max - _min));
 			}
@@ -350,6 +296,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 
 	f.range = function (colors, _pos)
 	{
+		// @ts-ignore
 		setColors(colors, _pos);
 		return f;
 	};
@@ -444,7 +391,8 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 
 		if (argv.length === 0)
 		{
-			result = (_colors as Extract<typeof _colors, any[]>).slice(0);
+			typePredicates<Color[]>(_colors);
+			result = _colors.slice(0);
 		}
 		else if (numColors === 1)
 		{
@@ -521,7 +469,7 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 		}
 	};
 
-	return f;
+	return f as any;
 };
 
 function __range__(left: number, right: number, inclusive?: boolean): number[]

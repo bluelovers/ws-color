@@ -2,14 +2,12 @@
 // based on D.A. Green "A colour scheme for the display of astronomical intensity images"
 // http://astron-soc.in/bulletin/11June/289392011.pdf
 
-import Color from '../Color';
-
-
-const { pow, sin, cos } = Math;
 import chroma from '../chroma';
 import { TWOPI } from '../utils';
 import clip_rgb from '../utils/clip_rgb';
-import { IScale } from './scale';
+import { ICubehelix } from '../types';
+
+const { pow, sin, cos } = Math;
 
 declare module '../chroma'
 {
@@ -17,40 +15,6 @@ declare module '../chroma'
 	{
 		cubehelix: typeof cubehelix
 	}
-}
-
-export interface ICubehelix {
-	/**
-	 * Set start color for hue rotation, default=300
-	 */
-	start(): number;
-	start(s: number): ICubehelix;
-
-	/**
-	 * number (and direction) of hue rotations (e.g. 1=360°, 1.5=`540°``), default=-1.5
-	 */
-	rotations(): number;
-	rotations(r: number): ICubehelix;
-
-	/**
-	 * gamma factor can be used to emphasise low or high intensity values, default=1
-	 */
-	gamma(): number;
-	gamma(g: number): ICubehelix;
-
-	/**
-	 * lightness range: default: [0,1] (black -> white)
-	 */
-	lightness(): number;
-	lightness(l: number[]): ICubehelix;
-
-	/**
-	 * You can call cubehelix.scale() to use the cube-helix through the chroma.scale interface.
-	 */
-	scale(): IScale;
-
-	hue(): number;
-	hue(hue: number | [number, number]): ICubehelix
 }
 
 function cubehelix(start = 300, rotations = -1.5, hue: number | [number, number] = 1, gamma = 1, lightness: number | number[] = [0, 1]): ICubehelix

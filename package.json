@@ -21,6 +21,7 @@
   "resolutions": {},
   "devDependencies": {
     "@bluelovers/tsconfig": "^1.0.19",
+    "@types/chroma-js": "^2.0.0",
     "@types/jest": "^26.0.0",
     "@types/node": "*"
   },

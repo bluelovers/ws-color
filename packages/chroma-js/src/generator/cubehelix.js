@@ -6,10 +6,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const { pow, sin, cos } = Math;
 const chroma_1 = __importDefault(require("../chroma"));
 const utils_1 = require("../utils");
 const clip_rgb_1 = __importDefault(require("../utils/clip_rgb"));
+const { pow, sin, cos } = Math;
 function cubehelix(start = 300, rotations = -1.5, hue = 1, gamma = 1, lightness = [0, 1]) {
     let dh = 0, dl;
     if (Array.isArray(lightness)) {

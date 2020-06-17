@@ -1,7 +1,8 @@
 import { IColorSpaces } from '../../types';
 
-const RE_HEX = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-const RE_HEXA = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/;
+export const RE_HEX = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+export const RE_HEXA = /^#?([A-Fa-f0-9]{8}|[A-Fa-f0-9]{4})$/;
 
 const hex2rgb = (hex: string): IColorSpaces["rgba"] =>
 {
@@ -15,8 +16,8 @@ const hex2rgb = (hex: string): IColorSpaces["rgba"] =>
 		// expand short-notation to full six-digit
 		if (hex.length === 3)
 		{
-			// @ts-ignore
-			hex = hex.split('');
+			hex = hex.split('') as any;
+
 			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
 		}
 		const u = parseInt(hex, 16);
@@ -37,8 +38,7 @@ const hex2rgb = (hex: string): IColorSpaces["rgba"] =>
 		// expand short-notation to full eight-digit
 		if (hex.length === 4)
 		{
-			// @ts-ignore
-			hex = hex.split('');
+			hex = hex.split('') as any;
 			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
 		}
 		const u = parseInt(hex, 16);

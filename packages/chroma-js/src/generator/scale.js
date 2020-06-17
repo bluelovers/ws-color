@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // @requires utils color analyze
 const chroma_1 = __importDefault(require("../chroma"));
 require("../utils/limit");
+const ts_type_predicates_1 = __importDefault(require("ts-type-predicates"));
 const { pow } = Math;
 function scale(colors, ...argv) {
     // constructor
@@ -17,7 +18,7 @@ function scale(colors, ...argv) {
     let _domain = [0, 1];
     let _pos = [];
     let _padding = [0, 0];
-    let _classes = false;
+    let _classes;
     let _colors = [];
     let _out = false;
     let _min = 0;
@@ -54,7 +55,7 @@ function scale(colors, ...argv) {
         return _colors = colors;
     };
     const getClass = function (value) {
-        if (_classes != null) {
+        if (_classes) {
             const n = _classes.length - 1;
             let i = 0;
             while (i < n && value >= _classes[i]) {
@@ -79,14 +80,11 @@ function scale(colors, ...argv) {
     // };
     const getColor = function (val, bypassMap) {
         let col, t;
-        if (bypassMap == null) {
-            bypassMap = false;
-        }
         if (isNaN(val) || (val === null)) {
             return _nacol;
         }
         if (!bypassMap) {
-            if (_classes && (_classes.length > 2)) {
+            if ((_classes === null || _classes === void 0 ? void 0 : _classes.length) > 2) {
                 // find the class
                 const c = getClass(val);
                 t = c / (_classes.length - 2);
@@ -224,6 +222,7 @@ function scale(colors, ...argv) {
         return f;
     };
     f.range = function (colors, _pos) {
+        // @ts-ignore
         setColors(colors, _pos);
         return f;
     };
@@ -296,6 +295,7 @@ function scale(colors, ...argv) {
         let [numColors, out = 'hex'] = argv;
         let result = [];
         if (argv.length === 0) {
+            ts_type_predicates_1.default(_colors);
             result = _colors.slice(0);
         }
         else if (numColors === 1) {

@@ -3,7 +3,23 @@
   "version": "2.1.0",
   "description": "JavaScript library for color conversions",
   "keywords": [
-    "color"
+    "color",
+    "chroma",
+    "color",
+    "colour",
+    "color",
+    "colour",
+    "convert",
+    "converter",
+    "conversion",
+    "rgb",
+    "hsl",
+    "hsv",
+    "hwb",
+    "cmyk",
+    "ansi",
+    "ansi16",
+    "css"
   ],
   "homepage": "https://github.com/bluelovers/ws-color/tree/master/packages/chroma-js#readme",
   "bugs": {
@@ -30,7 +46,9 @@
     "ncu": "ynpx --quiet yarn-tool -- ncu -u",
     "sort-package-json": "ynpx --quiet yarn-tool -- sort"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ts-type-predicates": "^1.0.3"
+  },
   "devDependencies": {
     "minimatch": "^3.0.4",
     "vows": "^0.8.2"

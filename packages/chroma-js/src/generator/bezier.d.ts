@@ -1,6 +1,6 @@
 import Color from '../Color';
 import '../io/lab';
-import { IScale } from './scale';
+import { IScale } from '../types';
 declare module '../chroma' {
     interface chroma {
         bezier: typeof bezier;
