@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`contrastFront #006 1`] = `
+Array [
+  "#000066",
+  "#ffffff",
+  14.688,
+]
+`;
+
+exports[`contrastFront #66F 1`] = `
+Array [
+  "#6666ff",
+  "#000000",
+  127.092,
+]
+`;
+
+exports[`contrastFront #360 1`] = `
+Array [
+  "#336600",
+  "#ffffff",
+  75.123,
+]
+`;
+
+exports[`contrastFront #800 1`] = `
+Array [
+  "#880000",
+  "#ffffff",
+  40.664,
+]
+`;
+
+exports[`contrastFront #906 1`] = `
+Array [
+  "#990066",
+  "#ffffff",
+  60.435,
+]
+`;
+
+exports[`contrastFront #C60 1`] = `
+Array [
+  "#cc6600",
+  "#000000",
+  120.87,
+]
+`;
+
+exports[`contrastFront #EAEA00 1`] = `
+Array [
+  "#eaea00",
+  "#000000",
+  207.324,
+]
+`;

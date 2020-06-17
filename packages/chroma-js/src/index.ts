@@ -38,6 +38,7 @@ import './ops/premultiply';
 import './ops/saturate';
 import './ops/set';
 import './ops/rand';
+import './ops/contrast';
 
 // interpolators
 import './interpolator/rgb';

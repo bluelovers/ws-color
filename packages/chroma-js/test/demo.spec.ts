@@ -75,3 +75,18 @@ test(`empty`, () =>
 	expect(actual).toMatchSnapshot();
 
 });
+
+test(`name check`, () =>
+{
+
+	['transparent', '_default', '_empty']
+
+	let actual = chroma().named();
+
+	//expect(actual).toStrictEqual(expected);
+	//expect(actual).toBeInstanceOf(Date);
+
+	expect(actual.toString()).toMatchSnapshot();
+	expect(actual).toMatchSnapshot();
+
+});

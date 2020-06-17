@@ -1,10 +1,11 @@
 import colors from './index';
 import { defaults } from 'lodash';
-import { w3cx11, IW3CX11ColorNames } from 'color-palette/lib/w3cx11';
+import { w3cx11, IW3CX11ColorNames } from '@bluelovers/color-palette/lib/w3cx11';
+import sort from 'sort-object-keys2';
 
 export type { IW3CX11ColorNames }
 
-declare module '../index'
+declare module './index'
 {
 	interface IColorNames extends IW3CX11ColorNames
 	{

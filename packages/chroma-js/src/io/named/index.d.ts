@@ -4,7 +4,7 @@ declare module '../../Color' {
         /**
          * Returns the named color. Falls back to hexadecimal RGB string, if the color isn't present.
          */
-        name(): string;
+        named(): string;
     }
 }
 declare module '../input' {

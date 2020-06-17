@@ -26,10 +26,16 @@ const Color_1 = __importDefault(require("../../Color"));
 const input_1 = require("../input");
 const rgb2hex_1 = __importDefault(require("../hex/rgb2hex"));
 const named2rgb_1 = __importStar(require("./named2rgb"));
-Color_1.default.prototype.name = function () {
+Color_1.default.prototype.named = function () {
     var _a, _b, _c;
+    if (named2rgb_1.rgba_is_transparent(this._rgb)) {
+        return 'transparent';
+    }
     const hex = rgb2hex_1.default(this._rgb, 'rgb');
-    return (_c = (_b = (_a = named2rgb_1.hex2name(hex)) === null || _a === void 0 ? void 0 : _a.toLowerCase) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : hex;
+    if (this._rgb[0] === null || this._rgb[1] === null || this._rgb[2] === null) {
+        return hex;
+    }
+    return (_c = (_b = (_a = named2rgb_1.hex2name(hex)) === null || _a === void 0 ? void 0 : _a.toLowerCase) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : (this._rgb[0] === null && hex);
 };
 input_1.setupInputFormat('named', (name) => {
     return named2rgb_1.default(name);

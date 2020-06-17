@@ -21,6 +21,6 @@ const colors: IColorNames = {
 	transparent: [null, null, null, 0],
 	_default: "#ffffff",
 	_empty: [null, null, null, 1],
-}
+} as any
 
 export default colors

@@ -1,5 +1,5 @@
-import colorbrewer from 'color-palette/lib/colorbrewer';
-import { IColorBrewer } from 'color-palette/lib/colorbrewer';
+import colorbrewer from '@bluelovers/color-palette/lib/colorbrewer';
+import { IColorBrewer } from '@bluelovers/color-palette/lib/colorbrewer';
 
 export type { IColorBrewer }
 

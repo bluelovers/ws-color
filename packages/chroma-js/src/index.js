@@ -48,6 +48,7 @@ require("./ops/premultiply");
 require("./ops/saturate");
 require("./ops/set");
 require("./ops/rand");
+require("./ops/contrast");
 // interpolators
 require("./interpolator/rgb");
 require("./interpolator/lrgb");
