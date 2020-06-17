@@ -1,3 +1,4 @@
+
 import Color from '../Color';
 const digits = '0123456789abcdef';
 

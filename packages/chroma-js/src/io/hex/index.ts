@@ -5,8 +5,6 @@ import input from '../input';
 
 import rgb2hex from './rgb2hex';
 
-import type from '../../utils/type';
-
 import hex2rgb from './hex2rgb';
 import { IRgb2HexMode } from './rgb2hex';
 

@@ -5,10 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.chroma = void 0;
 const Color_1 = __importDefault(require("./Color"));
+const index_1 = __importDefault(require("./colors/index"));
 // @ts-ignore
 exports.chroma = (...args) => {
     return new exports.chroma.Color(...args);
 };
+// colors
+exports.chroma.colors = index_1.default;
 exports.chroma.Color = Color_1.default;
 exports.chroma.version = '@@version';
 exports.chroma.chroma = exports.chroma;

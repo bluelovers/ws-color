@@ -1,4 +1,7 @@
 import chroma from './chroma';
+export * from './types';
+export { chroma };
+import './colors/w3cx11';
 import './io/cmyk';
 import './io/css';
 import './io/gl';

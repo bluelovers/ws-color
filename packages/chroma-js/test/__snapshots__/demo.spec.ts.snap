@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pink.darken.saturate 1`] = `
+Color {
+  "_rgb": Array [
+    255,
+    108.82130445767132,
+    147.20575158719473,
+    1,
+  ],
+}
+`;

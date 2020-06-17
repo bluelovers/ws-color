@@ -1,7 +1,6 @@
-import { IRGB } from '../utils/clip_rgb';
 import '../utils/limit';
 import Color from '../Color';
-import { IScale, ICubehelix } from '../types';
+import { IScale, ICubehelix, IRGB } from '../types';
 declare module '../chroma' {
     interface chroma {
         scale: typeof scale;

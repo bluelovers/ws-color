@@ -2,6 +2,9 @@
 
 import chroma from './chroma';
 
+export * from './types';
+export { chroma }
+
 // feel free to comment out anything to rollup
 // a smaller chroma.js built
 

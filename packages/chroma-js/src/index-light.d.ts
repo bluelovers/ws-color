@@ -1,4 +1,6 @@
 import chroma from './chroma';
+export * from './types';
+export { chroma };
 import './io/css';
 import './io/hex';
 import './io/hsl';

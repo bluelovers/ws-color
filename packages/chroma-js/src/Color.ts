@@ -1,12 +1,12 @@
 //import { last, clip_rgb, type } from './utils';
 
-import clip_rgb, { IRGB } from './utils/clip_rgb';
+import clip_rgb from './utils/clip_rgb';
 import last from './utils/last';
 import type from './utils/type';
 
 import _input from './io/input';
 import { IRgb2HexMode } from './io/hex/rgb2hex';
-import { IColorConstructor, IColorSpaces } from './types';
+import { IColorSpaces, IRGB } from './types';
 
 export class Color
 {
@@ -45,12 +45,25 @@ export class Color
 	constructor(...args)
 	{
 		const me = this;
+
+		if (args.length === 0)
+		{
+			this._rgb = [null, null, null, null];
+
+			return this;
+		}
+
 		if (type(args[0]) === 'object' &&
 			args[0].constructor &&
 			args[0].constructor === this.constructor)
 		{
 			// the argument is already a Color instance
 			return args[0];
+		}
+
+		if (args[0] instanceof Color)
+		{
+			return args[0].clone();
 		}
 
 		// last argument could be the mode
@@ -80,6 +93,8 @@ export class Color
 		}
 		else
 		{
+			console.dir(_input.format)
+
 			throw new Error('unknown format: ' + args);
 		}
 
@@ -87,10 +102,25 @@ export class Color
 		if (me._rgb.length === 3) me._rgb.push(1);
 	}
 
+	get _rgba()
+	{
+		return this._rgb;
+	}
+
+	set _rgba(value)
+	{
+		this._rgb = value;
+	}
+
 	toString(): string
 	{
 		if (typeof this.hex === 'function') return this.hex();
 		return `[${this._rgb.join(',')}]`;
+	}
+
+	clone()
+	{
+		return new Color(this._rgb.slice())
 	}
 
 }

@@ -1,6 +1,5 @@
-import { IRGB } from './utils/clip_rgb';
 import { IRgb2HexMode } from './io/hex/rgb2hex';
-import { IColorSpaces } from './types';
+import { IColorSpaces, IRGB } from './types';
 export declare class Color {
     _rgb: IRGB;
     hex?(mode?: IRgb2HexMode): string;
@@ -29,6 +28,9 @@ export declare class Color {
      */
     constructor(values: number[], colorSpace?: keyof IColorSpaces);
     constructor(...args: any[]);
+    get _rgba(): IRGB;
+    set _rgba(value: IRGB);
     toString(): string;
+    clone(): Color;
 }
 export default Color;

@@ -1,10 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const index_1 = __importDefault(require("./index"));
+const lodash_1 = require("lodash");
 /**
     X11 color names
 
     http://www.w3.org/TR/css3-color/#svg-color
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 const w3cx11 = {
     aliceblue: '#f0f8ff',
     antiquewhite: '#faebd7',
@@ -162,5 +167,6 @@ const w3cx11 = {
     yellow: '#ffff00',
     yellowgreen: '#9acd32',
 };
+lodash_1.defaults(index_1.default, w3cx11);
 exports.default = w3cx11;
 //# sourceMappingURL=w3cx11.js.map

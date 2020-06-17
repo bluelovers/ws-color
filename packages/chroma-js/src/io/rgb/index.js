@@ -19,10 +19,10 @@ Color_1.default.prototype.rgba = function (rnd = true) {
     });
 };
 chroma_1.default.rgb = (...args) => new Color_1.default(...args, 'rgb');
-input_1.default.format.rgb = (...args) => {
+input_1.default.format.rgba = input_1.default.format.rgb = (...args) => {
+    var _a;
     const rgba = unpack_1.default(args, 'rgba');
-    if (rgba[3] === undefined)
-        rgba[3] = 1;
+    rgba[3] = (_a = rgba[3]) !== null && _a !== void 0 ? _a : 1;
     return rgba;
 };
 input_1.default.autodetect.push({

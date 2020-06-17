@@ -160,9 +160,11 @@ declare const w3cx11: {
     yellow: string;
     yellowgreen: string;
 };
-declare module '../chroma' {
-    interface chroma {
-        colors: typeof w3cx11;
+export interface IW3CX11ColorNames extends Record<keyof typeof w3cx11, string> {
+}
+declare module '../index' {
+    interface IColorNames extends IW3CX11ColorNames {
     }
 }
-export default w3cx11;
+declare const _default: IW3CX11ColorNames;
+export default _default;

@@ -1,5 +1,5 @@
 import Color from './Color';
-import { IChromaConstructor } from './types';
+import { IChromaConstructor } from './types/internal';
 export interface chroma extends IChromaConstructor {
     (...args: any[]): Color;
     Color: typeof Color;

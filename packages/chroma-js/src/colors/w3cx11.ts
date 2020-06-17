@@ -1,3 +1,6 @@
+import colors from './index';
+import { defaults } from 'lodash';
+
 /**
 	X11 color names
 
@@ -162,12 +165,19 @@ const w3cx11 = {
 	yellowgreen: '#9acd32',
 }
 
-declare module '../chroma'
+export interface IW3CX11ColorNames extends Record<keyof typeof w3cx11, string>
 {
-	interface chroma
+
+}
+
+declare module '../index'
+{
+	interface IColorNames extends IW3CX11ColorNames
 	{
-		colors: typeof w3cx11
+
 	}
 }
 
-export default w3cx11;
+defaults(colors, w3cx11)
+
+export default w3cx11 as IW3CX11ColorNames;

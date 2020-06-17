@@ -3,10 +3,9 @@
 // @requires utils color analyze
 
 import chroma from '../chroma';
-import { IRGB } from '../utils/clip_rgb';
 import '../utils/limit';
 import Color from '../Color';
-import { IScale, ICubehelix } from '../types';
+import { IScale, ICubehelix, IRGB } from '../types';
 import typePredicates from 'ts-type-predicates';
 
 const { pow } = Math;

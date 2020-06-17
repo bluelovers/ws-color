@@ -1,7 +1,5 @@
 import Color from '../Color';
 import clip_rgb from '../utils/clip_rgb';
-import { IInterpolatorMode } from '../interpolator';
-import { IColorSpaces } from '../../index-old';
 import { IInterpolationMode } from '../types';
 import arr2colors from '../utils/arr-to-colors';
 import typePredicates from 'ts-type-predicates';

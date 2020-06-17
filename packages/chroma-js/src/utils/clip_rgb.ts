@@ -1,10 +1,5 @@
 import limit from './limit';
-
-export interface IRGB extends Array<number>
-{
-	_clipped?: boolean,
-	_unclipped?: number[],
-}
+import { IRGB } from '../types';
 
 export default (rgb: IRGB) =>
 {

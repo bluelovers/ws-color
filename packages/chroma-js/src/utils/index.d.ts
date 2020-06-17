@@ -10,10 +10,10 @@ export declare const PITHIRD: number;
 export declare const DEG2RAD: number;
 export declare const RAD2DEG: number;
 declare const _default: {
-    clip_rgb: (rgb: import("./clip_rgb").IRGB) => import("./clip_rgb").IRGB;
+    clip_rgb: (rgb: import("..").IRGB) => import("..").IRGB;
     limit: typeof limit;
     type: typeof type;
-    unpack: <K extends "rgb" | "rgba" | "hcg" | "hsl" | "hsla" | "hsv" | "hsi" | "lab" | "lch" | "lrgb" | "hcl" | "cmyk" | "gl">(args: any[], keyOrder?: K) => import("../types").IColorSpaces[K];
+    unpack: <K extends "rgba" | "rgb" | "hcg" | "hsl" | "hsla" | "hsv" | "hsi" | "lab" | "lch" | "lrgb" | "hcl" | "cmyk" | "gl">(args: any[], keyOrder?: K) => import("..").IColorSpaces[K];
     last: <T extends unknown>(args: T[] | [any, any, T, ...T[]]) => any;
     PI: number;
     TWOPI: number;

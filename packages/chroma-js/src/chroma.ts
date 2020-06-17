@@ -1,5 +1,6 @@
 import Color from './Color';
-import { IChromaConstructor } from './types';
+import { IChromaConstructor } from './types/internal';
+import colors from './colors/index';
 
 export interface chroma extends IChromaConstructor
 {
@@ -15,6 +16,9 @@ export const chroma: chroma = (...args) =>
 {
 	return new chroma.Color(...args);
 };
+
+// colors
+chroma.colors = colors;
 
 chroma.Color = Color;
 chroma.version = '@@version'

@@ -2,6 +2,14 @@
 
 import chroma from './chroma';
 
+export * from './types';
+export { chroma }
+
+import './colors/w3cx11';
+import colorbrewer from './colors/colorbrewer';
+
+chroma.brewer = colorbrewer;
+
 // feel free to comment out anything to rollup
 // a smaller chroma.js built
 import './io/cmyk';
@@ -57,8 +65,7 @@ import deltaE from './utils/delta-e';
 import distance from './utils/distance';
 import valid from './utils/valid';
 import scales from './utils/scales';
-import colors from './colors/w3cx11';
-import colorbrewer from './colors/colorbrewer';
+
 
 chroma.average = average;
 chroma.bezier = bezier;
@@ -79,8 +86,6 @@ chroma.valid = valid;
 // scale
 chroma.scales = scales;
 
-// colors
-chroma.colors = colors;
-chroma.brewer = colorbrewer;
+
 
 export default chroma;

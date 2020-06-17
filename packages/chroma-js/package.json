@@ -37,7 +37,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "vows --dot-matrix test/*.js",
+    "test": "vows --dot-matrix test/**/*.test.js && jest",
     "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
     "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
     "prepublishOnly_": "yarn run prepublishOnly:check-bin && yarn run test",
@@ -47,9 +47,11 @@
     "sort-package-json": "ynpx --quiet yarn-tool -- sort"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
     "ts-type-predicates": "^1.0.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.155",
     "minimatch": "^3.0.4",
     "vows": "^0.8.2"
   },

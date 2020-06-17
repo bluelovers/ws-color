@@ -1,5 +1,5 @@
 import unpack from '../../utils/unpack';
-import type from '../../utils/type';
+
 
 import chroma from '../../chroma';
 import Color from '../../Color';

@@ -1,10 +1,26 @@
 "use strict";
 // io --> convert colors
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.chroma = void 0;
 const chroma_1 = __importDefault(require("./chroma"));
+exports.chroma = chroma_1.default;
+__exportStar(require("./types"), exports);
+require("./colors/w3cx11");
+const colorbrewer_1 = __importDefault(require("./colors/colorbrewer"));
+chroma_1.default.brewer = colorbrewer_1.default;
 // feel free to comment out anything to rollup
 // a smaller chroma.js built
 require("./io/cmyk");
@@ -56,8 +72,6 @@ const delta_e_1 = __importDefault(require("./utils/delta-e"));
 const distance_1 = __importDefault(require("./utils/distance"));
 const valid_1 = __importDefault(require("./utils/valid"));
 const scales_1 = __importDefault(require("./utils/scales"));
-const w3cx11_1 = __importDefault(require("./colors/w3cx11"));
-const colorbrewer_1 = __importDefault(require("./colors/colorbrewer"));
 chroma_1.default.average = average_1.default;
 chroma_1.default.bezier = bezier_1.default;
 chroma_1.default.blend = blend_1.default;
@@ -74,8 +88,5 @@ chroma_1.default.limits = analyze_1.limits;
 chroma_1.default.valid = valid_1.default;
 // scale
 chroma_1.default.scales = scales_1.default;
-// colors
-chroma_1.default.colors = w3cx11_1.default;
-chroma_1.default.brewer = colorbrewer_1.default;
 exports.default = chroma_1.default;
 //# sourceMappingURL=index.js.map

@@ -2,7 +2,7 @@ import chroma from '../../chroma';
 import Color from '../../Color';
 import input from '../input';
 import unpack from '../../utils/unpack';
-import type from '../../utils/type';
+
 import { IColorSpaces } from '../../types';
 const { round } = Math;
 
@@ -22,10 +22,10 @@ Color.prototype.rgba = function (rnd = true): IColorSpaces["rgba"]
 
 chroma.rgb = (...args) => new Color(...args, 'rgb');
 
-input.format.rgb = (...args) =>
+input.format.rgba = input.format.rgb = (...args) =>
 {
 	const rgba = unpack(args, 'rgba');
-	if (rgba[3] === undefined) rgba[3] = 1;
+	rgba[3] = rgba[3] ?? 1;
 	return rgba;
 };
 
