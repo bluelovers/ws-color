@@ -7,6 +7,7 @@ import '../utils/limit';
 import Color from '../Color';
 import { IScale, ICubehelix, IRGB } from '../types';
 import typePredicates from 'ts-type-predicates';
+import colorbrewer from '../colors/colorbrewer';
 
 const { pow } = Math;
 
@@ -46,9 +47,12 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 	const setColors = function (colors?: string | (Color | string)[])
 	{
 		colors = colors || ['#fff', '#000'];
-		if (typeof colors === 'string' && chroma.brewer?.[colors.toLowerCase()])
+
+		const brewer = chroma.brewer ?? colorbrewer;
+
+		if (typeof colors === 'string' && brewer[colors.toLowerCase()])
 		{
-			colors = chroma.brewer[colors.toLowerCase()];
+			colors = brewer[colors.toLowerCase()] as any;
 		}
 		if (Array.isArray(colors))
 		{
@@ -57,8 +61,12 @@ function scale<OutType = Color>(colors: ICubehelix | IRGB | Color[] | [string, s
 			{
 				colors = [colors[0], colors[0]];
 			}
-			// make a copy of the colors
-			colors = colors.slice(0);
+			else
+			{
+				// make a copy of the colors
+				colors = colors.slice(0);
+			}
+
 			// convert to chroma classes
 			for (let c = 0; c < colors.length; c++)
 			{

@@ -8,6 +8,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chroma_1 = __importDefault(require("../chroma"));
 require("../utils/limit");
 const ts_type_predicates_1 = __importDefault(require("ts-type-predicates"));
+const colorbrewer_1 = __importDefault(require("../colors/colorbrewer"));
 const { pow } = Math;
 function scale(colors, ...argv) {
     // constructor
@@ -31,16 +32,19 @@ function scale(colors, ...argv) {
     const setColors = function (colors) {
         var _a;
         colors = colors || ['#fff', '#000'];
-        if (typeof colors === 'string' && ((_a = chroma_1.default.brewer) === null || _a === void 0 ? void 0 : _a[colors.toLowerCase()])) {
-            colors = chroma_1.default.brewer[colors.toLowerCase()];
+        const brewer = (_a = chroma_1.default.brewer) !== null && _a !== void 0 ? _a : colorbrewer_1.default;
+        if (typeof colors === 'string' && brewer[colors.toLowerCase()]) {
+            colors = brewer[colors.toLowerCase()];
         }
         if (Array.isArray(colors)) {
             // handle single color
             if (colors.length === 1) {
                 colors = [colors[0], colors[0]];
             }
-            // make a copy of the colors
-            colors = colors.slice(0);
+            else {
+                // make a copy of the colors
+                colors = colors.slice(0);
+            }
             // convert to chroma classes
             for (let c = 0; c < colors.length; c++) {
                 colors[c] = chroma_1.default(colors[c]);

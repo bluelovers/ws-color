@@ -19,6 +19,12 @@
     "sort-package-json:ws": "ynpx --quiet yarn-tool -- ws exec yarn-tool sort"
   },
   "resolutions": {},
+  "dependencies": {
+    "@types/lodash": "^4.14.155",
+    "jest": "^26.0.1",
+    "minimatch": "^3.0.4",
+    "ts-jest": "^26.1.0"
+  },
   "devDependencies": {
     "@bluelovers/tsconfig": "^1.0.19",
     "@types/chroma-js": "^2.0.0",
@@ -29,9 +35,5 @@
     "@bluelovers/conventional-changelog-bluelovers": "*",
     "lerna": "*",
     "yarn": "*"
-  },
-  "dependencies": {
-    "jest": "^26.0.1",
-    "ts-jest": "^26.1.0"
   }
 }

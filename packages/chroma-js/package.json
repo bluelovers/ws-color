@@ -5,9 +5,6 @@
   "keywords": [
     "color",
     "chroma",
-    "color",
-    "colour",
-    "color",
     "colour",
     "convert",
     "converter",
@@ -38,9 +35,9 @@
   },
   "scripts": {
     "test": "vows --dot-matrix test/**/*.test.js && jest",
+    "prepublishOnly": "yarn run test",
     "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
     "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
-    "prepublishOnly_": "yarn run prepublishOnly:check-bin && yarn run test",
     "docs": "cd docs && make",
     "docs-preview": "cd docs && make && make preview",
     "ncu": "ynpx --quiet yarn-tool -- ncu -u",
@@ -48,12 +45,11 @@
   },
   "dependencies": {
     "array-hyper-unique": "^1.1.6",
+    "color-palette": "^1.0.0",
     "lodash": "^4.17.15",
     "ts-type-predicates": "^1.0.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.155",
-    "minimatch": "^3.0.4",
     "vows": "^0.8.2"
   },
   "publishConfig": {
