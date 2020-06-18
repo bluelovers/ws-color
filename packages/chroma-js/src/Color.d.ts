@@ -27,6 +27,12 @@ export declare class Color {
      */
     constructor(values: number[], colorSpace?: keyof IColorSpaces);
     constructor(...args: any[]);
+    get [0](): number;
+    get [1](): number;
+    get [2](): number;
+    get [3](): number;
+    get length(): number;
+    [Symbol.iterator](): Generator<number, void, unknown>;
     get _rgba(): IRGB;
     set _rgba(value: IRGB);
     toString(): string;

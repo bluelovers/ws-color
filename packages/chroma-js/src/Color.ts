@@ -50,7 +50,7 @@ export class Color
 
 		if (args.length === 0)
 		{
-			this._rgb = colors._empty.slice();
+			this._rgb = colors._empty.slice() as any;
 
 			return this;
 		}
@@ -73,6 +73,39 @@ export class Color
 		assertAutodetectReturn(ret);
 
 		me._rgb = ret._rgb
+	}
+
+	get [0]()
+	{
+		return this._rgb[0]
+	}
+
+	get [1]()
+	{
+		return this._rgb[1]
+	}
+
+	get [2]()
+	{
+		return this._rgb[2]
+	}
+
+	get [3]()
+	{
+		return this._rgb[3]
+	}
+
+	get length()
+	{
+		return this._rgb.length
+	}
+
+	* [Symbol.iterator]()
+	{
+		for (let i = 0; i < this._rgb.length; i++)
+		{
+			yield this._rgb[i]
+		}
 	}
 
 	get _rgba()

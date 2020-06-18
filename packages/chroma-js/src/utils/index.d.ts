@@ -13,7 +13,7 @@ declare const _default: {
     clip_rgb: (rgb: import("..").IRGB) => import("..").IRGB;
     limit: typeof limit;
     type: typeof type;
-    unpack: <K extends "hsl" | "rgb" | "rgba" | "hcg" | "hsla" | "hsv" | "hsi" | "lab" | "lch" | "lrgb" | "hcl" | "cmyk" | "gl">(args: any[], keyOrder?: K) => import("..").IColorSpaces[K];
+    unpack: <K extends "rgb" | "hsl" | "hsv" | "hsi" | "lab" | "lch" | "hcl" | "lrgb" | "rgba" | "hcg" | "hsla" | "cmyk" | "gl">(args: any[], keyOrder?: K) => import("..").IColorSpaces[K];
     last: <T extends string>(args: any[] | [any, T] | [any, any, T] | [any, any, any, T] | [any, any, any, any, T]) => T;
     PI: number;
     TWOPI: number;
