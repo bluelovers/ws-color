@@ -16,9 +16,9 @@ vows.describe('Some tests for chroma.color()').addBatch({
 	},
 	'hex colors': {
 		topic: chroma('#f00'),
-		'name': function (topic)
+		'named': function (topic)
 		{
-			return assert.equal(topic.name(), 'red');
+			return assert.equal(topic.named(), 'red');
 		},
 		'hex': function (topic)
 		{
@@ -39,9 +39,9 @@ vows.describe('Some tests for chroma.color()').addBatch({
 	},
 	'hex color, no #': {
 		topic: chroma('F00'),
-		'name': function (topic)
+		'named': function (topic)
 		{
-			return assert.equal(topic.name(), 'red');
+			return assert.equal(topic.named(), 'red');
 		},
 		'hex': function (topic)
 		{
@@ -109,11 +109,11 @@ vows.describe('Some tests for chroma.color()').addBatch({
 		},
 		'css (hsl)': function (topic)
 		{
-			return assert.equal(chroma(topic.css('hsl')).name(), 'lightsalmon');
+			return assert.equal(chroma(topic.css('hsl')).named(), 'lightsalmon');
 		},
 		'css (rgb-css)': function (topic)
 		{
-			return assert.equal(chroma(topic.css('rgb')).name(), 'lightsalmon');
+			return assert.equal(chroma(topic.css('rgb')).named(), 'lightsalmon');
 		},
 	},
 	'rgb color': {

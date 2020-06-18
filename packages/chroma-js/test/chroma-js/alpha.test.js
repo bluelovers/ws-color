@@ -51,7 +51,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma.hsl(0, 1, 0.5).alpha(0.5),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 50%': function (topic)
 			{
@@ -62,7 +62,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma('#ff00004d'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 30%': function (topic)
 			{
@@ -77,7 +77,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma.css('rgba(255,0,0,.3)'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 30%': function (topic)
 			{
@@ -92,7 +92,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma.css('rgba(100%,0%,0%,0.2)'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 20%': function (topic)
 			{
@@ -111,7 +111,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma.css('hsla(0,100%,50%,0.25)'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -130,7 +130,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(0, 1, 0.5, 0.25, 'hsl'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -141,7 +141,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(0, 1, 1, 0.25, 'hsv'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -152,7 +152,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(0, 1, 0.3333334, 0.25, 'hsi'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -163,7 +163,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(53.24079414130722, 80.09245959641109, 67.20319651585301, 0.25, 'lab'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -174,7 +174,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(53.24079414130722, 104.55176567686985, 39.99901061253297, 0.25, 'lch'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -185,7 +185,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma(0, 1, 1, 0, 0.25, 'cmyk'),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{
@@ -196,7 +196,7 @@ vows.describe('Tests for the alpha channel').addBatch({
 			topic: chroma.gl(1, 0, 0, 0.25),
 			'color is red': function (topic)
 			{
-				return assert.equal(topic.name(), 'red');
+				return assert.equal(topic.named(), 'red');
 			},
 			'alpha is 25%': function (topic)
 			{

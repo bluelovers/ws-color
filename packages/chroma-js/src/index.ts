@@ -57,7 +57,7 @@ import bezier from './generator/bezier';
 import blend from './generator/blend';
 import cubehelix from './generator/cubehelix';
 import mix from './generator/mix';
-import random from './generator/random';
+import './generator/random';
 import scale from './generator/scale';
 
 // other utility methods

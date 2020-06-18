@@ -25,6 +25,8 @@ Array [
   "temp",
   "kelvin",
   "temperature",
+  "rand",
+  "random",
   "average",
   "bezier",
   "blend",

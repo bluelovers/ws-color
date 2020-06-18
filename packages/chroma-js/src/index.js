@@ -65,6 +65,7 @@ const bezier_1 = __importDefault(require("./generator/bezier"));
 const blend_1 = __importDefault(require("./generator/blend"));
 const cubehelix_1 = __importDefault(require("./generator/cubehelix"));
 const mix_1 = __importDefault(require("./generator/mix"));
+require("./generator/random");
 const scale_1 = __importDefault(require("./generator/scale"));
 // other utility methods
 const analyze_1 = require("./utils/analyze");

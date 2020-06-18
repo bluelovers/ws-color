@@ -459,8 +459,8 @@ chroma('orange').alpha(0.5).hex('rgb');
 Returns the named color. Falls back to hexadecimal RGB string, if the color isn't present.
 
 ```js
-chroma('#ffa500').name();
-chroma('#ffa505').name();
+chroma('#ffa500').named();
+chroma('#ffa505').named();
 ```
 
 ### color.css

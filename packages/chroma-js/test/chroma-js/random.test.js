@@ -1,6 +1,6 @@
 const vows = require('vows');
 const assert = require('assert');
-const chroma = require('../../src').default;
+const chroma = require('../..').default;
 
 vows
 	.describe('Some tests for random colors')

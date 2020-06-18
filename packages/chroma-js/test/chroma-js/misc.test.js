@@ -43,7 +43,7 @@ vows.describe('Some tests for chroma.color()').addBatch({
 		topic: chroma.num(0xadff2f),
 		'color is red': function (topic)
 		{
-			return assert.equal(topic.name(), 'greenyellow');
+			return assert.equal(topic.named(), 'greenyellow');
 		},
 		'alpha is 100%': function (topic)
 		{

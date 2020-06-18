@@ -36,4 +36,5 @@ import './interpolator/hcg';
 import './interpolator/hsi';
 import './interpolator/hsl';
 import './interpolator/hsv';
+import './generator/random';
 export default chroma;
