@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.7](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.6...@bluelovers/chroma-js@2.1.7) (2020-06-18)
+
+
+### ✨　Features
+
+* support Symbol.iterator ([bf84338](https://github.com/bluelovers/ws-color/commit/bf8433838feb3a9d412b6c3941592bd3c08f273d))
+
+
+
+
+
 ## [2.1.6](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.5...@bluelovers/chroma-js@2.1.6) (2020-06-18)
 
 
