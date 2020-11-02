@@ -29,6 +29,7 @@ function autodetect(args) {
         }
     }
     if (input_1.default.format[mode]) {
+        // @ts-ignore
         const rgb = input_1.default.format[mode].apply(null, autodetect ? args : args.slice(0, -1));
         _rgb = clip_rgb_1.default(rgb);
         // add alpha channel

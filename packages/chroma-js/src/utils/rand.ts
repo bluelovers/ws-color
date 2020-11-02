@@ -3,7 +3,7 @@
  */
 import { IColorSpaces, IRGBValue } from '../types';
 import Color from '../Color';
-import { IW3CX11ColorNames } from '../../../color-palette';
+import { IW3CX11ColorNames } from '@bluelovers/color-palette/lib/w3cx11';
 
 const digits = '0123456789abcdef';
 

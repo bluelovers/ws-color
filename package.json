@@ -20,15 +20,15 @@
   },
   "resolutions": {},
   "dependencies": {
-    "@types/lodash": "^4.14.155",
-    "jest": "^26.0.1",
+    "@types/lodash": "^4.14.164",
+    "jest": "^26.6.2",
     "minimatch": "^3.0.4",
-    "ts-jest": "^26.1.0"
+    "ts-jest": "^26.4.3"
   },
   "devDependencies": {
-    "@bluelovers/tsconfig": "^1.0.19",
-    "@types/chroma-js": "^2.0.0",
-    "@types/jest": "^26.0.0",
+    "@bluelovers/tsconfig": "^1.0.20",
+    "@types/chroma-js": "^2.1.0",
+    "@types/jest": "^26.0.15",
     "@types/node": "*"
   },
   "peerDependencies": {

@@ -45,6 +45,7 @@ export function autodetect(args): IReturnTypeAutodetect
 
 	if (_input.format[mode])
 	{
+		// @ts-ignore
 		const rgb = _input.format[mode].apply(null, autodetect ? args : args.slice(0, -1) as any);
 
 		_rgb = clip_rgb(rgb);

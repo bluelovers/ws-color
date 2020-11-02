@@ -7,9 +7,10 @@ exports.chroma = void 0;
 const Color_1 = __importDefault(require("./Color"));
 const index_1 = __importDefault(require("./colors/index"));
 // @ts-ignore
-exports.chroma = (...args) => {
+const chroma = (...args) => {
     return new exports.chroma.Color(...args);
 };
+exports.chroma = chroma;
 // colors
 exports.chroma.colors = index_1.default;
 exports.chroma.Color = Color_1.default;
