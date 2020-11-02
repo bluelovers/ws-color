@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.8](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.7...@bluelovers/chroma-js@2.1.8) (2020-11-02)
+
+
+### ♻️　Chores
+
+* update deps ([9950b9b](https://github.com/bluelovers/ws-color/commit/9950b9b76ea482f2f9148d513e747a91269bed94))
+
+
+
+
+
 ## [2.1.7](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.6...@bluelovers/chroma-js@2.1.7) (2020-06-18)
 
 
