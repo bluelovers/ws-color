@@ -23,7 +23,7 @@ export function cliColors(): ICliColor[]
 }
 
 export function loopColors<T>(colors: T[] | readonly T[], options?: {
-	rand?: ((index?: number, length?: number, ...argv) => number) | boolean,
+	rand?: ((index?: number, length?: number, ...argv: any[]) => number) | boolean,
 	limit?: number | -1,
 })
 {
@@ -31,6 +31,7 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 
 	let idx = 0;
 	const len = colors.length;
+	// @ts-ignore
 	let getIndex = (index: number, length: number) => idx++ % len;
 
 	if (options?.rand)

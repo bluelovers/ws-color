@@ -1,4 +1,4 @@
-import { loopColors, cliColors } from '../index';
+import { loopColors, cliColors } from '../src/index';
 
 test(`recall will always get startIndex color`, () =>
 {
