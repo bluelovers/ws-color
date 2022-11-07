@@ -4,7 +4,7 @@ exports[`empty 1`] = `"#000000"`;
 
 exports[`empty 2`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     null,
     null,
     null,
@@ -15,7 +15,7 @@ Color {
 
 exports[`pink.darken.saturate 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     255,
     108.82130445767132,
     147.20575158719473,

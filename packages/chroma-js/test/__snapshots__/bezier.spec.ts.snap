@@ -2,7 +2,7 @@
 
 exports[`five color diverging quadratic bezier interpolation 1st quarter 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     233.19030009653343,
     149.48568936490597,
     77.70818925383125,
@@ -13,7 +13,7 @@ Color {
 
 exports[`five color diverging quadratic bezier interpolation 3rd quarter 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     165.95197295723432,
     206.80328083106684,
     193.23203906355687,
@@ -24,7 +24,7 @@ Color {
 
 exports[`five color diverging quadratic bezier interpolation center is snow 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     254.9999889601456,
     250.0000173961273,
     249.99999732944465,
@@ -35,7 +35,7 @@ Color {
 
 exports[`five color diverging quadratic bezier interpolation ends in transparent royalblue 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     65.00002095351515,
     104.99999975559058,
     225.00000209416496,
@@ -46,7 +46,7 @@ Color {
 
 exports[`five color diverging quadratic bezier interpolation starts from darkred 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     138.9999882021398,
     0.00011212162605855155,
     0,
@@ -57,7 +57,7 @@ Color {
 
 exports[`four color cubic bezier interpolation 1st quarter 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     255,
     224.03899248147033,
     132.81503252512528,
@@ -68,7 +68,7 @@ Color {
 
 exports[`four color cubic bezier interpolation 3rd quarter 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     144.87099553702365,
     65.651166141413,
     18.759023083692984,
@@ -79,7 +79,7 @@ Color {
 
 exports[`four color cubic bezier interpolation center 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     230.1559171578932,
     150.8554374112126,
     52.84422558429743,
@@ -90,7 +90,7 @@ Color {
 
 exports[`four color cubic bezier interpolation ends in transparent black 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     2.0424926888958734e-7,
     2.042492495365618e-7,
     2.0424925616526716e-7,
@@ -101,7 +101,7 @@ Color {
 
 exports[`four color cubic bezier interpolation starts from white 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     254.99998940693285,
     255,
     254.99999736707582,
@@ -112,7 +112,7 @@ Color {
 
 exports[`simple two color linear interpolation center is transluscent grey 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     118.91328116479764,
     118.91329253054577,
     118.9132842032307,
@@ -123,7 +123,7 @@ Color {
 
 exports[`simple two color linear interpolation ends in transparent black 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     2.0424926888958734e-7,
     2.042492495365618e-7,
     2.0424925616526716e-7,
@@ -134,7 +134,7 @@ Color {
 
 exports[`simple two color linear interpolation starts from white 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     254.99998940693285,
     255,
     254.99999736707582,
@@ -145,7 +145,7 @@ Color {
 
 exports[`three color quadratic bezier interpolation center is a transluscent greyish red 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     196.38575706795183,
     91.71313890151566,
     67.65992964943767,
@@ -156,7 +156,7 @@ Color {
 
 exports[`three color quadratic bezier interpolation ends in transparent black 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     2.0424926888958734e-7,
     2.042492495365618e-7,
     2.0424925616526716e-7,
@@ -167,7 +167,7 @@ Color {
 
 exports[`three color quadratic bezier interpolation starts from white 1`] = `
 Color {
-  "_rgb": Array [
+  "_rgb": [
     254.99998940693285,
     255,
     254.99999736707582,
