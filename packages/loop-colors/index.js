@@ -24,9 +24,9 @@ function loopColors(colors, options) {
     colors = colors.slice();
     let idx = 0;
     const len = colors.length;
-    let getIndex = (index, length) => (idx++ % len);
+    let getIndex = (index, length) => idx++ % len;
     if (options === null || options === void 0 ? void 0 : options.rand) {
-        let rand = (options.rand === true) ? Math.random : options.rand;
+        const rand = options.rand === true ? Math.random : options.rand;
         const _ = getIndex;
         getIndex = (index, length) => {
             idx = Math.floor(idx * rand(index, length));

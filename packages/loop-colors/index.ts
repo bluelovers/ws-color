@@ -12,14 +12,14 @@ export function cssColors()
 		'#EAEA00',
 		'#006',
 		'#360',
-	]
+	];
 }
 
-export type ICliColor = "cyan" | "magenta" | "blue" | "yellow" | "green" | "red"
+export type ICliColor = "cyan" | "magenta" | "blue" | "yellow" | "green" | "red";
 
 export function cliColors(): ICliColor[]
 {
-	return ["cyan", "magenta", "blue", "yellow", "green", "red"]
+	return ["cyan", "magenta", "blue", "yellow", "green", "red"];
 }
 
 export function loopColors<T>(colors: T[] | readonly T[], options?: {
@@ -29,20 +29,20 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 {
 	colors = colors.slice();
 
-	let idx: number = 0;
+	let idx = 0;
 	const len = colors.length;
-	let getIndex = (index: number, length: number) => (idx++ % len);
+	let getIndex = (index: number, length: number) => idx++ % len;
 
 	if (options?.rand)
 	{
-		let rand = (options.rand === true) ? Math.random : options.rand;
+		const rand = options.rand === true ? Math.random : options.rand;
 
 		const _ = getIndex;
 		getIndex = (index: number, length: number) =>
 		{
-			idx = Math.floor(idx * rand(index, length))
+			idx = Math.floor(idx * rand(index, length));
 			return _(index, length);
-		}
+		};
 	}
 
 	let limit = options?.limit | 0;
@@ -62,10 +62,10 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 
 		do
 		{
-			yield colors[getIndex(idx, len)]
+			yield colors[getIndex(idx, len)];
 		}
 		while (--limit > 0);
-	}
+	};
 }
 
-export default loopColors
+export default loopColors;
