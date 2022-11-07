@@ -53,9 +53,9 @@
   },
   "dependencies": {
     "@bluelovers/color-palette": "^1.0.4",
-    "array-hyper-unique": "^1.1.9",
-    "lodash": "^4.17.20",
-    "ts-type-predicates": "^1.0.3"
+    "array-hyper-unique": "^2.1.4",
+    "lodash": "^4.17.21",
+    "ts-type-predicates": "^1.0.9"
   },
   "devDependencies": {
     "vows": "^0.8.3"
