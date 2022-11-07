@@ -1,6 +1,6 @@
 {
   "name": "@bluelovers/chroma-js",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "JavaScript library for color conversions",
   "keywords": [
     "color",
@@ -52,7 +52,7 @@
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "@bluelovers/color-palette": "^1.0.4",
+    "@bluelovers/color-palette": "^1.0.6",
     "array-hyper-unique": "^2.1.4",
     "lodash": "^4.17.21",
     "ts-type-predicates": "^1.0.9"

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.5...loop-colors@1.0.7) (2022-11-07)
+
+
+
+### 📦　Code Refactoring
+
+* use tsdx ([79e50c2](https://github.com/bluelovers/ws-color/commit/79e50c2a2f381d14ee7e20cb87e245dc40820c7f))
+
+
+### 💎　Styles
+
+* eslint fix ([6ae11c5](https://github.com/bluelovers/ws-color/commit/6ae11c5434a82fd4a21a0eebf6f24f2403d497cd))
+
+
+### 🛠　Build System
+
+* update build ([14d36db](https://github.com/bluelovers/ws-color/commit/14d36db58e27dc7a7fade3dc589b79e5e48d7c35))
+
+
+### 🔖　Miscellaneous
+
+* . ([f8129a7](https://github.com/bluelovers/ws-color/commit/f8129a7ffb0d03d5d0f20fd9df2a20d4a295da04))
+
+
+
 ## [1.0.6](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.5...loop-colors@1.0.6) (2022-11-07)
 
 
