@@ -7,8 +7,8 @@ const unpack_1 = __importDefault(require("../../utils/unpack"));
 const last_1 = __importDefault(require("../../utils/last"));
 const { round } = Math;
 function rgb2hex(...args) {
-    let [r, g, b, a = 1] = unpack_1.default(args, 'rgba');
-    let mode = last_1.default(args) || 'auto';
+    let [r, g, b, a = 1] = (0, unpack_1.default)(args, 'rgba');
+    let mode = (0, last_1.default)(args) || 'auto';
     if (mode === 'auto') {
         mode = a < 1 ? 'rgba' : 'rgb';
     }

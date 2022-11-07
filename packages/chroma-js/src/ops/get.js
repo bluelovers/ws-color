@@ -7,7 +7,7 @@ const Color_1 = __importDefault(require("../Color"));
 const mode_channel_split_1 = __importDefault(require("../utils/mode-channel-split"));
 // @ts-ignore
 Color_1.default.prototype.get = function (mc) {
-    const [mode, channel, i] = mode_channel_split_1.default(mc);
+    const [mode, channel, i] = (0, mode_channel_split_1.default)(mc);
     const src = this[mode]();
     if (channel) {
         if (i > -1)

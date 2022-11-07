@@ -13,7 +13,7 @@ const { pow } = Math;
 function scale(colors, ...argv) {
     // constructor
     let _mode = 'rgb';
-    let _nacol = chroma_1.default('#ccc');
+    let _nacol = (0, chroma_1.default)('#ccc');
     let _spread = 0;
     // const _fixed = false;
     let _domain = [0, 1];
@@ -47,7 +47,7 @@ function scale(colors, ...argv) {
             }
             // convert to chroma classes
             for (let c = 0; c < colors.length; c++) {
-                colors[c] = chroma_1.default(colors[c]);
+                colors[c] = (0, chroma_1.default)(colors[c]);
             }
             // auto-fill color position
             _pos.length = 0;
@@ -151,7 +151,7 @@ function scale(colors, ...argv) {
     setColors(colors);
     // public interface
     const f = function (v) {
-        const c = chroma_1.default(getColor(v));
+        const c = (0, chroma_1.default)(getColor(v));
         if (_out && c[_out]) {
             return c[_out]();
         }
@@ -299,7 +299,7 @@ function scale(colors, ...argv) {
         let [numColors, out = 'hex'] = argv;
         let result = [];
         if (argv.length === 0) {
-            ts_type_predicates_1.default(_colors);
+            (0, ts_type_predicates_1.default)(_colors);
             result = _colors.slice(0);
         }
         else if (numColors === 1) {
@@ -348,7 +348,7 @@ function scale(colors, ...argv) {
     };
     f.nodata = function (d) {
         if (d != null) {
-            _nacol = chroma_1.default(d);
+            _nacol = (0, chroma_1.default)(d);
             return f;
         }
         else {

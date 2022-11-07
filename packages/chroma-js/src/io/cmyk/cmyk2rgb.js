@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const cmyk2rgb = (...args) => {
-    args = unpack_1.default(args, 'cmyk');
+    args = (0, unpack_1.default)(args, 'cmyk');
     const [c, m, y, k] = args;
     const alpha = args.length > 4 ? args[4] : 1;
     if (k === 1)

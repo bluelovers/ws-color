@@ -8,7 +8,7 @@ const chroma_1 = __importDefault(require("../../chroma"));
 const input_1 = __importDefault(require("../input"));
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 input_1.default.format.gl = (...args) => {
-    const rgb = unpack_1.default(args, 'rgba');
+    const rgb = (0, unpack_1.default)(args, 'rgba');
     rgb[0] *= 255;
     rgb[1] *= 255;
     rgb[2] *= 255;

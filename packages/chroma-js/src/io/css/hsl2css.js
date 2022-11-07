@@ -15,8 +15,8 @@ const rnd = (a) => Math.round(a * 100) / 100;
  * - hsl2css({h,s,l,a}, mode)
  */
 const hsl2css = (...args) => {
-    const hsla = unpack_1.default(args, 'hsla');
-    let mode = last_1.default(args) || 'lsa';
+    const hsla = (0, unpack_1.default)(args, 'hsla');
+    let mode = (0, last_1.default)(args) || 'lsa';
     hsla[0] = rnd(hsla[0] || 0);
     hsla[1] = rnd(hsla[1] * 100) + '%';
     hsla[2] = rnd(hsla[2] * 100) + '%';

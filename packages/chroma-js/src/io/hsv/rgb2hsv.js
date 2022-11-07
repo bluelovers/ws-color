@@ -12,7 +12,7 @@ const { min, max } = Math;
  * - rgb2hsv({r,g,b})
  */
 const rgb2hsl = (...args) => {
-    args = unpack_1.default(args, 'rgb');
+    args = (0, unpack_1.default)(args, 'rgb');
     let [r, g, b] = args;
     const min_ = min(r, g, b);
     const max_ = max(r, g, b);

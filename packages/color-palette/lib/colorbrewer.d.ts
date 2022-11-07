@@ -54,7 +54,7 @@ declare const _colorbrewer: {
     EchartThemeR6C1: string[];
     DataVizSet1: string[];
 };
-declare type IColorBrewer_ = {
+type IColorBrewer_ = {
     readonly [K in keyof typeof _colorbrewer]: readonly string[];
 };
 export interface IColorBrewer extends IColorBrewer_ {

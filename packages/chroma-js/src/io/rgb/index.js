@@ -27,19 +27,19 @@ input.format.rgba = input.format.rgb = (...args) =>
     return rgba;
 };
  */
-input_1.setupInputFormat([
+(0, input_1.setupInputFormat)([
     'rgba',
     'rgb',
 ], (...args) => {
     var _a;
-    const rgba = unpack_1.default(args, 'rgba');
+    const rgba = (0, unpack_1.default)(args, 'rgba');
     rgba[3] = (_a = rgba[3]) !== null && _a !== void 0 ? _a : 1;
     return rgba;
 });
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 3,
     test: (...args) => {
-        args = unpack_1.default(args, 'rgba');
+        args = (0, unpack_1.default)(args, 'rgba');
         if (Array.isArray(args) && (args.length === 3 ||
             args.length === 4 && typeof args[3] === 'number' && args[3] >= 0 && args[3] <= 1)) {
             return 'rgb';

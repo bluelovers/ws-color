@@ -13,7 +13,7 @@ const unpack_1 = __importDefault(require("../../utils/unpack"));
  * - rgb2hsl({r,g,b,a})
  */
 const rgb2hsl = (...args) => {
-    args = unpack_1.default(args, 'rgba');
+    args = (0, unpack_1.default)(args, 'rgba');
     let [r, g, b] = args;
     r /= 255;
     g /= 255;

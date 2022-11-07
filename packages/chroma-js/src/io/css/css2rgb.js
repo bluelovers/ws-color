@@ -62,7 +62,7 @@ const css2rgb = (css) => {
         const hsl = m.slice(1, 4);
         hsl[1] *= 0.01;
         hsl[2] *= 0.01;
-        const rgb = hsl2rgb_1.default(hsl);
+        const rgb = (0, hsl2rgb_1.default)(hsl);
         rgb[3] = 1;
         return rgb;
     }
@@ -71,7 +71,7 @@ const css2rgb = (css) => {
         const hsl = m.slice(1, 4);
         hsl[1] *= 0.01;
         hsl[2] *= 0.01;
-        const rgb = hsl2rgb_1.default(hsl);
+        const rgb = (0, hsl2rgb_1.default)(hsl);
         rgb[3] = +m[4]; // default alpha = 1
         return rgb;
     }

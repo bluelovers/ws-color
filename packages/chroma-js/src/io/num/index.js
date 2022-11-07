@@ -9,12 +9,12 @@ const input_1 = require("../input");
 const rgb2num_1 = __importDefault(require("./rgb2num"));
 const num2rgb_1 = __importDefault(require("./num2rgb"));
 Color_1.default.prototype.num = function () {
-    return rgb2num_1.default(this._rgb);
+    return (0, rgb2num_1.default)(this._rgb);
 };
 chroma_1.default.num = (...args) => new Color_1.default(...args, 'num');
 //input.format.num = num2rgb;
-input_1.setupInputFormat('num', num2rgb_1.default);
-input_1.setupInputAutodetect({
+(0, input_1.setupInputFormat)('num', num2rgb_1.default);
+(0, input_1.setupInputAutodetect)({
     p: 5,
     test: (...args) => {
         if (args.length === 1 && typeof args[0] === 'number' && args[0] >= 0 && args[0] <= 0xFFFFFF) {

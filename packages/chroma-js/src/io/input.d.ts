@@ -10,12 +10,12 @@ export interface IColorInputObjectAutodetect {
     p: number;
 }
 export declare const input: IColorInputObject;
-declare type IColorExtendsColorSpaces = {
+type IColorExtendsColorSpaces = {
     [k in keyof IColorSpaces]: () => IColorSpaces[k];
 } & {
     [k in keyof IColorSpacesExtra]: () => IColorSpacesExtra[k];
 };
-declare type IFormatExtendsColorSpaces = {
+type IFormatExtendsColorSpaces = {
     [k in keyof IColorSpaces]: (...args: any[]) => IColorSpaces["rgba"];
 } & {
     [k in Exclude<keyof IColorSpacesExtra, keyof Color>]: (...args: any[]) => IColorSpaces["rgba"];

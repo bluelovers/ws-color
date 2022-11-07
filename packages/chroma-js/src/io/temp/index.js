@@ -31,7 +31,7 @@ input.format.temp =
 ]
     .forEach(field => {
     Color_1.default.prototype[field] = function () {
-        return rgb2temperature_1.default(this._rgb);
+        return (0, rgb2temperature_1.default)(this._rgb);
     };
     /**
      * Returns a color from the color temperature scale.
@@ -40,6 +40,6 @@ input.format.temp =
      * https://github.com/neilbartlett/color-temperature
      */
     chroma_1.default[field] = (...args) => new Color_1.default(...args, 'temp');
-    input_1.setupInputFormat(field, temperature2rgb_1.default);
+    (0, input_1.setupInputFormat)(field, temperature2rgb_1.default);
 });
 //# sourceMappingURL=index.js.map

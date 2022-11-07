@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,14 +33,14 @@ const input_1 = __importStar(require("../input"));
 const rgb2hsv_1 = __importDefault(require("./rgb2hsv"));
 const hsv2rgb_1 = __importDefault(require("./hsv2rgb"));
 Color_1.default.prototype.hsv = function () {
-    return rgb2hsv_1.default(this._rgb);
+    return (0, rgb2hsv_1.default)(this._rgb);
 };
 chroma_1.default.hsv = (...args) => new Color_1.default(...args, 'hsv');
 input_1.default.format.hsv = hsv2rgb_1.default;
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 2,
     test: (...args) => {
-        args = unpack_1.default(args, 'hsv');
+        args = (0, unpack_1.default)(args, 'hsv');
         if (Array.isArray(args) && args.length === 3) {
             return 'hsv';
         }

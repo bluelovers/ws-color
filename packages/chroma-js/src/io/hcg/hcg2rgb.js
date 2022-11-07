@@ -13,7 +13,7 @@ const { floor } = Math;
  * grayness .. [0..1]
  */
 const hcg2rgb = (...args) => {
-    args = unpack_1.default(args, 'hcg');
+    args = (0, unpack_1.default)(args, 'hcg');
     let [h, c, _g] = args;
     let r, g, b;
     _g = _g * 255;

@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const lch2rgb_1 = __importDefault(require("./lch2rgb"));
 const hcl2rgb = (...args) => {
-    const hcl = unpack_1.default(args, 'hcl').reverse();
-    return lch2rgb_1.default(...hcl);
+    const hcl = (0, unpack_1.default)(args, 'hcl').reverse();
+    return (0, lch2rgb_1.default)(...hcl);
 };
 exports.default = hcl2rgb;
 //# sourceMappingURL=hcl2rgb.js.map

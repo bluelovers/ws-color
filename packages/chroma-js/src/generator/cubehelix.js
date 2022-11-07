@@ -29,7 +29,7 @@ function cubehelix(start = 300, rotations = -1.5, hue = 1, gamma = 1, lightness 
         const r = l + (amp * ((-0.14861 * cos_a) + (1.78277 * sin_a)));
         const g = l + (amp * ((-0.29227 * cos_a) - (0.90649 * sin_a)));
         const b = l + (amp * (+1.97294 * cos_a));
-        return chroma_1.default(clip_rgb_1.default([r * 255, g * 255, b * 255, 1]));
+        return (0, chroma_1.default)((0, clip_rgb_1.default)([r * 255, g * 255, b * 255, 1]));
     };
     // @ts-ignore
     f.start = function (n) {

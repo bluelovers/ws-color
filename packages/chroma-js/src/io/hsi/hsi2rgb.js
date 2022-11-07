@@ -17,7 +17,7 @@ const hsi2rgb = (...args) => {
     borrowed from here:
     http://hummer.stanford.edu/museinfo/doc/examples/humdrum/keyscape2/hsi2rgb.cpp
     */
-    args = unpack_1.default(args, 'hsi');
+    args = (0, unpack_1.default)(args, 'hsi');
     let [h, s, i] = args;
     let r, g, b;
     if (isNaN(h))
@@ -47,9 +47,9 @@ const hsi2rgb = (...args) => {
         b = (1 + s * cos(utils_1.TWOPI * h) / cos(utils_1.PITHIRD - utils_1.TWOPI * h)) / 3;
         r = 1 - (g + b);
     }
-    r = limit_1.default(i * r * 3);
-    g = limit_1.default(i * g * 3);
-    b = limit_1.default(i * b * 3);
+    r = (0, limit_1.default)(i * r * 3);
+    g = (0, limit_1.default)(i * g * 3);
+    b = (0, limit_1.default)(i * b * 3);
     return [r * 255, g * 255, b * 255, args.length > 3 ? args[3] : 1];
 };
 exports.default = hsi2rgb;

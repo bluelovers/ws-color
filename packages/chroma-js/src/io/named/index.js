@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -28,23 +32,23 @@ const rgb2hex_1 = __importDefault(require("../hex/rgb2hex"));
 const named2rgb_1 = __importStar(require("./named2rgb"));
 Color_1.default.prototype.named = function () {
     var _a, _b, _c;
-    if (named2rgb_1.rgba_is_transparent(this._rgb)) {
+    if ((0, named2rgb_1.rgba_is_transparent)(this._rgb)) {
         return 'transparent';
     }
-    const hex = rgb2hex_1.default(this._rgb, 'rgb');
+    const hex = (0, rgb2hex_1.default)(this._rgb, 'rgb');
     if (this._rgb[0] === null || this._rgb[1] === null || this._rgb[2] === null) {
         return hex;
     }
-    return (_c = (_b = (_a = named2rgb_1.hex2name(hex)) === null || _a === void 0 ? void 0 : _a.toLowerCase) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : (this._rgb[0] === null && hex);
+    return (_c = (_b = (_a = (0, named2rgb_1.hex2name)(hex)) === null || _a === void 0 ? void 0 : _a.toLowerCase) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : (this._rgb[0] === null && hex);
 };
-input_1.setupInputFormat('named', (name) => {
-    return named2rgb_1.default(name);
+(0, input_1.setupInputFormat)('named', (name) => {
+    return (0, named2rgb_1.default)(name);
 });
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 5,
     test: (name, ...rest) => {
         var _a;
-        if (!rest.length && typeof name === 'string' && ((_a = named2rgb_1._named2rgb(name)) === null || _a === void 0 ? void 0 : _a.length)) {
+        if (!rest.length && typeof name === 'string' && ((_a = (0, named2rgb_1._named2rgb)(name)) === null || _a === void 0 ? void 0 : _a.length)) {
             return 'named';
         }
     },

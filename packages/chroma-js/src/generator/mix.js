@@ -15,9 +15,9 @@ const mix = (col1, col2, f = 0.5, ...rest) => {
     if (!interpolator_1.default[mode]) {
         throw new Error(`interpolation mode ${mode} is not defined`);
     }
-    if (type_1.default(col1) !== 'object')
+    if ((0, type_1.default)(col1) !== 'object')
         col1 = new Color_1.default(col1);
-    if (type_1.default(col2) !== 'object')
+    if ((0, type_1.default)(col2) !== 'object')
         col2 = new Color_1.default(col2);
     return interpolator_1.default[mode](col1, col2, f)
         .alpha(col1.alpha() + f * (col2.alpha() - col1.alpha()));

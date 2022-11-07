@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const { max } = Math;
 const rgb2cmyk = (...args) => {
-    let [r, g, b] = unpack_1.default(args, 'rgb');
+    let [r, g, b] = (0, unpack_1.default)(args, 'rgb');
     r = r / 255;
     g = g / 255;
     b = b / 255;

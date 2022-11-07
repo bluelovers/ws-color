@@ -11,10 +11,10 @@ exports.default = (rgb) => {
         if (i < 3) {
             if (rgb[i] < 0 || rgb[i] > 255)
                 rgb._clipped = true;
-            rgb[i] = limit_1.default(rgb[i], 0, 255);
+            rgb[i] = (0, limit_1.default)(rgb[i], 0, 255);
         }
         else if (i === 3) {
-            rgb[i] = limit_1.default(rgb[i], 0, 1);
+            rgb[i] = (0, limit_1.default)(rgb[i], 0, 1);
         }
     }
     return rgb;

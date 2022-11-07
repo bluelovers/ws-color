@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,14 +33,14 @@ const input_1 = __importStar(require("../input"));
 const rgb2hsi_1 = __importDefault(require("./rgb2hsi"));
 const hsi2rgb_1 = __importDefault(require("./hsi2rgb"));
 Color_1.default.prototype.hsi = function () {
-    return rgb2hsi_1.default(this._rgb);
+    return (0, rgb2hsi_1.default)(this._rgb);
 };
 chroma_1.default.hsi = (...args) => new Color_1.default(...args, 'hsi');
 input_1.default.format.hsi = hsi2rgb_1.default;
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 2,
     test: (...args) => {
-        args = unpack_1.default(args, 'hsi');
+        args = (0, unpack_1.default)(args, 'hsi');
         if (Array.isArray(args) && args.length === 3) {
             return 'hsi';
         }

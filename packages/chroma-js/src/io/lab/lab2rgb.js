@@ -12,7 +12,7 @@ const { pow } = Math;
  * b [-100..100]
  */
 const lab2rgb = (...args) => {
-    args = unpack_1.default(args, 'lab');
+    args = (0, unpack_1.default)(args, 'lab');
     const [l, a, b] = args;
     let x, y, z, r, g, b_;
     y = (l + 16) / 116;

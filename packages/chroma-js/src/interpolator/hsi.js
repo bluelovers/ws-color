@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("../io/hsi");
 const _hsx_1 = __importDefault(require("./_hsx"));
 const hsi = (col1, col2, f) => {
-    return _hsx_1.default(col1, col2, f, 'hsi');
+    return (0, _hsx_1.default)(col1, col2, f, 'hsi');
 };
 // register interpolator
 const index_1 = __importDefault(require("./index"));

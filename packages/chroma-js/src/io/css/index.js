@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -28,11 +32,11 @@ const input_1 = __importStar(require("../input"));
 const rgb2css_1 = __importDefault(require("./rgb2css"));
 const css2rgb_1 = __importDefault(require("./css2rgb"));
 Color_1.default.prototype.css = function (mode) {
-    return rgb2css_1.default(this._rgb, mode);
+    return (0, rgb2css_1.default)(this._rgb, mode);
 };
 chroma_1.default.css = (...args) => new Color_1.default(...args, 'css');
 input_1.default.format.css = css2rgb_1.default;
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 5,
     test: (h, ...rest) => {
         if (!rest.length && typeof h === 'string' && css2rgb_1.default.test(h)) {

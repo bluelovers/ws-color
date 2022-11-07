@@ -15,7 +15,7 @@ declare module '../chroma' {
         limits: typeof limits;
     }
 }
-export declare type ILimitsMode = 'e' | 'q' | 'l' | 'k' | 'equal';
+export type ILimitsMode = 'e' | 'q' | 'l' | 'k' | 'equal';
 export interface IReturnTypeAnalyze {
     min: number;
     max: number;
@@ -25,17 +25,17 @@ export interface IReturnTypeAnalyze {
     domain: [number, number];
     limits(mode: ILimitsMode, num: number): any;
 }
-export declare type IAnalyzeInput01<T extends number> = T[];
-export declare type IAnalyzeInput02<T extends number> = Record<any, T>;
-export declare type IAnalyzeInput03<T extends number> = Record<any, T>[];
-export declare type IAnalyzeInput04<T extends number> = Record<any, Record<any, T>>;
-export declare type IAnalyzeInput<T extends number = number> = IAnalyzeInput01<T> | IAnalyzeInput02<T> | IAnalyzeInput03<T> | IAnalyzeInput04<T>;
+export type IAnalyzeInput01<T extends number> = T[];
+export type IAnalyzeInput02<T extends number> = Record<any, T>;
+export type IAnalyzeInput03<T extends number> = Record<any, T>[];
+export type IAnalyzeInput04<T extends number> = Record<any, Record<any, T>>;
+export type IAnalyzeInput<T extends number = number> = IAnalyzeInput01<T> | IAnalyzeInput02<T> | IAnalyzeInput03<T> | IAnalyzeInput04<T>;
 export declare function analyze<T extends number, K extends keyof T>(data: IAnalyzeInput<T>, key?: K): IReturnTypeAnalyze;
-export declare type ILimitsInput01<T extends number> = T[];
-export declare type ILimitsInput02<T extends number> = (unknown | T)[];
-export declare type ILimitsInput03<T extends number> = [T, T];
-export declare type ILimitsInput04<T extends number> = IAnalyzeInput01<T> | IAnalyzeInput03<T>;
-export declare type ILimitsInput<T extends number = number> = ILimitsInput01<T> | ILimitsInput02<T> | ILimitsInput03<T> | ILimitsInput04<T> | IReturnTypeAnalyze;
+export type ILimitsInput01<T extends number> = T[];
+export type ILimitsInput02<T extends number> = (unknown | T)[];
+export type ILimitsInput03<T extends number> = [T, T];
+export type ILimitsInput04<T extends number> = IAnalyzeInput01<T> | IAnalyzeInput03<T>;
+export type ILimitsInput<T extends number = number> = ILimitsInput01<T> | ILimitsInput02<T> | ILimitsInput03<T> | ILimitsInput04<T> | IReturnTypeAnalyze;
 /**
  * Helper function that computes class breaks based on data.
  * Mode:

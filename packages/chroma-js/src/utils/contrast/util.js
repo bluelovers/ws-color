@@ -11,7 +11,7 @@ function _contrast000(rgba) {
     return (((r * 299) + (g * 587) + (b * 144)) / 1000);
 }
 exports._contrast000 = _contrast000;
-function _contrast001(rgba, threshold = 120 /* t02 */) {
+function _contrast001(rgba, threshold = 120 /* EnumContrastFrontThreshold.t02 */) {
     return _contrast000(rgba) >= threshold;
 }
 exports._contrast001 = _contrast001;

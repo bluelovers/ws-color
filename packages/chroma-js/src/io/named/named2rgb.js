@@ -18,7 +18,7 @@ function hex2name(hex) {
         }
         let value = index_1.default[name];
         if (typeof value !== 'string') {
-            value = rgb2hex_1.default(value);
+            value = (0, rgb2hex_1.default)(value);
         }
         if (value === hex) {
             return name;
@@ -30,7 +30,7 @@ function _named2rgb(name) {
     let value = index_1.default[name.toLowerCase()];
     if (value === null || value === void 0 ? void 0 : value.length) {
         if (typeof value === 'string') {
-            return hex2rgb_1.default(value);
+            return (0, hex2rgb_1.default)(value);
         }
         else if (Array.isArray(value) && value.length === 4) {
             return value.slice();

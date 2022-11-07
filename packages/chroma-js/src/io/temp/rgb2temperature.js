@@ -11,7 +11,7 @@ const temperature2rgb_1 = __importDefault(require("./temperature2rgb"));
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const { round } = Math;
 const rgb2temperature = (...args) => {
-    const rgb = unpack_1.default(args, 'rgb');
+    const rgb = (0, unpack_1.default)(args, 'rgb');
     const r = rgb[0], b = rgb[2];
     let minTemp = 1000;
     let maxTemp = 40000;
@@ -19,7 +19,7 @@ const rgb2temperature = (...args) => {
     let temp;
     while (maxTemp - minTemp > eps) {
         temp = (maxTemp + minTemp) * 0.5;
-        const rgb = temperature2rgb_1.default(temp);
+        const rgb = (0, temperature2rgb_1.default)(temp);
         if ((rgb[2] / rgb[0]) >= (b / r)) {
             maxTemp = temp;
         }

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const { round } = Math;
 const hsl2rgb = (...args) => {
-    args = unpack_1.default(args, 'hsl');
+    args = (0, unpack_1.default)(args, 'hsl');
     const [h, s, l] = args;
     let r, g, b;
     if (s === 0) {

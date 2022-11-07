@@ -1,6 +1,6 @@
 import '../io/rgb';
 import Color from '../Color';
-export declare type IBlendMode = 'multiply' | 'darken' | 'lighten' | 'screen' | 'overlay' | 'burn' | 'dodge';
+export type IBlendMode = 'multiply' | 'darken' | 'lighten' | 'screen' | 'overlay' | 'burn' | 'dodge';
 /**
  * Blends two colors using RGB channel-wise blend functions.
  */

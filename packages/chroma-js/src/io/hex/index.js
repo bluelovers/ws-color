@@ -9,12 +9,12 @@ const input_1 = require("../input");
 const rgb2hex_1 = __importDefault(require("./rgb2hex"));
 const hex2rgb_1 = __importDefault(require("./hex2rgb"));
 Color_1.default.prototype.hex = function (mode) {
-    return rgb2hex_1.default(this._rgb, mode);
+    return (0, rgb2hex_1.default)(this._rgb, mode);
 };
 chroma_1.default.hex = (...args) => new Color_1.default(...args, 'hex');
 //input.format.hex = hex2rgb;
-input_1.setupInputFormat('hex', hex2rgb_1.default);
-input_1.setupInputAutodetect({
+(0, input_1.setupInputFormat)('hex', hex2rgb_1.default);
+(0, input_1.setupInputAutodetect)({
     p: 4,
     test: (h, ...rest) => {
         if (!rest.length && typeof h === 'string' && [3, 4, 5, 6, 7, 8, 9].indexOf(h.length) >= 0) {

@@ -10,7 +10,7 @@ const LAB_CONSTANTS = {
     t0: 0.137931034,
     t1: 0.206896552,
     t2: 0.12841855,
-    t3: 0.008856452,
+    t3: 0.008856452, // t1 * t1 * t1
 };
 exports.default = LAB_CONSTANTS;
 //# sourceMappingURL=lab-constants.js.map

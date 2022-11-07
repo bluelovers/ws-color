@@ -17,10 +17,10 @@ const { round } = Math;
  * - rgb2css({r,g,b,a}, mode)
  */
 const rgb2css = (...args) => {
-    const rgba = unpack_1.default(args, 'rgba');
-    let mode = last_1.default(args) || 'rgb';
+    const rgba = (0, unpack_1.default)(args, 'rgba');
+    let mode = (0, last_1.default)(args) || 'rgb';
     if (mode.substr(0, 3) == 'hsl') {
-        return hsl2css_1.default(rgb2hsl_1.default(rgba), mode);
+        return (0, hsl2css_1.default)((0, rgb2hsl_1.default)(rgba), mode);
     }
     rgba[0] = round(rgba[0]);
     rgba[1] = round(rgba[1]);

@@ -14,8 +14,8 @@ const arr_to_colors_1 = __importDefault(require("../utils/arr-to-colors"));
 const ts_type_predicates_1 = __importDefault(require("ts-type-predicates"));
 const _bezier = function (colors) {
     let I, lab0, lab1, lab2;
-    colors = arr_to_colors_1.default(colors);
-    ts_type_predicates_1.default(colors);
+    colors = (0, arr_to_colors_1.default)(colors);
+    (0, ts_type_predicates_1.default)(colors);
     if (colors.length === 2) {
         // linear interpolation
         [lab0, lab1] = colors.map(c => c.lab());
@@ -69,7 +69,7 @@ const _bezier = function (colors) {
  */
 function bezier(colors) {
     const f = _bezier(colors);
-    f.scale = () => scale_1.default(f);
+    f.scale = () => (0, scale_1.default)(f);
     return f;
 }
 exports.default = bezier;

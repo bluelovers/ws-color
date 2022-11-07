@@ -22,8 +22,8 @@ function blend(bottom, top, mode) {
 exports.blend = blend;
 function blend_f(f) {
     return (bottom, top) => {
-        const c0 = chroma_1.default(top).rgb();
-        const c1 = chroma_1.default(bottom).rgb();
+        const c0 = (0, chroma_1.default)(top).rgb();
+        const c1 = (0, chroma_1.default)(bottom).rgb();
         return chroma_1.default.rgb(f(c0, c1));
     };
 }

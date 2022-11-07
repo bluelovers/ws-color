@@ -2,7 +2,11 @@
 //import { last, clip_rgb, type } from './utils';
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -34,7 +38,7 @@ class Color {
             this._rgb = colors_1.default._empty.slice();
             return this;
         }
-        if (type_1.default(args[0]) === 'object' &&
+        if ((0, type_1.default)(args[0]) === 'object' &&
             args[0].constructor &&
             args[0].constructor === this.constructor) {
             // the argument is already a Color instance
@@ -43,8 +47,8 @@ class Color {
         if (args[0] instanceof Color) {
             return args[0].clone();
         }
-        let ret = autodetect_1.default(args);
-        autodetect_1.assertAutodetectReturn(ret);
+        let ret = (0, autodetect_1.default)(args);
+        (0, autodetect_1.assertAutodetectReturn)(ret);
         me._rgb = ret._rgb;
     }
     get [0]() {

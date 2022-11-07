@@ -9,6 +9,6 @@ require("../io/rgb");
 // @ts-ignore
 Color_1.default.prototype.rand = function (options = {}) {
     options.rgba = this._rgb;
-    return new Color_1.default(rand_1.default(options), 'rgba');
+    return new Color_1.default((0, rand_1.default)(options), 'rgba');
 };
 //# sourceMappingURL=rand.js.map

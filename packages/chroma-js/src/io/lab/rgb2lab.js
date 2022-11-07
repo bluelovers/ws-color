@@ -7,7 +7,7 @@ const lab_constants_1 = __importDefault(require("./lab-constants"));
 const unpack_1 = __importDefault(require("../../utils/unpack"));
 const { pow } = Math;
 const rgb2lab = (...args) => {
-    const [r, g, b] = unpack_1.default(args, 'rgb');
+    const [r, g, b] = (0, unpack_1.default)(args, 'rgb');
     const [x, y, z] = rgb2xyz(r, g, b);
     const l = 116 * y - 16;
     return [l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z)];

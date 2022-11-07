@@ -10,7 +10,7 @@ exports.default = (args, keyOrder) => {
         return Array.prototype.slice.call(args);
     // with less than 3 args we check if first arg is object
     // and use the keyOrder string to extract and sort properties
-    if (type_1.default(args[0]) == 'object' && keyOrder) {
+    if ((0, type_1.default)(args[0]) == 'object' && keyOrder) {
         return keyOrder.split('')
             .filter(k => args[0][k] !== undefined)
             .map(k => args[0][k]);

@@ -20,7 +20,7 @@ export interface IColorSpacesExtra {
     named: string;
     css: string;
 }
-export declare type IInterpolationMode = "rgb" | "hsl" | "hsv" | "hsi" | "lab" | "lch" | "hcl" | "lrgb" | keyof IColorSpaces;
+export type IInterpolationMode = "rgb" | "hsl" | "hsv" | "hsi" | "lab" | "lch" | "hcl" | "lrgb" | keyof IColorSpaces;
 export interface IScale<OutType = Color> {
     (c: string[]): IScale;
     (value: number): OutType;
@@ -87,4 +87,4 @@ export interface IRGB extends Array<number> {
     _clipped?: boolean;
     _unclipped?: number[];
 }
-export declare type IRGBValue = IRGB | IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];
+export type IRGBValue = IRGB | IColorSpaces["rgba"] | IColorSpaces["rgb"] | number[];

@@ -10,7 +10,7 @@ const clip_rgb_1 = __importDefault(require("./clip_rgb"));
 function autodetect(args) {
     let _rgb;
     // last argument could be the mode
-    let mode = last_1.default(args);
+    let mode = (0, last_1.default)(args);
     let autodetect = false;
     if (!(mode === null || mode === void 0 ? void 0 : mode.length)) {
         if (input_1.default.sorted !== true) {
@@ -31,7 +31,7 @@ function autodetect(args) {
     if (input_1.default.format[mode]) {
         // @ts-ignore
         const rgb = input_1.default.format[mode].apply(null, autodetect ? args : args.slice(0, -1));
-        _rgb = clip_rgb_1.default(rgb);
+        _rgb = (0, clip_rgb_1.default)(rgb);
         // add alpha channel
         if (_rgb.length === 3)
             _rgb.push(1);

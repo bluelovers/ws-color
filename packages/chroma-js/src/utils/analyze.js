@@ -15,14 +15,14 @@ function analyze(data, key) {
         values: [],
         count: 0,
     };
-    if (type_1.default(data) === 'object') {
+    if ((0, type_1.default)(data) === 'object') {
         data = Object.values(data);
     }
     data.forEach(val => {
-        if (key && type_1.default(val) === 'object') {
+        if (key && (0, type_1.default)(val) === 'object') {
             val = val[key];
         }
-        if (val !== undefined && val !== null && type_is_1.isNumber(val)) {
+        if (val !== undefined && val !== null && (0, type_is_1.isNumber)(val)) {
             r.values.push(val);
             r.sum += val;
             if (val < r.min)

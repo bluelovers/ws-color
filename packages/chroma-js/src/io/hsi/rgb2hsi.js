@@ -11,7 +11,7 @@ const rgb2hsi = (...args) => {
     borrowed from here:
     http://hummer.stanford.edu/museinfo/doc/examples/humdrum/keyscape2/rgb2hsi.cpp
     */
-    let [r, g, b] = unpack_1.default(args, 'rgb');
+    let [r, g, b] = (0, unpack_1.default)(args, 'rgb');
     r /= 255;
     g /= 255;
     b /= 255;

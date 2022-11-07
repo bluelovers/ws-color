@@ -1,4 +1,4 @@
-export declare type IClassToType = 'boolean' | 'number' | 'string' | 'function' | 'array' | 'date' | 'regexp' | 'undefined' | 'null' | 'object';
+export type IClassToType = 'boolean' | 'number' | 'string' | 'function' | 'array' | 'date' | 'regexp' | 'undefined' | 'null' | 'object';
 export interface IClassToTypes {
     boolean: boolean;
     number: number;

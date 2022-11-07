@@ -10,20 +10,20 @@ const input_1 = require("../input");
 const rgb2lch_1 = __importDefault(require("./rgb2lch"));
 const lch2rgb_1 = __importDefault(require("./lch2rgb"));
 const hcl2rgb_1 = __importDefault(require("./hcl2rgb"));
-Color_1.default.prototype.lch = function () { return rgb2lch_1.default(this._rgb); };
-Color_1.default.prototype.hcl = function () { return rgb2lch_1.default(this._rgb).reverse(); };
+Color_1.default.prototype.lch = function () { return (0, rgb2lch_1.default)(this._rgb); };
+Color_1.default.prototype.hcl = function () { return (0, rgb2lch_1.default)(this._rgb).reverse(); };
 //chroma.lch = (...args) => new Color(...args, 'lch');
 //chroma.hcl = (...args) => new Color(...args, 'hcl');
 //input.format.lch = lch2rgb;
 //input.format.hcl = hcl2rgb;
-input_1.setupInputFormat('lch', lch2rgb_1.default);
-input_1.setupInputFormat('hcl', hcl2rgb_1.default);
+(0, input_1.setupInputFormat)('lch', lch2rgb_1.default);
+(0, input_1.setupInputFormat)('hcl', hcl2rgb_1.default);
 ['lch', 'hcl'].forEach(m => {
     chroma_1.default[m] = (...args) => new Color_1.default(...args, m);
-    input_1.setupInputAutodetect({
+    (0, input_1.setupInputAutodetect)({
         p: 2,
         test: (...args) => {
-            args = unpack_1.default(args, m);
+            args = (0, unpack_1.default)(args, m);
             if (Array.isArray(args) && args.length === 3) {
                 return m;
             }

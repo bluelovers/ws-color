@@ -19,8 +19,8 @@ function average(colors, mode = 'lrgb', weights) {
     const k = l / weights.reduce(function (a, b) { return a + b; });
     weights.forEach((w, i) => { weights[i] *= k; });
     // convert colors to Color objects
-    colors = arr_to_colors_1.default(colors);
-    ts_type_predicates_1.default(colors);
+    colors = (0, arr_to_colors_1.default)(colors);
+    (0, ts_type_predicates_1.default)(colors);
     if (mode === 'lrgb') {
         return _average_lrgb(colors, weights);
     }
@@ -91,7 +91,7 @@ function _average_lrgb(colors, weights) {
     xyz[2] = Math.sqrt(xyz[2]);
     if (xyz[3] > 0.9999999)
         xyz[3] = 1;
-    return new Color_1.default(clip_rgb_1.default(xyz));
+    return new Color_1.default((0, clip_rgb_1.default)(xyz));
 }
 exports.default = average;
 //# sourceMappingURL=average.js.map

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,14 +33,14 @@ const unpack_1 = __importDefault(require("../../utils/unpack"));
 const rgb2cmyk_1 = __importDefault(require("./rgb2cmyk"));
 const cmyk2rgb_1 = __importDefault(require("./cmyk2rgb"));
 Color_1.default.prototype.cmyk = function () {
-    return rgb2cmyk_1.default(this._rgb);
+    return (0, rgb2cmyk_1.default)(this._rgb);
 };
 chroma_1.default.cmyk = (...args) => new Color_1.default(...args, 'cmyk');
 input_1.default.format.cmyk = cmyk2rgb_1.default;
-input_1.setupInputAutodetect({
+(0, input_1.setupInputAutodetect)({
     p: 2,
     test: (...args) => {
-        args = unpack_1.default(args, 'cmyk');
+        args = (0, unpack_1.default)(args, 'cmyk');
         if (Array.isArray(args) && args.length === 4) {
             return 'cmyk';
         }
