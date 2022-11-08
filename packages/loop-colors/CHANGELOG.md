@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.7...loop-colors@1.0.8) (2022-11-08)
+
+
+
+### ✨　Features
+
+* support postprocess value ([2423e4f](https://github.com/bluelovers/ws-color/commit/2423e4fdce6edf14e09e6d34909b80f49a4cf663))
+
+
+
 ## [1.0.7](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.5...loop-colors@1.0.7) (2022-11-07)
 
 
