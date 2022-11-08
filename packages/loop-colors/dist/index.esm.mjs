@@ -7,20 +7,23 @@ function cliColors() {
 }
 
 function loopColors(o, l) {
-  o = o.slice();
-  let n = 0;
-  const r = o.length;
-  let getIndex = (o, l) => n++ % r;
-  if (null != l && l.rand) {
-    const o = !0 === l.rand ? Math.random : l.rand, r = getIndex;
-    getIndex = (l, t) => (n = Math.floor(n * o(l, t)), r(l, t));
+  var n, r;
+  null !== (n = l) && void 0 !== n || (l = {}), o = o.slice();
+  let t = 0;
+  const e = o.length;
+  let getIndex = (o, l) => t++ % e;
+  if (l.rand) {
+    const o = !0 === l.rand ? Math.random : l.rand, n = getIndex;
+    getIndex = (l, r) => (t = Math.floor(t * o(l, r)), n(l, r));
   }
-  let t = 0 | (null == l ? void 0 : l.limit);
-  return t = t > 0 ? t : Infinity, function*(l) {
-    n = void 0 !== l ? (l |= 0) >= 0 ? l : n : 0;
+  let i = 0 | l.limit;
+  i = i > 0 ? i : Infinity;
+  const s = null !== (r = l.generator) && void 0 !== r ? r : (o, l) => o[l];
+  return function*(l) {
+    t = void 0 !== l ? (l |= 0) >= 0 ? l : t : 0;
     do {
-      yield o[getIndex(n, r)];
-    } while (--t > 0);
+      yield s(o, getIndex(t, e), t, e);
+    } while (--i > 0);
   };
 }
 

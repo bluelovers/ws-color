@@ -9,11 +9,13 @@ function cliColors() {
   return ["cyan", "magenta", "blue", "yellow", "green", "red"];
 }
 function loopColors(colors, options) {
+  var _options, _options$generator;
+  (_options = options) !== null && _options !== void 0 ? _options : options = {};
   colors = colors.slice();
   let idx = 0;
   const len = colors.length;
   let getIndex = (index, length) => idx++ % len;
-  if (options !== null && options !== void 0 && options.rand) {
+  if (options.rand) {
     const rand = options.rand === true ? Math.random : options.rand;
     const _ = getIndex;
     getIndex = (index, length) => {
@@ -21,8 +23,9 @@ function loopColors(colors, options) {
       return _(index, length);
     };
   }
-  let limit = (options === null || options === void 0 ? void 0 : options.limit) | 0;
+  let limit = options.limit | 0;
   limit = limit > 0 ? limit : Infinity;
+  const generator = (_options$generator = options.generator) !== null && _options$generator !== void 0 ? _options$generator : (colors, position) => colors[position];
   return function* (startIndex) {
     if (typeof startIndex !== 'undefined') {
       startIndex |= 0;
@@ -31,7 +34,7 @@ function loopColors(colors, options) {
       idx = 0;
     }
     do {
-      yield colors[getIndex(idx, len)];
+      yield generator(colors, getIndex(idx, len), idx, len);
     } while (--limit > 0);
   };
 }

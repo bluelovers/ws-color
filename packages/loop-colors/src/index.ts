@@ -22,11 +22,17 @@ export function cliColors(): ICliColor[]
 	return ["cyan", "magenta", "blue", "yellow", "green", "red"];
 }
 
-export function loopColors<T>(colors: T[] | readonly T[], options?: {
-	rand?: ((index?: number, length?: number, ...argv: any[]) => number) | boolean,
-	limit?: number | -1,
-})
+export interface IOptions<T = string, R = T>
 {
+	rand?: ((index?: number, length?: number, ...argv: any[]) => number) | boolean;
+	limit?: number | -1;
+	generator?(colors: readonly T[], position: number, idx: number, len: number): R
+}
+
+export function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOptions<T, R>)
+{
+	options ??= {};
+
 	colors = colors.slice();
 
 	let idx = 0;
@@ -34,7 +40,7 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 	// @ts-ignore
 	let getIndex = (index: number, length: number) => idx++ % len;
 
-	if (options?.rand)
+	if (options.rand)
 	{
 		const rand = options.rand === true ? Math.random : options.rand;
 
@@ -46,8 +52,11 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 		};
 	}
 
-	let limit = options?.limit | 0;
+	let limit = options.limit | 0;
 	limit = limit > 0 ? limit : Infinity;
+
+	// @ts-ignore
+	const generator: IOptions<T, R>["generator"] = options.generator ?? ((colors, position) => colors[position]);
 
 	return function* (startIndex?: number)
 	{
@@ -63,7 +72,7 @@ export function loopColors<T>(colors: T[] | readonly T[], options?: {
 
 		do
 		{
-			yield colors[getIndex(idx, len)];
+			yield generator(colors, getIndex(idx, len), idx, len);
 		}
 		while (--limit > 0);
 	};
