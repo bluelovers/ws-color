@@ -12,7 +12,7 @@ export function cssColors()
 		'#EAEA00',
 		'#006',
 		'#360',
-	];
+	] as const;
 }
 
 export type ICliColor = "cyan" | "magenta" | "blue" | "yellow" | "green" | "red";
@@ -47,8 +47,8 @@ export function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOpti
 		const _ = getIndex;
 		getIndex = (index: number, length: number) =>
 		{
-			idx = Math.floor(idx * rand(index, length));
-			return _(index, length);
+			idx = Math.floor(length * rand(index, length));
+			return _(idx, length);
 		};
 	}
 
@@ -58,7 +58,7 @@ export function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOpti
 	// @ts-ignore
 	const generator: IOptions<T, R>["generator"] = options.generator ?? ((colors, position) => colors[position]);
 
-	return function* (startIndex?: number)
+	return function* (startIndex?: number): Generator<R, undefined, R>
 	{
 		if (typeof startIndex !== 'undefined')
 		{
@@ -75,6 +75,8 @@ export function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOpti
 			yield generator(colors, getIndex(idx, len), idx, len);
 		}
 		while (--limit > 0);
+
+		return
 	};
 }
 
