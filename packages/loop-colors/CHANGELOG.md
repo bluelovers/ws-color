@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.8...loop-colors@1.0.9) (2023-01-27)
+
+
+
+### 🐛　Bug Fixes
+
+* getIndex and typescript ([a5f4f63](https://github.com/bluelovers/ws-color/commit/a5f4f63c1ff117765a4ede213a4853bf902fa014))
+
+
+### 🛠　Build System
+
+* update build ([5b81abc](https://github.com/bluelovers/ws-color/commit/5b81abc921abe885739f6adbcc74ff3e84fe983a))
+
+
+
 ## [1.0.8](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.7...loop-colors@1.0.8) (2022-11-08)
 
 
