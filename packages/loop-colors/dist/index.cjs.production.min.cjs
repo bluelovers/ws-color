@@ -8,7 +8,7 @@ function loopColors(o, l) {
   let getIndex = (o, l) => t++ % n;
   if (l.rand) {
     const o = !0 === l.rand ? Math.random : l.rand, e = getIndex;
-    getIndex = (l, r) => (t = Math.floor(t * o(l, r)), e(l, r));
+    getIndex = (l, r) => (t = Math.floor(r * o(l, r)), e(t, r));
   }
   let s = 0 | l.limit;
   s = s > 0 ? s : Infinity;

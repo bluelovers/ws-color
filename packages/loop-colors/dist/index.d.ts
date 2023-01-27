@@ -1,7 +1,15 @@
 /**
  * Created by user on 2020/6/17.
  */
-export declare function cssColors(): string[];
+export declare function cssColors(): readonly [
+	"#906",
+	"#66F",
+	"#800",
+	"#C60",
+	"#EAEA00",
+	"#006",
+	"#360"
+];
 export type ICliColor = "cyan" | "magenta" | "blue" | "yellow" | "green" | "red";
 export declare function cliColors(): ICliColor[];
 export interface IOptions<T = string, R = T> {
@@ -9,7 +17,7 @@ export interface IOptions<T = string, R = T> {
 	limit?: number | -1;
 	generator?(colors: readonly T[], position: number, idx: number, len: number): R;
 }
-export declare function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOptions<T, R>): (startIndex?: number) => Generator<R, void, unknown>;
+export declare function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOptions<T, R>): (startIndex?: number) => Generator<R, undefined, R>;
 
 export {
 	loopColors as default,

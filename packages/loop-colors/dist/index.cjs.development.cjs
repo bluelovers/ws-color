@@ -19,8 +19,8 @@ function loopColors(colors, options) {
     const rand = options.rand === true ? Math.random : options.rand;
     const _ = getIndex;
     getIndex = (index, length) => {
-      idx = Math.floor(idx * rand(index, length));
-      return _(index, length);
+      idx = Math.floor(length * rand(index, length));
+      return _(idx, length);
     };
   }
   let limit = options.limit | 0;
@@ -36,6 +36,7 @@ function loopColors(colors, options) {
     do {
       yield generator(colors, getIndex(idx, len), idx, len);
     } while (--limit > 0);
+    return;
   };
 }
 

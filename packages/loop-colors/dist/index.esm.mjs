@@ -14,7 +14,7 @@ function loopColors(o, l) {
   let getIndex = (o, l) => t++ % e;
   if (l.rand) {
     const o = !0 === l.rand ? Math.random : l.rand, n = getIndex;
-    getIndex = (l, r) => (t = Math.floor(t * o(l, r)), n(l, r));
+    getIndex = (l, r) => (t = Math.floor(r * o(l, r)), n(t, r));
   }
   let i = 0 | l.limit;
   i = i > 0 ? i : Infinity;
