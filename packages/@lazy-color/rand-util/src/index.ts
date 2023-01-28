@@ -1,6 +1,7 @@
 import { toFixedNumber } from "@lazy-num/to-fixed-number";
+import { IColorRGBArray, IColorRGBObject } from '@lazy-color/types';
 
-export type IColorRGBA = readonly number[] | readonly [number, number, number, number?];
+export type IColorRGBA = readonly number[] | IColorRGBArray;
 
 export function _randAlpha()
 {
@@ -12,7 +13,7 @@ export function _randValue(base: number)
 	return Math.random() * base
 }
 
-export function _rgbRand<T extends IColorRGBA>(_rgba?: T)
+export function _rgbRand<T extends IColorRGBA>(_rgba?: T): T
 {
 	// @ts-ignore
 	_rgba = _rgba?.slice() || [];
@@ -26,7 +27,7 @@ export function _rgbRand<T extends IColorRGBA>(_rgba?: T)
 	return _rgba
 }
 
-export function _rgbObjectRand<T extends { r: number, g: number, b: number, a?: number }>(_rgba?: T)
+export function _rgbObjectRand<T extends IColorRGBObject>(_rgba?: T)
 {
 	let { r, g, b, a } = _rgba;
 
@@ -37,10 +38,10 @@ export function _rgbObjectRand<T extends { r: number, g: number, b: number, a?: 
 	return { r, g, b, a }
 }
 
-export function _rgbObjectToArray<T extends { r: number, g: number, b: number, a?: number }>(_rgba: T)
+export function _rgbObjectToArray<T extends { r: number, g: number, b: number, a?: number }>(_rgba: T): IColorRGBArray
 {
 	const { r, g, b, a } = _rgba;
-	return [r, g, b, a] as const
+	return [r, g, b, a]
 }
 
 // @ts-ignore
