@@ -196,15 +196,17 @@ const _colorbrewer = {
 	EchartThemeR6C1: ['#c12e34', '#e6b600', '#0098d9', '#2b821d', '#005eaa', '#339ca8', '#cda819', '#32a487'],
 	DataVizSet1: ['#9A5E48', '#8E4DA4', '#496C8D', '#4DA45D', '#9A904B'],
 
-}
+} as const
 
 type IColorBrewer_ = {
-	readonly [K in keyof typeof _colorbrewer]: readonly string[];
+	readonly [K in keyof typeof _colorbrewer]: (typeof _colorbrewer)[K];
+} & {
+	readonly [K in Lowercase<keyof typeof _colorbrewer>]: readonly string[];
 }
 
 export interface IColorBrewer extends IColorBrewer_
 {
-	readonly [K: string]: readonly string[];
+
 }
 
 /**
@@ -215,6 +217,6 @@ for (const key in _colorbrewer)
 	_colorbrewer[key.toLowerCase()] = _colorbrewer[key];
 }
 
-export const colorbrewer: IColorBrewer = _colorbrewer;
+export const colorbrewer: IColorBrewer = _colorbrewer as any;
 
 export default colorbrewer
