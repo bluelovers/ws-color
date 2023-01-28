@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/bluelovers/ws-color/compare/@bluelovers/color-palette@1.0.6...@bluelovers/color-palette@1.0.7) (2023-01-28)
+
+
+
+### ♻️　Chores
+
+* update type ([5433b8b](https://github.com/bluelovers/ws-color/commit/5433b8be41875b2bd77c9ac990d8fd11b5cc4bd6))
+
+
+
 ## [1.0.6](https://github.com/bluelovers/ws-color/compare/@bluelovers/color-palette@1.0.4...@bluelovers/color-palette@1.0.6) (2022-11-07)
 
 

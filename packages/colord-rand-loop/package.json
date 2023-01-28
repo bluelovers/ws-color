@@ -1,6 +1,6 @@
 {
   "name": "colord-rand-loop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": [
     "colord",
@@ -83,9 +83,7 @@
   "dependencies": {
     "@lazy-color/rand-util": "^1.0.1",
     "colord": "^2.9.3",
-    "loop-colors": "^1.0.9"
+    "loop-colors": "^1.0.10"
   },
-  "devDependencies": {},
-  "peerDependencies": {},
   "packageManager": "yarn@1.22.19"
 }
