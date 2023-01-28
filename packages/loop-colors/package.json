@@ -67,6 +67,9 @@
     "postpublishOnly": "echo postpublishOnly",
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
+  "dependencies": {
+    "ts-type": "^3.0.1"
+  },
   "packageManager": "yarn@1.22.19",
   "gitHead": "1a78c3b8852e8d1e72c7ee7d8bee4ae6c9cae1c7"
 }

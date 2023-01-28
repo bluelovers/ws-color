@@ -1,6 +1,7 @@
 /**
  * Created by user on 2020/6/17.
  */
+import { ITSArrayListMaybeReadonly } from 'ts-type/lib/type/base';
 
 export function cssColors()
 {
@@ -29,7 +30,7 @@ export interface IOptions<T = string, R = T>
 	generator?(colors: readonly T[], position: number, idx: number, len: number): R
 }
 
-export function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOptions<T, R>)
+export function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, options?: IOptions<T, R>)
 {
 	options ??= {};
 

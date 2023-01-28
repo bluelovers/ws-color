@@ -1,6 +1,5 @@
-/**
- * Created by user on 2020/6/17.
- */
+import { ITSArrayListMaybeReadonly } from 'ts-type/lib/type/base';
+
 export declare function cssColors(): readonly [
 	"#906",
 	"#66F",
@@ -17,7 +16,7 @@ export interface IOptions<T = string, R = T> {
 	limit?: number | -1;
 	generator?(colors: readonly T[], position: number, idx: number, len: number): R;
 }
-export declare function loopColors<T, R = T>(colors: T[] | readonly T[], options?: IOptions<T, R>): (startIndex?: number) => Generator<R, undefined, R>;
+export declare function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, options?: IOptions<T, R>): (startIndex?: number) => Generator<R, undefined, R>;
 
 export {
 	loopColors as default,
