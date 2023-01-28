@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/bluelovers/ws-color/compare/@lazy-color/rand-util@1.0.1...@lazy-color/rand-util@1.0.2) (2023-01-28)
+
+
+
+### 🔖　Miscellaneous
+
+* . ([cad43dd](https://github.com/bluelovers/ws-color/commit/cad43ddfbb1ec03903d2e85076cee0a68d1d6862))
+
+
+
 ## 1.0.1 (2023-01-27)
 
 

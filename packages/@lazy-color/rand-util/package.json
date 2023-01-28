@@ -1,6 +1,6 @@
 {
   "name": "@lazy-color/rand-util",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "keywords": [
     "create-by-yarn-tool",
@@ -76,7 +76,7 @@
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "@lazy-color/types": "^1.0.0",
+    "@lazy-color/types": "^1.0.1",
     "@lazy-num/to-fixed-number": "^1.0.9"
   },
   "packageManager": "yarn@1.22.19",
