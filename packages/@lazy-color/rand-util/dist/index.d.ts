@@ -17,14 +17,14 @@ export interface IColorRGBObject {
 	a?: number;
 }
 export type IColorRGBA = readonly number[] | IColorRGBArray;
-export interface IOptions {
+export interface IOptionsRandColorUtil {
 	randFn?(): number;
 }
-export declare function _handleOptions(opts?: IOptions): IOptions;
-export declare function _randAlpha(opts?: IOptions): number;
-export declare function _randValue(base: number, opts?: IOptions): number;
-export declare function _rgbRand<T extends IColorRGBA>(_rgba?: T, opts?: IOptions): T;
-export declare function _rgbObjectRand<T extends IColorRGBObject>(_rgba?: T, opts?: IOptions): {
+export declare function _handleOptions(opts?: IOptionsRandColorUtil): IOptionsRandColorUtil;
+export declare function _randAlpha(opts?: IOptionsRandColorUtil): number;
+export declare function _randValue(base: number, opts?: IOptionsRandColorUtil): number;
+export declare function _rgbRand<T extends IColorRGBA>(_rgba?: T, opts?: IOptionsRandColorUtil): T;
+export declare function _rgbObjectRand<T extends IColorRGBObject>(_rgba?: T, opts?: IOptionsRandColorUtil): {
 	r: number;
 	g: number;
 	b: number;

@@ -38,7 +38,7 @@ Object.defineProperty(_rgbRand, "__esModule", {
 }), Object.defineProperty(_rgbRand, "_rgbObjectRand", {
   value: function _rgbObjectRand(n, r) {
     var e, a, d;
-    let {r: t, g: u, b: l, a: o} = n;
+    let {r: t, g: u, b: l, a: o} = null != n ? n : {};
     return t = Math.round(_randValue(null !== (e = t) && void 0 !== e ? e : 255, r)), 
     u = Math.round(_randValue(null !== (a = u) && void 0 !== a ? a : 255, r)), l = Math.round(_randValue(null !== (d = l) && void 0 !== d ? d : 255, r)), 
     {

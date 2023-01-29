@@ -1,12 +1,12 @@
 import { cssColors, IOptions, loopColors } from 'loop-colors';
-import { colord, Colord, random } from 'colord';
-import { _rgbObjectRand } from '@lazy-color/rand-util';
-import { ITSArrayListMaybeReadonly } from 'ts-type';
+import { colord, Colord, random, RgbaColor } from 'colord';
+import { _rgbObjectRand, IOptionsRandColorUtil } from '@lazy-color/rand-util';
+import { ITSArrayListMaybeReadonly } from 'ts-type/lib/type/base';
 import { AnyColor } from 'colord/types';
 
 export type IColorInput = AnyColor | Colord;
 
-export interface IOptionsColordRandLoop extends IOptions<IColorInput, Colord>
+export interface IOptionsColordRandLoop extends IOptions<IColorInput, Colord>, IOptionsRandColorUtil
 {
 	cache?: Set<string>
 	colors?: ITSArrayListMaybeReadonly<IColorInput>
@@ -14,6 +14,7 @@ export interface IOptionsColordRandLoop extends IOptions<IColorInput, Colord>
 
 export function createDefaultGenerator({
 	cache,
+	...opts
 }: IOptionsColordRandLoop)
 {
 	cache ??= new Set<string>();
@@ -23,7 +24,7 @@ export function createDefaultGenerator({
 		let cc = colord(colors[position]);
 		if (!cc.isValid())
 		{
-			cc = random()
+			cc = typeof opts.randFn === 'function' ? colord(_rgbObjectRand<RgbaColor>(null, opts)) : random()
 		}
 		const _rgba = cc.toRgb();
 
@@ -38,7 +39,7 @@ export function createDefaultGenerator({
 				e = 0;
 			}
 
-			result = colord(_rgbObjectRand(_rgba))
+			result = colord(_rgbObjectRand(_rgba, opts))
 			e++;
 		}
 

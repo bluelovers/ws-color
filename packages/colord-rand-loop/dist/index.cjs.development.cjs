@@ -5,14 +5,15 @@ var colord = require('colord');
 var randUtil = require('@lazy-color/rand-util');
 
 function createDefaultGenerator({
-  cache
+  cache,
+  ...opts
 }) {
   var _cache;
   (_cache = cache) !== null && _cache !== void 0 ? _cache : cache = new Set();
   return (colors, position) => {
     let cc = colord.colord(colors[position]);
     if (!cc.isValid()) {
-      cc = colord.random();
+      cc = typeof opts.randFn === 'function' ? colord.colord(randUtil._rgbObjectRand(null, opts)) : colord.random();
     }
     const _rgba = cc.toRgb();
     let e = 0;
@@ -22,7 +23,7 @@ function createDefaultGenerator({
         cache.clear();
         e = 0;
       }
-      result = colord.colord(randUtil._rgbObjectRand(_rgba));
+      result = colord.colord(randUtil._rgbObjectRand(_rgba, opts));
       e++;
     }
     cache.add(result.toRgbString());

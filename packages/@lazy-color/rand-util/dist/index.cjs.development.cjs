@@ -30,7 +30,7 @@ function _rgbObjectRand(_rgba, opts) {
     g,
     b,
     a
-  } = _rgba;
+  } = _rgba !== null && _rgba !== void 0 ? _rgba : {};
   r = Math.round(_randValue((_r = r) !== null && _r !== void 0 ? _r : 255, opts));
   g = Math.round(_randValue((_g = g) !== null && _g !== void 0 ? _g : 255, opts));
   b = Math.round(_randValue((_b = b) !== null && _b !== void 0 ? _b : 255, opts));

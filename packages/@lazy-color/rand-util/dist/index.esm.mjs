@@ -26,21 +26,21 @@ function _rgbRand(n, r) {
 }
 
 function _rgbObjectRand(n, r) {
-  var a, d, t;
-  let {r: u, g: l, b: o, a: e} = n;
+  var a, d, l;
+  let {r: u, g: t, b: o, a: e} = null != n ? n : {};
   return u = Math.round(_randValue(null !== (a = u) && void 0 !== a ? a : 255, r)), 
-  l = Math.round(_randValue(null !== (d = l) && void 0 !== d ? d : 255, r)), o = Math.round(_randValue(null !== (t = o) && void 0 !== t ? t : 255, r)), 
+  t = Math.round(_randValue(null !== (d = t) && void 0 !== d ? d : 255, r)), o = Math.round(_randValue(null !== (l = o) && void 0 !== l ? l : 255, r)), 
   {
     r: u,
-    g: l,
+    g: t,
     b: o,
     a: e
   };
 }
 
 function _rgbObjectToArray(n) {
-  const {r, g: a, b: d, a: t} = n;
-  return [ r, a, d, t ];
+  const {r, g: a, b: d, a: l} = n;
+  return [ r, a, d, l ];
 }
 
 export { _handleOptions, _randAlpha, _randValue, _rgbObjectRand, _rgbObjectToArray, _rgbRand, _rgbRand as default };

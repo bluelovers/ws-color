@@ -3,29 +3,29 @@ import { IColorRGBArray, IColorRGBObject } from '@lazy-color/types';
 
 export type IColorRGBA = readonly number[] | IColorRGBArray;
 
-export interface IOptions
+export interface IOptionsRandColorUtil
 {
 	randFn?(): number
 }
 
-export function _handleOptions(opts?: IOptions): IOptions
+export function _handleOptions(opts?: IOptionsRandColorUtil): IOptionsRandColorUtil
 {
 	return {
 		randFn: opts?.randFn ?? Math.random,
 	}
 }
 
-export function _randAlpha(opts?: IOptions)
+export function _randAlpha(opts?: IOptionsRandColorUtil)
 {
 	return toFixedNumber(_handleOptions(opts).randFn(), 3)
 }
 
-export function _randValue(base: number, opts?: IOptions)
+export function _randValue(base: number, opts?: IOptionsRandColorUtil)
 {
 	return _handleOptions(opts).randFn() * base
 }
 
-export function _rgbRand<T extends IColorRGBA>(_rgba?: T, opts?: IOptions): T
+export function _rgbRand<T extends IColorRGBA>(_rgba?: T, opts?: IOptionsRandColorUtil): T
 {
 	// @ts-ignore
 	_rgba = _rgba?.slice() || [];
@@ -39,9 +39,9 @@ export function _rgbRand<T extends IColorRGBA>(_rgba?: T, opts?: IOptions): T
 	return _rgba
 }
 
-export function _rgbObjectRand<T extends IColorRGBObject>(_rgba?: T, opts?: IOptions)
+export function _rgbObjectRand<T extends IColorRGBObject>(_rgba?: T, opts?: IOptionsRandColorUtil)
 {
-	let { r, g, b, a } = _rgba;
+	let { r, g, b, a } = _rgba ?? {};
 
 	r = Math.round(_randValue(r ?? 255, opts));
 	g = Math.round(_randValue(g ?? 255, opts));

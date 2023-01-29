@@ -2,28 +2,28 @@
 
 var o = require("loop-colors"), e = require("colord"), r = require("@lazy-color/rand-util");
 
-function createDefaultGenerator({cache: o}) {
+function createDefaultGenerator({cache: o, ...t}) {
   var a;
-  return null !== (a = o) && void 0 !== a || (o = new Set), (a, t) => {
-    let l = e.colord(a[t]);
-    l.isValid() || (l = e.random());
-    const d = l.toRgb();
-    let n = 0, c = l;
-    for (;o.has(c.toRgbString()); ) n > 5 && (o.clear(), n = 0), c = e.colord(r._rgbObjectRand(d)), 
-    n++;
-    return o.add(c.toRgbString()), c;
+  return null !== (a = o) && void 0 !== a || (o = new Set), (a, l) => {
+    let n = e.colord(a[l]);
+    n.isValid() || (n = "function" == typeof t.randFn ? e.colord(r._rgbObjectRand(null, t)) : e.random());
+    const d = n.toRgb();
+    let c = 0, u = n;
+    for (;o.has(u.toRgbString()); ) c > 5 && (o.clear(), c = 0), u = e.colord(r._rgbObjectRand(d, t)), 
+    c++;
+    return o.add(u.toRgbString()), u;
   };
 }
 
 function createColordRandLoop(e) {
-  var r, a, t;
-  let {colors: l, cache: d, ...n} = {
+  var r, t, a;
+  let {colors: l, cache: n, ...d} = {
     ...e
   };
-  return null !== (r = l) && void 0 !== r || (l = o.cssColors()), null !== (a = d) && void 0 !== a || (d = new Set), 
-  null !== (t = n.generator) && void 0 !== t || (n.generator = createDefaultGenerator({
-    cache: d
-  })), o.loopColors(l, n);
+  return null !== (r = l) && void 0 !== r || (l = o.cssColors()), null !== (t = n) && void 0 !== t || (n = new Set), 
+  null !== (a = d.generator) && void 0 !== a || (d.generator = createDefaultGenerator({
+    cache: n
+  })), o.loopColors(l, d);
 }
 
 function colordRandLoop(o, e) {
