@@ -1,19 +1,26 @@
 "use strict";
 
-var r = require("@lazy-num/to-fixed-number");
+var n = require("@lazy-num/to-fixed-number");
 
-function _randValue(r) {
-  return Math.random() * r;
+function _handleOptions(n) {
+  var r;
+  return {
+    randFn: null !== (r = null == n ? void 0 : n.randFn) && void 0 !== r ? r : Math.random
+  };
 }
 
-function _rgbRand(r) {
+function _randValue(n, r) {
+  return _handleOptions(r).randFn() * n;
+}
+
+function _rgbRand(n, r) {
   var e;
-  r = (null === (e = r) || void 0 === e ? void 0 : e.slice()) || [];
+  n = (null === (e = n) || void 0 === e ? void 0 : e.slice()) || [];
   for (let e = 0; e < 3; e++) {
-    var n;
-    r[e] = Math.round(_randValue(null !== (n = r[e]) && void 0 !== n ? n : 255));
+    var a;
+    n[e] = Math.round(_randValue(null !== (a = n[e]) && void 0 !== a ? a : 255, r));
   }
-  return r;
+  return n;
 }
 
 Object.defineProperty(_rgbRand, "__esModule", {
@@ -23,27 +30,30 @@ Object.defineProperty(_rgbRand, "__esModule", {
 }), Object.defineProperty(_rgbRand, "default", {
   value: _rgbRand
 }), Object.defineProperty(_rgbRand, "_randAlpha", {
-  value: function _randAlpha() {
-    return r.toFixedNumber(Math.random(), 3);
+  value: function _randAlpha(r) {
+    return n.toFixedNumber(_handleOptions(r).randFn(), 3);
   }
 }), Object.defineProperty(_rgbRand, "_randValue", {
   value: _randValue
 }), Object.defineProperty(_rgbRand, "_rgbObjectRand", {
-  value: function _rgbObjectRand(r) {
-    var e, n, a;
-    let {r: d, g: t, b: u, a: l} = r;
-    return d = Math.round(_randValue(null !== (e = d) && void 0 !== e ? e : 255)), t = Math.round(_randValue(null !== (n = t) && void 0 !== n ? n : 255)), 
-    u = Math.round(_randValue(null !== (a = u) && void 0 !== a ? a : 255)), {
-      r: d,
-      g: t,
-      b: u,
-      a: l
+  value: function _rgbObjectRand(n, r) {
+    var e, a, d;
+    let {r: t, g: u, b: l, a: o} = n;
+    return t = Math.round(_randValue(null !== (e = t) && void 0 !== e ? e : 255, r)), 
+    u = Math.round(_randValue(null !== (a = u) && void 0 !== a ? a : 255, r)), l = Math.round(_randValue(null !== (d = l) && void 0 !== d ? d : 255, r)), 
+    {
+      r: t,
+      g: u,
+      b: l,
+      a: o
     };
   }
 }), Object.defineProperty(_rgbRand, "_rgbObjectToArray", {
-  value: function _rgbObjectToArray(r) {
-    const {r: e, g: n, b: a, a: d} = r;
-    return [ e, n, a, d ];
+  value: function _rgbObjectToArray(n) {
+    const {r, g: e, b: a, a: d} = n;
+    return [ r, e, a, d ];
   }
+}), Object.defineProperty(_rgbRand, "_handleOptions", {
+  value: _handleOptions
 }), module.exports = _rgbRand;
 //# sourceMappingURL=index.cjs.production.min.cjs.map
