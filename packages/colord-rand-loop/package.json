@@ -1,6 +1,6 @@
 {
   "name": "colord-rand-loop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "keywords": [
     "colord",
@@ -81,7 +81,7 @@
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "@lazy-color/rand-util": "^1.0.2",
+    "@lazy-color/rand-util": "^1.0.3",
     "colord": "^2.9.3",
     "loop-colors": "^1.0.10"
   },
