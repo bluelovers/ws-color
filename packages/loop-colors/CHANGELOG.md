@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.11](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.10...loop-colors@1.0.11) (2023-11-24)
+
+
+
+### 🔖　Miscellaneous
+
+* . ([25da7f4](https://github.com/bluelovers/ws-color/commit/25da7f42a07e140a5a2d4418e64238691ca57265))
+
+
+
 ## [1.0.10](https://github.com/bluelovers/ws-color/compare/loop-colors@1.0.9...loop-colors@1.0.10) (2023-01-28)
 
 
