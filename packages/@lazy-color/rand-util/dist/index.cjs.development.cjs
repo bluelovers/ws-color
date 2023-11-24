@@ -16,9 +16,11 @@ function _randValue(base, opts) {
 }
 function _rgbRand(_rgba, opts) {
   var _rgba2;
+  // @ts-ignore
   _rgba = ((_rgba2 = _rgba) === null || _rgba2 === void 0 ? void 0 : _rgba2.slice()) || [];
   for (let i = 0; i < 3; i++) {
     var _rgba$i;
+    // @ts-ignore
     _rgba[i] = Math.round(_randValue((_rgba$i = _rgba[i]) !== null && _rgba$i !== void 0 ? _rgba$i : 255, opts));
   }
   return _rgba;
@@ -50,6 +52,7 @@ function _rgbObjectToArray(_rgba) {
   } = _rgba;
   return [r, g, b, a];
 }
+// @ts-ignore
 {
   Object.defineProperty(_rgbRand, "__esModule", {
     value: true

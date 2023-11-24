@@ -14,6 +14,7 @@ function loopColors(colors, options) {
   colors = colors.slice();
   let idx = 0;
   const len = colors.length;
+  // @ts-ignore
   let getIndex = (index, length) => idx++ % len;
   if (options.rand) {
     const rand = options.rand === true ? Math.random : options.rand;
@@ -25,6 +26,7 @@ function loopColors(colors, options) {
   }
   let limit = options.limit | 0;
   limit = limit > 0 ? limit : Infinity;
+  // @ts-ignore
   const generator = (_options$generator = options.generator) !== null && _options$generator !== void 0 ? _options$generator : (colors, position) => colors[position];
   return function* (startIndex) {
     if (typeof startIndex !== 'undefined') {

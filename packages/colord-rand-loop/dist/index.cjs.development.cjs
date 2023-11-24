@@ -49,6 +49,7 @@ function createColordRandLoop(options) {
 function colordRandLoop(startIndex, options) {
   return createColordRandLoop(options)(startIndex);
 }
+// @ts-ignore
 {
   Object.defineProperty(colordRandLoop, "__esModule", {
     value: true

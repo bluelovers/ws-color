@@ -2,6 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+/**
+ * @see https://github.com/apexcharts/apexcharts.js/blob/main/src/modules/Theme.js#L198
+ */
 const paletteApexcharts = {
   'default': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
   'palette1': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
