@@ -1,23 +1,23 @@
 "use strict";
 
 function loopColors(o, l) {
-  var e, r;
-  null !== (e = l) && void 0 !== e || (l = {}), o = o.slice();
-  let t = 0;
-  const n = o.length;
-  let getIndex = (o, l) => t++ % n;
+  var e;
+  null != l || (l = {}), o = o.slice();
+  let r = 0;
+  const t = o.length;
+  let getIndex = (o, l) => r++ % t;
   if (l.rand) {
     const o = !0 === l.rand ? Math.random : l.rand, e = getIndex;
-    getIndex = (l, r) => (t = Math.floor(r * o(l, r)), e(t, r));
+    getIndex = (l, t) => (r = Math.floor(t * o(l, t)), e(r, t));
   }
-  let s = 0 | l.limit;
-  s = s > 0 ? s : Infinity;
-  const i = null !== (r = l.generator) && void 0 !== r ? r : (o, l) => o[l];
+  let n = 0 | l.limit;
+  n = n > 0 ? n : Infinity;
+  const s = null !== (e = l.generator) && void 0 !== e ? e : (o, l) => o[l];
   return function*(l) {
-    t = void 0 !== l ? (l |= 0) >= 0 ? l : t : 0;
+    r = void 0 !== l ? (l |= 0) >= 0 ? l : r : 0;
     do {
-      yield i(o, getIndex(t, n), t, n);
-    } while (--s > 0);
+      yield s(o, getIndex(r, t), r, t);
+    } while (--n > 0);
   };
 }
 

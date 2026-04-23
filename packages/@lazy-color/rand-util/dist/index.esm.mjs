@@ -26,15 +26,13 @@ function _rgbRand(n, r) {
 }
 
 function _rgbObjectRand(n, r) {
-  var a, d, l;
-  let {r: u, g: t, b: o, a: e} = null != n ? n : {};
-  return u = Math.round(_randValue(null !== (a = u) && void 0 !== a ? a : 255, r)), 
-  t = Math.round(_randValue(null !== (d = t) && void 0 !== d ? d : 255, r)), o = Math.round(_randValue(null !== (l = o) && void 0 !== l ? l : 255, r)), 
-  {
-    r: u,
-    g: t,
-    b: o,
-    a: e
+  let {r: a, g: d, b: l, a: u} = null != n ? n : {};
+  return a = Math.round(_randValue(null != a ? a : 255, r)), d = Math.round(_randValue(null != d ? d : 255, r)), 
+  l = Math.round(_randValue(null != l ? l : 255, r)), {
+    r: a,
+    g: d,
+    b: l,
+    a: u
   };
 }
 
