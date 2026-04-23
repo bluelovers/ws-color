@@ -13,6 +13,47 @@ declare module '../chroma'
 {
 	interface chroma
 	{
+		/**
+		 * Cubehelix color generator.
+		 * Cubehelix 色彩生成器
+		 *
+		 * @param start - 起始色相角度 (預設 300) / Starting hue angle (default 300)
+		 * @param rotations - 旋轉圈數 (預設 -1.5) / Number of rotations (default -1.5)
+		 * @param hue - 色彩飽和度範圍 / Hue saturation range
+		 * @param gamma - Gamma 校正值 (預設 1) / Gamma correction value (default 1)
+		 * @param lightness - 亮度範圍 (預設 [0, 1]) / Lightness range (default [0, 1])
+		 * @returns Cubehelix 插值函式 / Cubehelix interpolation function
+		 * @example
+		 * ```typescript
+		 * // 基本使用 - 預設參數
+		 * const cubehelixFn = chroma.cubehelix();
+		 * cubehelixFn(0);   // returns color at 0 (start)
+		 * cubehelixFn(0.5); // returns color at 0.5 (middle)
+		 * cubehelixFn(1);   // returns color at 1 (end)
+		 *
+		 * // 自訂參數
+		 * const custom = chroma.cubehelix(0, 1.5, 2, 1, [0, 1]);
+		 * custom(0.3); // returns interpolated color
+		 *
+		 * // 轉換為比例尺
+		 * const scale = chroma.cubehelix().scale();
+		 * ```
+		 * @example
+		 * ```typescript
+		 * // 鏈式方法設定參數
+		 * const cold = chroma.cubehelix()
+		 *   .start(200)      // 藍色起始
+		 *   .rotations(-1)   // 逆時針旋轉
+		 *   .hue(1.5);       // 高飽和度
+		 * cold(0.5); // returns cold-toned color
+		 *
+		 * const warm = chroma.cubehelix()
+		 *   .start(0)        // 紅色起始
+		 *   .rotations(1)    // 順時針旋轉
+		 *   .lightness([0.2, 0.8]);
+		 * warm(0.5); // returns warm-toned color
+		 * ```
+		 */
 		cubehelix: typeof cubehelix
 	}
 }

@@ -12,6 +12,43 @@ export type IBlendMode = 'multiply' | 'darken' | 'lighten' | 'screen' | 'overlay
 
 /**
  * Blends two colors using RGB channel-wise blend functions.
+ * 使用 RGB 通道混合函式混合兩個色彩。
+ *
+ * @param bottom - 底層色彩 / Bottom color
+ * @param top - 頂層色彩 / Top color
+ * @param mode - 混合模式 / Blend mode
+ * @returns 混合後的色彩 / Blended color
+ * @example
+ * ```typescript
+ * // 基本混合模式
+ * chroma.blend('red', 'blue', 'multiply');
+ * // returns darker color (multiply blend)
+ *
+ * chroma.blend('#ff0000', '#0000ff', 'screen');
+ * // returns lighter color (screen blend)
+ *
+ * // 其他混合模式
+ * chroma.blend('white', 'black', 'darken');  // returns black
+ * chroma.blend('white', 'black', 'lighten');  // returns white
+ * chroma.blend('white', 'black', 'overlay');  // returns gray
+ * chroma.blend('white', 'black', 'burn');    // returns black
+ * chroma.blend('white', 'black', 'dodge');    // returns white
+ * ```
+ * @example
+ * ```typescript
+ * // 使用 Color 物件
+ * const color1 = chroma('red');
+ * const color2 = chroma('blue');
+ * chroma.blend(color1, color2, 'multiply');
+ *
+ * // 在迴圈中混合多個色彩
+ * const layers = ['red', 'orange', 'yellow', 'green', 'blue'];
+ * let result = 'white';
+ * for (const color of layers)
+ * {
+ *   result = chroma.blend(result, color, 'multiply');
+ * }
+ * ```
  */
 export function blend(bottom: string | Color, top: string | Color, mode: IBlendMode)
 {
@@ -83,6 +120,7 @@ declare module '../chroma'
 	{
 		/**
 		 * Blends two colors using RGB channel-wise blend functions.
+		 * 使用 RGB 通道混合函式混合兩個色彩。
 		 */
 		blend: typeof blend
 	}

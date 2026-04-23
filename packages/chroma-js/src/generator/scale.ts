@@ -1,6 +1,39 @@
 // minimal multi-purpose interface
+// 多用途色彩比例尺介面
 
 // @requires utils color analyze
+
+/**
+ * Creates a multi-purpose color scale.
+ * 建立多用途色彩比例尺
+ *
+ * @param colors - 色彩陣列或 ColorBrew 調色盤名稱 / Array of colors or ColorBrew palette name
+ * @param argv - 額外的 RGB 參數 / Additional RGB parameters
+ * @returns 比例尺函式 / Scale function
+ * @example
+ * ```typescript
+ * // 基本兩色比例尺
+ * const scale = chroma.scale(['red', 'blue']);
+ * scale(0);   // returns chroma color at 0 (red)
+ * scale(0.5);  // returns chroma color at 0.5 (purple)
+ * scale(1);    // returns chroma color at 1 (blue)
+ *
+ * // 使用 ColorBrew 調色盤
+ * const heatmap = chroma.scale('YlOrRd');
+ * heatmap(0.3); // returns color from Yellow-Orange-Red palette
+ *
+ * // 自訂網域與類別
+ * const dataScale = chroma.scale(['lightblue', 'darkblue'])
+ *   .domain([0, 100])
+ *   .classes(5);
+ * dataScale(50); // returns interpolated color
+ *
+ * // 多色比例尺
+ * const rainbow = chroma.scale(['red', 'green', 'blue']);
+ * rainbow(0.5); // returns green-ish color
+ * ```
+ * @see {@link https://github.com/gka/chroma.js/blob/main/src/generator/scale.js}
+ */
 
 import chroma from '../chroma';
 import '../utils/limit';

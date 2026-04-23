@@ -11,6 +11,7 @@ declare module '../chroma'
 		/**
 		 * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
 		 * channel.
+		 * 類似於 {@link mix}，但接受多於兩個色彩。簡單地對 R、G、B 通道和 Alpha 通道進行平均計算。
 		 */
 		average: typeof average
 	}
@@ -19,6 +20,38 @@ declare module '../chroma'
 /**
  * Similar to {@link mix}, but accepts more than two colors. Simple averaging of R,G,B components and the alpha
  * channel.
+ * 類似於 {@link mix}，但接受多於兩個色彩。簡單地對 R、G、B 通道和 Alpha 通道進行平均計算。
+ *
+ * @param colors - 色彩陣列 / Array of colors
+ * @param mode - 內插模式 (預設 'lrgb') / Interpolation mode (default 'lrgb')
+ * @param weights - 權重陣列 (可選) / Weight array (optional)
+ * @returns 平均後的色彩 / Averaged color
+ * @example
+ * ```typescript
+ * // 基本使用 - 三個色彩平均
+ * const avg = chroma.average(['red', 'green', 'blue']);
+ * // returns the average color of red, green, and blue
+ *
+ * // 使用自訂權重
+ * const weighted = chroma.average(['red', 'green', 'blue'], 'lrgb', [3, 1, 1]);
+ * // returns weighted average (red has higher weight)
+ *
+ * // 指定內插模式
+ * const labAvg = chroma.average(['#ff0000', '#00ff00', '#0000ff'], 'lab');
+ * // averages colors in Lab color space
+ * ```
+ * @example
+ * ```typescript
+ * // 多個色彩陣列混合
+ * const colors = ['#e74c3c', '#f39c12', '#2ecc71', '#3498db', '#9b59b6'];
+ * const mixed = chroma.average(colors);
+ * // returns single averaged color
+ *
+ * // 與其他函式搭配使用
+ * const gradientColors = chroma.scale('YlGnBu').colors(10);
+ * const midColor = chroma.average(gradientColors.slice(2, 8));
+ * // returns averaged color from middle portion of gradient
+ * ```
  */
 function average(colors: (string | Color)[], mode: IInterpolationMode = 'lrgb', weights?: number[]): Color
 {

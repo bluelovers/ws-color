@@ -18,7 +18,19 @@ declare module '../../chroma'
 	interface chroma
 	{
 		/**
+		 * GL 是 RGB 的變體，差異在於元件值正規化為 0-1 範圍
 		 * GL is a variant of RGB(A), with the only difference that the components are normalized to the range of 0..1.
+		 *
+		 * @param red 紅色元件 (0-1) / Red component (0-1)
+		 * @param green 綠色元件 (0-1) / Green component (0-1)
+		 * @param blue 藍色元件 (0-1) / Blue component (0-1)
+		 * @param alpha 透明度 (可選) / Alpha (optional)
+		 * @returns 色彩物件 / the color object
+		 *
+		 * @example
+		 * ```typescript
+		 * chroma.gl(0.2, 0.8, 0, 1); // #33cc00
+		 * ```
 		 */
 		gl(red: number, green: number, blue: number, alpha?: number): Color;
 		gl(...args): Color

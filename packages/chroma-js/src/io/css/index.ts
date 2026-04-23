@@ -15,8 +15,17 @@ declare module '../../Color'
 	interface Color
 	{
 		/**
-		 * Returns a RGB() or HSL() string representation that can be used as CSS-color definition.
-		 * mode defaults to <code>'rgb'</code>
+		 * 回傳 RGB() 或 HSL() 字串表示，可作為 CSS 色彩定義
+		 * Returns a RGB() or HSL() string representation that can be used as CSS-color definition
+		 *
+		 * @param mode 輸出模式，預設為 'rgb' / Output mode, defaults to 'rgb'
+		 * @returns CSS 色彩字串 / CSS color string
+		 *
+		 * @example
+		 * ```typescript
+		 * chroma('orange').css() === 'rgb(255, 165, 0)'
+		 * chroma('orange').css('hsl') === 'hsl(38.82, 100%, 50%)'
+		 * ```
 		 */
 		css(mode?: IRgb2CssMode): string;
 	}
@@ -27,6 +36,20 @@ declare module '../../chroma'
 {
 	interface chroma
 	{
+		/**
+		 * 從 CSS 色彩字串建立色彩
+		 * Create a color from a CSS color string
+		 *
+		 * @param color CSS 色彩字串 / CSS color string
+		 * @returns 色彩物件 / the color object
+		 *
+		 * @example
+		 * ```typescript
+		 * chroma.css('orange');
+		 * chroma.css('rgb(255, 165, 0)');
+		 * chroma.css('hsl(38.82, 100%, 50%)');
+		 * ```
+		 */
 		css(col: string): Color;
 		css(...args): Color
 	}

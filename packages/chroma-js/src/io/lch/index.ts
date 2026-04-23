@@ -49,6 +49,16 @@ setupInputFormat('hcl', hcl2rgb);
 
 (['lch', 'hcl'] as const).forEach(m =>
 {
+	/**
+	 * 從 LCH 值建立色彩
+	 * Create a color from LCH (Lightness, Chroma, Hue) values
+	 *
+	 * @example
+	 * ```typescript
+	 * chroma.lch(79.21, 25.94, 235.11); // skyblue
+	 * chroma.hcl(235.11, 25.94, 79.21); // skyblue (HCL order)
+	 * ```
+	 */
 	chroma[m] = (...args) => new Color(...args, m);
 
 	setupInputAutodetect({

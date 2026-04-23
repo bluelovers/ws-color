@@ -95,6 +95,45 @@ declare module '../chroma'
 		 * [bezier-interpolates]{@link https://www.vis4.net/blog/posts/mastering-multi-hued-color-scales/} between
 		 * colors in Lab space. The input range of the function is [0..1].
 		 * You can convert it to a scale instance by calling <code>chroma.bezier(...).scale()</code>
+		 * 回傳一個在 Lab 色彩空間中對色彩進行 Bezier 插值的函式。輸入範圍為 [0..1]。
+		 * 可透過 <code>chroma.bezier(...).scale()</code> 轉換為比例尺實例。
+		 *
+		 * @param colors - 色彩陣列 (2-5 個色彩) / Array of colors (2-5 colors)
+		 * @returns Bezier 插值函式 / Bezier interpolation function
+		 * @example
+		 * ```typescript
+		 * // 基本線性插值 (2 個色彩)
+		 * const twoColor = chroma.bezier(['red', 'blue']);
+		 * twoColor(0);   // returns red
+		 * twoColor(0.5); // returns purple
+		 * twoColor(1);   // returns blue
+		 *
+		 * // 二次 Bezier 插值 (3 個色彩)
+		 * const threeColor = chroma.bezier(['red', 'yellow', 'blue']);
+		 * threeColor(0.5); // returns yellow
+		 *
+		 * // 三次 Bezier 插值 (4 個色彩)
+		 * const fourColor = chroma.bezier(['red', 'green', 'blue', 'white']);
+		 * fourColor(0.5);
+		 * ```
+		 * @example
+		 * ```typescript
+		 * // 轉換為比例尺以便重複使用
+		 * const myScale = chroma.bezier(['#e74c3c', '#f39c12', '#2ecc71', '#3498db']).scale();
+		 * myScale(0);   // first color
+		 * myScale(0.33);
+		 * myScale(0.66);
+		 * myScale(1);   // last color
+		 *
+		 * // 使用調色盤
+		 * const palette = chroma.bezier([
+		 *   chroma('darkblue'),
+		 *   chroma('#3182bd'),
+		 *   chroma('#6baed6'),
+		 *   chroma('#b3d4f0'),
+		 *   chroma('white')
+		 * ]);
+		 * ```
 		 */
 		bezier: typeof bezier
 	}

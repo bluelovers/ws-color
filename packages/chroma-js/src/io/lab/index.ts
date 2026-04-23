@@ -15,10 +15,16 @@ declare module '../../Color'
 	interface Color
 	{
 		/**
+		 * 回傳包含 L、a、b 元件的陣列
 		 * Returns an array with the **L**, **a**, and **b** components.
 		 *
+		 * L 代表亮度 (0-100)，a 和 b 代表色度通道
+		 * L represents lightness (0-100), a and b represent chromaticity channels
+		 *
 		 * @example
-		 * chroma('orange').lab() === [74.94,23.93,78.95]
+		 * ```typescript
+		 * chroma('orange').lab() === [74.94, 23.93, 78.95]
+		 * ```
 		 */
 		lab(): IColorSpaces["lab"];
 	}
@@ -28,7 +34,21 @@ declare module '../../chroma'
 {
 	interface chroma
 	{
-		lab(...args): Color
+		/**
+		 * 從 LAB 值建立色彩
+		 * Create a color from LAB (L, A, B) values
+		 *
+		 * @param L 亮度 (0-100) / Lightness (0-100)
+		 * @param a a 色度通道 / a chromaticity channel
+		 * @param b b 色度通道 / b chromaticity channel
+		 * @returns 色彩物件 / the color object
+		 *
+		 * @example
+		 * ```typescript
+		 * chroma.lab(74.94, 23.93, 78.95); // orange
+		 * ```
+		 */
+		lab(...args): Color;
 	}
 }
 
