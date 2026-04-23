@@ -1,12 +1,4 @@
-# README.md
+# ws-color
 
-    <%= description %>
-
-## install
-
-```bash
-yarn add <%= name %>
-yarn-tool add <%= name %>
-yt add <%= name %>
-```
+色彩處理工具的 TypeScript 工具庫集合 (TypeScript utility collection for color processing tools)
 

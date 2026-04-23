@@ -1,6 +1,7 @@
 {
   "name": "ws-color",
   "version": "1.0.0",
+  "description": "色彩處理工具的 TypeScript 工具庫集合 (TypeScript utility collection for color processing tools)",
   "private": true,
   "keywords": [
     "color",

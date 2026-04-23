@@ -2,7 +2,7 @@
   "name": "jquery-color-old",
   "version": "1.0.3",
   "private": true,
-  "description": "",
+  "description": "jQuery Color Animations 舊版本封裝包 (Legacy jQuery Color Animations wrapper package)",
   "homepage": "https://github.com/bluelovers/ws-color/tree/master/packages/jquery-color-old#readme",
   "bugs": {
     "url": "https://github.com/bluelovers/ws-color/issues"

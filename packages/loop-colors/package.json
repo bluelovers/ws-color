@@ -1,8 +1,15 @@
 {
   "name": "loop-colors",
   "version": "1.0.11",
-  "description": "",
+  "description": "提供顏色陣列循環迭代功能的工具庫，支援隨機順序與自定義生成器 (Utility library for circular iteration over color arrays with random order and custom generator support)",
   "keywords": [
+    "color",
+    "loop",
+    "iteration",
+    "circular",
+    "generator",
+    "palette",
+    "random",
     "create-by-yarn-tool",
     "create-by-tsdx"
   ],

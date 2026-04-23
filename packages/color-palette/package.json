@@ -1,8 +1,15 @@
 {
   "name": "@bluelovers/color-palette",
   "version": "1.0.7",
-  "description": "",
-  "keywords": [],
+  "description": "色彩調色盤集合，包含 ColorBrewer 和 W3C X11 色彩標準 (Color palette collection including ColorBrewer and W3C X11 color standards)",
+  "keywords": [
+    "color",
+    "palette",
+    "colorbrewer",
+    "w3cx11",
+    "standards",
+    "color-names"
+  ],
   "homepage": "https://github.com/bluelovers/ws-color/tree/master/packages/color-palette#readme",
   "bugs": {
     "url": "https://github.com/bluelovers/ws-color/issues"

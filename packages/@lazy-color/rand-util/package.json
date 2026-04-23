@@ -1,8 +1,13 @@
 {
   "name": "@lazy-color/rand-util",
   "version": "1.0.5",
-  "description": "",
+  "description": "隨機顏色生成工具，提供 RGB 色彩隨機值的工具函數 (Random color generation utilities providing RGB color random value functions)",
   "keywords": [
+    "color",
+    "random",
+    "rgb",
+    "generator",
+    "utility",
     "create-by-yarn-tool",
     "create-by-tsdx"
   ],

@@ -1,13 +1,16 @@
 {
   "name": "colord-rand-loop",
   "version": "1.0.5",
-  "description": "",
+  "description": "基於 Colord 的隨機顏色循環生成器，提供去重功能的顏色生成工具 (Random color loop generator based on Colord with deduplication functionality)",
   "keywords": [
     "colord",
     "rand",
     "loop",
     "color",
     "random",
+    "generator",
+    "palette",
+    "deduplication",
     "create-by-yarn-tool",
     "create-by-tsdx"
   ],

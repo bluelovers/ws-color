@@ -1,11 +1,13 @@
 {
   "name": "@lazy-color/palette-apexcharts",
   "version": "1.0.2",
-  "description": "",
+  "description": "ApexCharts 官方主題的預定義顏色調色板集合 (Pre-defined color palette collection from ApexCharts official themes)",
   "keywords": [
     "apexcharts",
     "color",
     "palette",
+    "charts",
+    "theme",
     "create-by-yarn-tool",
     "create-by-tsdx"
   ],
