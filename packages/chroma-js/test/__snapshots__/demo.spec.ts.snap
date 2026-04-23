@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`empty 1`] = `"#000000"`;
 
@@ -17,8 +17,8 @@ exports[`pink.darken.saturate 1`] = `
 Color {
   "_rgb": [
     255,
-    108.82130445767132,
-    147.20575158719473,
+    108.82130445767133,
+    147.20575158719444,
     1,
   ],
 }

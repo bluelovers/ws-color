@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`five color diverging quadratic bezier interpolation 1st quarter 1`] = `
 Color {
@@ -14,7 +14,7 @@ Color {
 exports[`five color diverging quadratic bezier interpolation 3rd quarter 1`] = `
 Color {
   "_rgb": [
-    165.95197295723432,
+    165.95197295723423,
     206.80328083106684,
     193.23203906355687,
     0.25,
@@ -48,7 +48,7 @@ exports[`five color diverging quadratic bezier interpolation starts from darkred
 Color {
   "_rgb": [
     138.9999882021398,
-    0.00011212162605855155,
+    0.00011212162628832125,
     0,
     1,
   ],
@@ -80,7 +80,7 @@ Color {
 exports[`four color cubic bezier interpolation center 1`] = `
 Color {
   "_rgb": [
-    230.1559171578932,
+    230.1559171578933,
     150.8554374112126,
     52.84422558429743,
     0.5,
@@ -146,7 +146,7 @@ Color {
 exports[`three color quadratic bezier interpolation center is a transluscent greyish red 1`] = `
 Color {
   "_rgb": [
-    196.38575706795183,
+    196.38575706795186,
     91.71313890151566,
     67.65992964943767,
     0.5,

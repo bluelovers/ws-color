@@ -1,5 +1,21 @@
 /**
+ * ApexCharts 預設調色板
+ * ApexCharts Default Palettes
+ *
+ * 預定義的顏色調色板陣列，源自 ApexCharts 官方主題設定。
+ * Pre-defined color palette arrays sourced from ApexCharts official theme settings.
+ *
  * @see https://github.com/apexcharts/apexcharts.js/blob/main/src/modules/Theme.js#L198
+ *
+ * @example
+ * ```typescript
+ * // 取得預設調色板 / Get default palette
+ * import paletteApexcharts from '@lazy-color/palette-apexcharts';
+ * console.log(paletteApexcharts.default); // ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
+ *
+ * // 取得特定調色板 / Get specific palette
+ * console.log(paletteApexcharts.palette3); // ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B']
+ * ```
  */
 export const paletteApexcharts = {
   'default': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
