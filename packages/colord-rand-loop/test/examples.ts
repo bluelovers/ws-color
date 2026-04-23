@@ -139,8 +139,8 @@ function createExhaustGenerator(initialColors: readonly string[]): IOptions<stri
 		}
 		else
 		{
-			// 初始顏色用完了，從最後一個開始產生變化
-			const lastBase = colord(colors[colors.length - 1]);
+			/** 初始顏色用完了，開始產生變化 */
+			const lastBase = colord(colors[idx % colors.length]);
 
 			return lastBase
 				.rotate((Math.random() - 0.5) * 120)

@@ -65,32 +65,56 @@ export function createDefaultGenerator({
 	...opts
 }: IOptionsColordRandLoop)
 {
+	/**
+	 * 初始化快取，若未提供則創建空集合
+	 * Initialize cache, create empty set if not provided
+	 */
 	cache ??= new Set<string>();
 
 	return (colors: ITSArrayListMaybeReadonly<IColorInput>, position: number) =>
 	{
+		/** 取得位置對應的顏色並驗證有效性 / Get color at position and validate */
 		let cc = colord(colors[position]);
 		if (!cc.isValid())
 		{
+			/**
+			 * 顏色無效時使用隨機生成：優先使用自定義隨機函式，否則使用預設隨機
+			 * Use random generation when color invalid: prefer custom random function, otherwise use default
+			 */
 			cc = typeof opts.randFn === 'function' ? colord(_rgbObjectRand<RgbaColor>(null, opts)) : random()
 		}
+
+		/** 轉換為 RGB 格式以進行隨機化處理 / Convert to RGB format for randomization */
 		const _rgba = cc.toRgb();
 
 		let e = 0;
 		let result = cc;
 
+		/**
+		 * 迴圈檢查顏色是否已存在於快取中，若存在則重新生成
+		 * Loop check if color exists in cache, regenerate if exists
+		 */
 		while (cache.has(result.toRgbString()))
 		{
+			/**
+			 * 超過重試次數時清除快取，重新開始
+			 * Clear cache and restart when exceeding retry limit
+			 */
 			if (e > 5)
 			{
 				cache.clear();
 				e = 0;
 			}
 
+			/** 以原始 RGB 為基礎生成新顏色 / Generate new color based on original RGB */
 			result = colord(_rgbObjectRand(_rgba, opts))
 			e++;
 		}
 
+		/**
+		 * 將新顏色加入快取以避免後續重複
+		 * Add new color to cache to avoid duplicates
+		 */
 		cache.add(result.toRgbString());
 
 		return result

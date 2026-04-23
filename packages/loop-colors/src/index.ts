@@ -116,10 +116,23 @@ export function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, optio
 {
 	options ??= {};
 
+	/**
+	 * 保留原始陣列引用以避免外部修改影響遍歷過程，確保閉包內的陣列一致性
+	 *
+	 * Preserves the original array reference to prevent external modifications from affecting the traversal process,
+	 * ensuring array consistency within the closure
+	 */
 	colors = colors.slice();
 
 	let idx = 0;
 	const len = colors.length;
+
+	/**
+	 * 定義默認的索引獲取邏輯，利用閉包狀態維持遍歷順序
+	 *
+	 * Defines the default index retrieval logic,
+	 * utilizing closure state to maintain traversal order
+	 */
 	// @ts-ignore
 	let getIndex = (index: number, length: number) => idx++ % len;
 
@@ -128,6 +141,14 @@ export function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, optio
 		const rand = options.rand === true ? Math.random : options.rand;
 
 		const _ = getIndex;
+
+		/**
+		 * 當啟用隨機策略時覆寫索引獲取器，
+		 * 根據回調或 Math.random 隨機跳轉遍歷位置以避免固定順序導致的模式化輸出
+		 *
+		 * Overrides the index getter when the random strategy is enabled,
+		 * randomly jumping traversal positions based on callbacks or Math.random to avoid patterned output from fixed sequences
+		 */
 		getIndex = (index: number, length: number) =>
 		{
 			idx = Math.floor(length * rand(index, length));
@@ -135,9 +156,20 @@ export function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, optio
 		};
 	}
 
+	/**
+	 * 將限制作業轉換為整數，若非正數則設為無限遍歷以確保生成器可根據外部條件安全結束而非意外停止
+	 * Converts the limit option to an integer, defaulting to infinite traversal if non-positive to ensure the generator can end safely based on external conditions rather than stopping prematurely
+	 */
 	let limit = options.limit | 0;
 	limit = limit > 0 ? limit : Infinity;
 
+	/**
+	 * 採用直接陣列索引訪問作為默認實現，實現遍歷邏輯與結果發送的解耦，
+	 * 允許外部自定義發射邏輯而不干擾核心算法
+	 *
+	 * Adopts direct array index access as the default implementation,
+	 * decoupling traversal logic from yield emission to allow external customization of emission logic without interfering with the core algorithm
+	 */
 	// @ts-ignore
 	const generator: IOptions<T, R>["generator"] = options.generator ?? ((colors, position) => colors[position]);
 
@@ -153,13 +185,20 @@ export function loopColors<T, R = T>(colors: ITSArrayListMaybeReadonly<T>, optio
 			idx = 0;
 		}
 
+		/**
+		 * 支援從指定索引恢復遍歷而不重置內部狀態，
+		 * 使用 do-while 確保至少產出一個值以符合生成器契約並處理 limit === 0 的邊界情況
+		 *
+		 * Supports resuming traversal from a specified index without resetting internal state,
+		 * uses do-while to guarantee at least one yield to match generator contract expectations and handle edge cases like limit === 0
+		 */
 		do
 		{
 			yield generator(colors, getIndex(idx, len), idx, len);
 		}
 		while (--limit > 0);
 
-		return
+		return;
 	};
 }
 
