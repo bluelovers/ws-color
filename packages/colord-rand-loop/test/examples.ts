@@ -14,9 +14,11 @@ import { colordRandLoop, IColorInput, IOptionsColordRandLoop } from '../src/inde
 import { _generateStartToEnd, _generateStartToEndForStringArray } from './lib/_run';
 import { paletteLazyHex } from '@lazy-color/palette-lazy';
 
-// ============================================================================
-// 工具函數：基礎色盤生成
-// ============================================================================
+/*
+ * ============================================================================
+ * 工具函數：基礎色盤生成
+ * ============================================================================
+ */
 
 /**
  * 生成分佈均勻的色盤
@@ -40,7 +42,7 @@ function createEvenPalette(baseColor: string, count: number): string[]
 
 	for (let i = 0; i < count; i++)
 	{
-		// (i / count) * 360 確保均勻分佈在 0-360 度之間
+		/** (i / count) * 360 確保均勻分佈在 0-360 度之間 */
 		const rotated = base.rotate((i / count) * 360);
 		palette.push(rotated.toHex());
 	}
@@ -70,9 +72,9 @@ function createSimilarColor(baseColor: IColorInput)
 {
 	const base = colord(baseColor);
 
-	// 随机旋轉色相 (±40度)
+	/** 随机旋轉色相 (±40度) */
 	const rotateDeg = (Math.random() - 0.5) * 80;
-	// 随机調整亮度 (±10%)
+	/** 随机調整亮度 (±10%) */
 	const lightenAmount = (Math.random() - 0.5) * 0.2;
 
 	let newColor = base.rotate(rotateDeg);
@@ -113,7 +115,7 @@ function createExhaustGenerator(): IOptions<string, Colord>['generator']
 	{
 		if (idx < colors.length)
 		{
-			// 第一輪：直接使用初始顏色
+			/** 第一輪：直接使用初始顏色 */
 			return colord(colors[idx]);
 		}
 		else
@@ -152,13 +154,15 @@ function createDynamicPaletteGenerator(): IOptions<string, Colord>['generator']
 	{
 		if (idx < colors.length)
 		{
-			// 第一輪：直接使用預設顏色
+			/** 第一輪：直接使用預設顏色 */
 			return colord(colors[idx]);
 		}
 		else
 		{
-			// 第二輪：開始產生變化
-			// 使用 idx % colors.length 循環選擇基礎色
+			/**
+			 * 第二輪：開始產生變化
+			 * 使用 idx % colors.length 循環選擇基礎色
+			 */
 			const baseColor = colors[idx % colors.length];
 			const base = colord(baseColor);
 
@@ -181,7 +185,6 @@ function example3_SimilarColorsWithLoop()
 
 	const baseColors = paletteLazyHex.antdTags;
 
-	// 使用自定義生成器
 	const gen = loopColors(baseColors, {
 		rand: true,
 		generator: (colors, position, idx) =>
@@ -228,14 +231,7 @@ function example6_EvenPaletteWithLoop()
 	const baseColor = paletteLazyHex.antdTags[0];
 	const colors = createEvenPalette(baseColor, 5);
 
-	// ---------- 版本 1：靜態色盤 ----------
-	// console.log('\n[版本 1] 靜態色盤:');
-	// const gen1 = loopColors(colors, {})();
-
-	// _generateStartToEndForStringArray(0, 10, gen1);
-
-	// ---------- 版本 2：動態色盤 ----------
-	console.log('\n[版本 2] 動態色盤（第二輪開始變化）:');
+	console.log('\n動態色盤（第二輪開始變化）:');
 
 	const generator = createDynamicPaletteGenerator();
 	const gen2 = loopColors(colors, {
@@ -270,6 +266,5 @@ function main()
 	console.log('\n✓ 所有範例執行完成');
 }
 
-// 執行
 main();
 
