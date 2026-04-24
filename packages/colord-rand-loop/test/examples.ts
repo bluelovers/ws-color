@@ -10,8 +10,9 @@
  */
 import { colord, Colord } from 'colord';
 import { IOptions, loopColors } from 'loop-colors';
-import { colordRandLoop, IOptionsColordRandLoop } from '../src/index';
+import { colordRandLoop, IColorInput, IOptionsColordRandLoop } from '../src/index';
 import { _generateStartToEnd, _generateStartToEndForStringArray } from './lib/_run';
+import { paletteLazyHex } from '@lazy-color/palette-lazy';
 
 // ============================================================================
 // 工具函數：基礎色盤生成
@@ -65,7 +66,7 @@ function createEvenPalette(baseColor: string, count: number): string[]
  * @param baseColor - 基準顏色
  * @returns 相近的隨機顏色
  */
-function createSimilarColor(baseColor: string): string
+function createSimilarColor(baseColor: IColorInput)
 {
 	const base = colord(baseColor);
 
@@ -85,29 +86,7 @@ function createSimilarColor(baseColor: string): string
 		newColor = newColor.darken(Math.abs(lightenAmount));
 	}
 
-	return newColor.toHex();
-}
-
-/**
- * 創建相近色生成器（用於 loopColors）
- * Create similar color generator for loopColors
- *
- * @param colors - 基準顏色陣列
- * @returns 可用於 loopColors 的 generator 函數
- *
- * @example
- * const gen = loopColors(['#FF0000', '#00FF00'], {
- *   rand: true,
- *   generator: createSimilarColorGenerator(['#FF0000', '#00FF00'])
- * })();
- */
-function createSimilarColorGenerator(colors: readonly string[]): IOptions<string, Colord>['generator']
-{
-	return (colorList, position, idx) =>
-	{
-		const base = colord(colors[position]);
-		return colord(createSimilarColor(colors[position]));
-	};
+	return newColor;
 }
 
 // ============================================================================
@@ -128,7 +107,7 @@ function createSimilarColorGenerator(colors: readonly string[]): IOptions<string
  * @param initialColors - 初始預設顏色陣列
  * @returns 可用於 loopColors 的 generator 函數
  */
-function createExhaustGenerator(initialColors: readonly string[]): IOptions<string, Colord>['generator']
+function createExhaustGenerator(): IOptions<string, Colord>['generator']
 {
 	return (colors, position, idx) =>
 	{
@@ -140,7 +119,7 @@ function createExhaustGenerator(initialColors: readonly string[]): IOptions<stri
 		else
 		{
 			/** 初始顏色用完了，開始產生變化 */
-			const lastBase = colord(colors[idx % colors.length]);
+			const lastBase = colord(colors[position]);
 
 			return lastBase
 				.rotate((Math.random() - 0.5) * 120)
@@ -167,7 +146,7 @@ function createExhaustGenerator(initialColors: readonly string[]): IOptions<stri
  * @param palette - 預設色盤（第一輪使用）
  * @returns 可用於 loopColors 的 generator 函數
  */
-function createDynamicPaletteGenerator(palette: readonly string[]): IOptions<string, Colord>['generator']
+function createDynamicPaletteGenerator(): IOptions<string, Colord>['generator']
 {
 	return (colors, position, idx) =>
 	{
@@ -191,37 +170,6 @@ function createDynamicPaletteGenerator(palette: readonly string[]): IOptions<str
 }
 
 /**
- * 範例 1：基本循環使用 (loop-colors)
- * Example 1: Basic loop usage
- */
-function example1_BasicLoop()
-{
-	console.log('\n=== 範例 1：基本順序循環 ===');
-
-	// 直接使用 loopColors，不做任何處理
-	const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF'];
-	const gen = loopColors(colors)();
-
-	_generateStartToEndForStringArray(0, colors.length * 2, gen);
-}
-
-/**
- * 範例 2：隨機循環順序 (loop-colors)
- * Example 2: Random loop order
- *
- * 啟用 rand: true 讓 loopColors 以隨機順序返回顏色
- */
-function example2_RandomLoop()
-{
-	console.log('\n=== 範例 2：隨機循環 ===');
-
-	const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF'];
-	const gen = loopColors(colors, { rand: true })();
-
-	_generateStartToEndForStringArray(0, colors.length * 2, gen);
-}
-
-/**
  * 範例 3：生成相近顏色
  * Example 3: Generate similar colors
  *
@@ -231,33 +179,18 @@ function example3_SimilarColorsWithLoop()
 {
 	console.log('\n=== 範例 3：相近顏色 ===');
 
-	const baseColors = ['#FF0000', '#00FF00', '#0000FF'];
+	const baseColors = paletteLazyHex.antdTags;
 
 	// 使用自定義生成器
 	const gen = loopColors(baseColors, {
 		rand: true,
-		generator: createSimilarColorGenerator(baseColors),
+		generator: (colors, position, idx) =>
+		{
+			return createSimilarColor(colors[position]);
+		},
 	})();
 
-	_generateStartToEnd(0, 10, gen);
-}
-
-/**
- * 範例 4：使用 colordRandLoop（自動去重）
- * Example 4: Using colordRandLoop (auto deduplication)
- */
-function example4_ColordRandLoop()
-{
-	console.log('\n=== 範例 4：自動去重 ===');
-
-	const options: IOptionsColordRandLoop = {
-		cache: new Set<string>(),
-		rand: true,
-	};
-
-	const gen = colordRandLoop(0, options);
-
-	_generateStartToEnd(0, 10, gen);
+	_generateStartToEnd(0, baseColors.length * 2, gen);
 }
 
 /**
@@ -270,14 +203,14 @@ function example5_ExhaustThenGenerate()
 {
 	console.log('\n=== 範例 5：顏色用完後生成新顏色 ===');
 
-	const initialColors = ['#FF0000', '#00FF00', '#0000FF'];
-	const generator = createExhaustGenerator(initialColors);
+	const initialColors = paletteLazyHex.antdTags;
+	const generator = createExhaustGenerator();
 
 	const gen = loopColors(initialColors, {
 		generator,
 	})();
 
-	console.log('  --- 第一輪：使用初始顏色 (3個) ---');
+	console.log(`  --- 第一輪：使用初始顏色 (${initialColors.length}個) ---`);
 	_generateStartToEnd(0, initialColors.length, gen);
 
 	console.log('  --- 第二輪：生成新顏色 ---');
@@ -292,27 +225,28 @@ function example6_EvenPaletteWithLoop()
 {
 	console.log('\n=== 範例 6：均勻色盤 ===');
 
-	const baseColor = '#FF5500';
+	const baseColor = paletteLazyHex.antdTags[0];
+	const colors = createEvenPalette(baseColor, 5);
 
 	// ---------- 版本 1：靜態色盤 ----------
-	console.log('\n[版本 1] 靜態色盤:');
+	// console.log('\n[版本 1] 靜態色盤:');
+	// const gen1 = loopColors(colors, {})();
 
-	const colors = createEvenPalette(baseColor, 5);
-	const gen1 = loopColors(colors, {})();
-
-	_generateStartToEndForStringArray(0, 10, gen1);
+	// _generateStartToEndForStringArray(0, 10, gen1);
 
 	// ---------- 版本 2：動態色盤 ----------
 	console.log('\n[版本 2] 動態色盤（第二輪開始變化）:');
 
-	const generator = createDynamicPaletteGenerator(colors);
-	const gen2 = loopColors(colors, { generator })();
+	const generator = createDynamicPaletteGenerator();
+	const gen2 = loopColors(colors, {
+		generator,
+	})();
 
-	console.log('  --- 第一輪：使用預設顏色 (5個) ---');
-	_generateStartToEnd(0, 5, gen2);
+	console.log(`  --- 第一輪：使用預設顏色 (${colors.length}個) ---`);
+	_generateStartToEnd(0, colors.length, gen2);
 
 	console.log('  --- 第二輪：開始變化 ---');
-	_generateStartToEnd(0, 10, gen2);
+	_generateStartToEnd(0, colors.length * 2, gen2);
 }
 
 // ============================================================================
@@ -325,13 +259,11 @@ function example6_EvenPaletteWithLoop()
 function main()
 {
 	console.log('╔══════════════════════════════════════╗');
-	console.log('║  Colord Rand Loop 範例展示              ║');
+	console.log('║  Colord Rand Loop 範例展示            ║');
 	console.log('╚══════════════════════════════════════╝');
 
-	example1_BasicLoop();
-	example2_RandomLoop();
 	example3_SimilarColorsWithLoop();
-	example4_ColordRandLoop();
+
 	example5_ExhaustThenGenerate();
 	example6_EvenPaletteWithLoop();
 
