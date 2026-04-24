@@ -82,7 +82,7 @@ export declare function createColordRandLoop(options?: IOptionsColordRandLoop): 
  * @example
  * ```typescript
  * const gen = colordRandLoop(0, { cache: new Set() });
- * const color = gen().next().value; // Colord instance
+ * const color = gen.next().value; // Colord instance
  * ```
  */
 export declare function colordRandLoop(startIndex?: number, options?: IOptionsColordRandLoop): Generator<Colord, undefined, Colord>;

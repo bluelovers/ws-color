@@ -46,16 +46,16 @@ function cliColors() {
  * @example
  * ```typescript
  * // 基本順序循環 / Basic sequential loop
- * const gen = loopColors(['#FF0000', '#00FF00', '#0000FF']);
- * console.log(gen().next().value); // '#FF0000'
+ * const gen = loopColors(['#FF0000', '#00FF00', '#0000FF'])();
+ * console.log(gen.next().value); // '#FF0000'
  *
  * // 隨機循環 / Random loop
- * const randGen = loopColors(['#FF0000', '#00FF00'], { rand: true });
+ * const randGen = loopColors(['#FF0000', '#00FF00'], { rand: true })();
  *
  * // 自定義生成器 / Custom generator
  * const upperGen = loopColors(['red', 'blue'], {
  *   generator: (colors, pos) => colors[pos].toUpperCase()
- * });
+ * })();
  * ```
  */
 function loopColors(colors, options) {
