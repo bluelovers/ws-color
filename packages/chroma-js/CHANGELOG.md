@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.12](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.11...@bluelovers/chroma-js@2.1.12) (2026-04-24)
+
+
+
+### 📚　Documentation
+
+* **chroma-js:** 添加雙語文檔和 JSDoc 註解 ([44eccd2](https://github.com/bluelovers/ws-color/commit/44eccd24df2f8e858867e1fcbd7612ee5cc62d71))
+
+
+### 🛠　Build System
+
+* 更新 monorepo 配置、依賴和文檔 ([5d3d183](https://github.com/bluelovers/ws-color/commit/5d3d183ba6e230e9bae5d374613018ab75fa2d64))
+
+
+
 ## [2.1.11](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.10...@bluelovers/chroma-js@2.1.11) (2023-11-24)
 
 

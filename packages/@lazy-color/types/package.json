@@ -1,6 +1,6 @@
 {
   "name": "@lazy-color/types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "顏色資料結構的 TypeScript 類型定義集合 (TypeScript type definitions collection for color data structures)",
   "keywords": [
     "color",
