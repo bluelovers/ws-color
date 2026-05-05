@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.13](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.12...@bluelovers/chroma-js@2.1.13) (2026-05-05)
+
+
+
+### 💎　Styles
+
+* format ([25ed7a1](https://github.com/bluelovers/ws-color/commit/25ed7a1ef5d0c884a79baa7ec9922dbe2486d43c))
+
+
+
 ## [2.1.12](https://github.com/bluelovers/ws-color/compare/@bluelovers/chroma-js@2.1.11...@bluelovers/chroma-js@2.1.12) (2026-04-24)
 
 
