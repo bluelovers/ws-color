@@ -1,5 +1,6 @@
 import unpack from '../../utils/unpack';
 import { IColorSpaces } from '../../types';
+
 const { max } = Math;
 
 const rgb2cmyk = (...args): IColorSpaces["cmyk"] =>

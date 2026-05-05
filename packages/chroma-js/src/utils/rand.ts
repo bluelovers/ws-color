@@ -25,6 +25,7 @@ export interface IOptionsRand
 {
 	/** 自定義隨機函式 / Custom random function */
 	fn?(index?: number, value?: number, rgba?: IColorSpaces["rgba"]): number,
+
 	/** 是否包含 Alpha 通道 / Whether to include alpha channel */
 	includeAlpha?: boolean
 	/** 是否四捨五入 / Whether to round */

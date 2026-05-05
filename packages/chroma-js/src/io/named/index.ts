@@ -39,7 +39,7 @@ Color.prototype.named = function ()
 		return hex
 	}
 
-	return hex2name(hex)?.toLowerCase?.() ?? (this._rgb[0] === null &&  hex);
+	return hex2name(hex)?.toLowerCase?.() ?? (this._rgb[0] === null && hex);
 };
 
 setupInputFormat('named', (name) =>

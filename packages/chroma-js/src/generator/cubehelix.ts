@@ -58,7 +58,12 @@ declare module '../chroma'
 	}
 }
 
-function cubehelix(start = 300, rotations = -1.5, hue: number | [number, number] = 1, gamma = 1, lightness: number | number[] = [0, 1]): ICubehelix
+function cubehelix(start = 300,
+	rotations = -1.5,
+	hue: number | [number, number] = 1,
+	gamma = 1,
+	lightness: number | number[] = [0, 1],
+): ICubehelix
 {
 	let dh = 0, dl;
 	if (Array.isArray(lightness))

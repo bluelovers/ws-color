@@ -419,7 +419,7 @@ export function limits(data: ILimitsInput,
 			 * 更新步驟：計算每個群組的新質心（平均值）
 			 * Update step: calculate new centroids for each group (mean value)
 			 */
-			// update centroids step
+				// update centroids step
 			const newCentroids = new Array(num);
 			for (let j = 0; j < num; j++)
 			{
@@ -483,8 +483,8 @@ export function limits(data: ILimitsInput,
 		 * 每個群組的邊界值（最小值和最大值）
 		 * Boundary values for each group (min and max)
 		 */
-		// finished k-means clustering
-		// the next part is borrowed from gabrielflor.it
+			// finished k-means clustering
+			// the next part is borrowed from gabrielflor.it
 		const kClusters = {};
 		for (let j = 0; j < num; j++)
 		{

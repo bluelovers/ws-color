@@ -4,6 +4,7 @@ import input, { setupInputAutodetect, setupInputFormat } from '../input';
 import unpack from '../../utils/unpack';
 
 import { IColorSpaces } from '../../types';
+
 const { round } = Math;
 
 declare module '../../Color'
@@ -22,6 +23,7 @@ declare module '../../Color'
 		 * chroma('orange').darken().rgb(false) === [198.05,118.11,0]
 		 */
 		rgb(round?: boolean): IColorSpaces["rgb"]
+
 		/**
 		 * Just like color.rgb but adds the alpha channel to the returned array.
 		 *

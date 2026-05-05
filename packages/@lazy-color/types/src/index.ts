@@ -1,4 +1,3 @@
-
 /**
  * 顏色類型定義
  * Color Type Definitions

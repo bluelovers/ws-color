@@ -14,6 +14,7 @@ declare module '../chroma'
 		 * @example chroma.mix('red', 'blue', 0.5, 'hsl') // => #ff00ff
 		 */
 		mix(col1: Color, col2: Color, f?: number, mode?: IInterpolatorMode): Color;
+
 		/**
 		 * Mixes two colors. The mix ratio is a value between 0 and 1.
 		 * The color mixing produces different results based the color space used for interpolation.

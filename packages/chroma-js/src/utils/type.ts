@@ -13,7 +13,17 @@ for (let name of ['Boolean', 'Number', 'String', 'Function', 'Array', 'Date', 'R
 	classToType[`[object ${name}]`] = name.toLowerCase();
 }
 
-export type IClassToType = 'boolean' | 'number' | 'string' | 'function' | 'array' | 'date' | 'regexp' | 'undefined' | 'null' | 'object'
+export type IClassToType =
+	'boolean'
+	| 'number'
+	| 'string'
+	| 'function'
+	| 'array'
+	| 'date'
+	| 'regexp'
+	| 'undefined'
+	| 'null'
+	| 'object'
 
 /**
  * 類型對應介面 - 定義各類型的回傳型別

@@ -18,7 +18,7 @@
  * ```
  */
 export const paletteApexcharts = {
-  'default': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
+	'default': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
 
 	'palette1': ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
 

@@ -64,6 +64,7 @@ export interface IOptions<T = string, R = T>
 	rand?: ((index?: number, length?: number, ...argv: any[]) => number) | boolean;
 	/** 生成上限次數，-1 表示無限制 / Generation limit, -1 means unlimited */
 	limit?: number | -1;
+
 	/**
 	 * 自定義生成器函式
 	 * Custom generator function

@@ -46,6 +46,7 @@ declare module '../../chroma'
 		 * ```
 		 */
 		cmyk(c: number, m: number, y: number, k: number): Color;
+
 		cmyk(...args): Color
 	}
 }

@@ -1,6 +1,5 @@
 import Color from '../Color';
 
-
 declare module '../Color'
 {
 	interface Color
@@ -9,10 +8,12 @@ declare module '../Color'
 		 * Set the color opacity.
 		 */
 		alpha(a: number, mutate: true): this
+
 		/**
 		 * Set the color opacity.
 		 */
 		alpha(a: number, mutate?: boolean): Color
+
 		/**
 		 * Get the color opacity.
 		 */

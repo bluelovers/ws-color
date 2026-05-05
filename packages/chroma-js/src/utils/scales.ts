@@ -20,7 +20,8 @@ const scales = {
 	 * 適合表示低溫或冷系列資料
 	 * Suitable for low temperature or cold series data
 	 */
-	cool() { return scale([chroma.hsl(180, 1, .9), chroma.hsl(250, .7, .4)]) },
+	cool()
+	{ return scale([chroma.hsl(180, 1, .9), chroma.hsl(250, .7, .4)]) },
 
 	/**
 	 * 熱色調比例尺（黑色到紅色再到黃色最後白色）
@@ -29,7 +30,8 @@ const scales = {
 	 * 適合表示高溫或熱系列資料
 	 * Suitable for high temperature or hot series data
 	 */
-	hot() { return scale(['#000', '#f00', '#ff0', '#fff'], [0, .25, .75, 1]).mode('rgb') },
+	hot()
+	{ return scale(['#000', '#f00', '#ff0', '#fff'], [0, .25, .75, 1]).mode('rgb') },
 };
 
 declare module '../chroma'

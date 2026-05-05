@@ -1,6 +1,7 @@
 import LAB_CONSTANTS from './lab-constants';
 import { IColorSpaces } from '../../types';
 import unpack from '../../utils/unpack';
+
 const { pow } = Math;
 
 /*

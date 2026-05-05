@@ -54,6 +54,7 @@ const lab = (col1: Color, col2: Color, f?: number) =>
 
 // register interpolator
 import interpolator from './index';
+
 interpolator.lab = lab;
 
 export default lab;

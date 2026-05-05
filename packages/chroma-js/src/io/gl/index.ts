@@ -33,6 +33,7 @@ declare module '../../chroma'
 		 * ```
 		 */
 		gl(red: number, green: number, blue: number, alpha?: number): Color;
+
 		gl(...args): Color
 	}
 }

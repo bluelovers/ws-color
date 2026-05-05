@@ -36,6 +36,7 @@ declare module './index'
 
 // register interpolator
 import interpolator from './index';
+
 interpolator.num = num;
 
 export default num;

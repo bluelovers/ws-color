@@ -1,6 +1,5 @@
 import unpack from '../../utils/unpack';
 
-
 import chroma from '../../chroma';
 import Color from '../../Color';
 import input, { setupInputAutodetect } from '../input';

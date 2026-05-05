@@ -13,6 +13,7 @@ export interface IColorInputObject
 export interface IColorInputObjectAutodetect
 {
 	test(...argv): keyof IColorSpaces | keyof IColorSpacesExtra | IInterpolationMode
+
 	p: number,
 }
 
@@ -54,7 +55,9 @@ declare module '../chroma'
 	}
 }
 
-export function setupInputFormat<K extends keyof IColorInputObjectFormat>(fields: K | K[], conf: IColorInputObjectFormat[K]): asserts conf is IColorInputObjectFormat[K]
+export function setupInputFormat<K extends keyof IColorInputObjectFormat>(fields: K | K[],
+	conf: IColorInputObjectFormat[K],
+): asserts conf is IColorInputObjectFormat[K]
 {
 	if (typeof conf !== 'function')
 	{
@@ -66,7 +69,8 @@ export function setupInputFormat<K extends keyof IColorInputObjectFormat>(fields
 		fields = [fields]
 	}
 
-	fields.forEach(field => {
+	fields.forEach(field =>
+	{
 
 		if (typeof field !== 'string' || !field.length || field in input.format)
 		{

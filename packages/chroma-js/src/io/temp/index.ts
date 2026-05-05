@@ -14,11 +14,13 @@ declare module '../../Color'
 		 * [temperature gradient]{@link ChromaStatic.temperature} above.
 		 */
 		temp(): number;
+
 		/**
 		 * Estimate the temperature in Kelvin of any given color, though this makes the only sense for colors from the
 		 * [temperature gradient]{@link ChromaStatic.temperature} above.
 		 */
 		kelvin(): number;
+
 		/**
 		 * Estimate the temperature in Kelvin of any given color, though this makes the only sense for colors from the
 		 * [temperature gradient]{@link ChromaStatic.temperature} above.
@@ -38,7 +40,9 @@ declare module '../../chroma'
 		 * https://github.com/neilbartlett/color-temperature
 		 */
 		temp(t: number): Color;
+
 		temp(...args): Color
+
 		/**
 		 * Returns a color from the color temperature scale.
 		 * light 2000K, bright sunlight 6000K.
@@ -46,7 +50,9 @@ declare module '../../chroma'
 		 * https://github.com/neilbartlett/color-temperature
 		 */
 		kelvin(t: number): Color;
+
 		kelvin(...args): Color
+
 		/**
 		 * Returns a color from the color temperature scale.
 		 * light 2000K, bright sunlight 6000K.
@@ -54,6 +60,7 @@ declare module '../../chroma'
 		 * https://github.com/neilbartlett/color-temperature
 		 */
 		temperature(t: number): Color;
+
 		temperature(...args): Color
 	}
 }
@@ -90,7 +97,8 @@ input.format.temp =
 	'kelvin',
 	'temperature',
 ] as const)
-	.forEach(field => {
+	.forEach(field =>
+	{
 
 		Color.prototype[field] = function ()
 		{

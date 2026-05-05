@@ -44,6 +44,7 @@ declare module './index'
 	interface IInterpolator
 	{
 		lch(col1: Color, col2: Color, f?: number): Color
+
 		hcl(col1: Color, col2: Color, f?: number): Color
 	}
 }
@@ -51,6 +52,7 @@ declare module './index'
 // register interpolator
 import interpolator from './index';
 import Color from '../Color';
+
 interpolator.lch = lch;
 interpolator.hcl = lch;
 

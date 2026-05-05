@@ -52,6 +52,7 @@ declare module '../../chroma'
 		 * ```
 		 */
 		hex(color: string): Color;
+
 		hex(...args): Color
 	}
 }

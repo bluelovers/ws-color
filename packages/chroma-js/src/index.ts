@@ -111,8 +111,6 @@ import distance from './utils/distance';
 import valid from './utils/valid';
 import scales from './utils/scales';
 
-
-
 chroma.average = average;
 chroma.bezier = bezier;
 chroma.blend = blend;
@@ -141,7 +139,5 @@ chroma.valid = valid;
  * Register default scale collection
  */
 chroma.scales = scales;
-
-
 
 export default chroma;

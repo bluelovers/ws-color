@@ -14,6 +14,7 @@ import colors from './colors/index';
 export interface chroma extends IChromaConstructor
 {
 	(...args): Color,
+
 	Color: typeof Color;
 	version: string;
 	chroma: chroma,

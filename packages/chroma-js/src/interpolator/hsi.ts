@@ -39,6 +39,7 @@ declare module './index'
 // register interpolator
 import interpolator from './index';
 import Color from '../Color';
+
 interpolator.hsi = hsi;
 
 export default hsi;

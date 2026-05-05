@@ -2,8 +2,6 @@ import { IColorSpaces } from '../../types';
 import unpack from '../../utils/unpack';
 import { RAD2DEG } from '../../utils';
 
-
-
 const { sqrt, atan2, round } = Math;
 
 const lab2lch = (...args): IColorSpaces["lch"] =>

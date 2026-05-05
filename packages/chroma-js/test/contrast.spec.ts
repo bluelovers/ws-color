@@ -12,7 +12,8 @@ describe(`contrastFront`, () =>
 		['#EAEA00', '#000000'],
 		['#006', '#ffffff'],
 		['#360', '#ffffff'],
-	].forEach(color => {
+	].forEach(color =>
+	{
 
 		test(color[0], () =>
 		{

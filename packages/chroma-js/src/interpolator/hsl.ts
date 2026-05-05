@@ -38,6 +38,7 @@ declare module './index'
 // register interpolator
 import interpolator from './index';
 import Color from '../Color';
+
 interpolator.hsl = hsl;
 
 export default hsl;

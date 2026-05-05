@@ -39,6 +39,7 @@ declare module './index'
 
 // register interpolator
 import interpolator from './index';
+
 interpolator.rgb = rgb;
 
 export default rgb;

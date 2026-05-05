@@ -1,4 +1,3 @@
-
 import Color from '../Color';
 import rand, { randomHex, IOptionsRand } from '../utils/rand';
 import chroma from '../chroma';
@@ -37,6 +36,7 @@ declare module '../chroma'
 		 * ```
 		 */
 		random(options?: IOptionsRand | IOptionsRand["rgba"]): Color
+
 		rand(options?: IOptionsRand | IOptionsRand["rgba"]): Color
 	}
 }

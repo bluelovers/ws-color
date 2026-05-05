@@ -14,6 +14,7 @@ declare module '../Color'
 		 * The color space used defaults to RGB.
 		 */
 		luminance(lum: number): Color;
+
 		/**
 		 * Relative brightness, according to the
 		 * [WCAG]{@link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef} definition. Normalized to

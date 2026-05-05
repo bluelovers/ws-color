@@ -5,6 +5,7 @@
 
 import temperature2rgb from './temperature2rgb';
 import unpack from '../../utils/unpack';
+
 const { round } = Math;
 
 const rgb2temperature = (...args) =>

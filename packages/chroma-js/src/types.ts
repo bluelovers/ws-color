@@ -15,7 +15,8 @@ import Color from './Color';
  * Stores color representations in different color spaces
  * 用於色彩轉換和查詢 / Used for color conversion and queries
  */
-export interface IColorSpaces {
+export interface IColorSpaces
+{
 	rgb: [number, number, number];
 	rgba: [number, number, number, number];
 	hcg: [number, number, number];
@@ -176,8 +177,6 @@ export interface ICubehelix
 
 	hue(hue: number | [number, number]): ICubehelix
 }
-
-
 
 /**
  * RGB 色彩表示介面

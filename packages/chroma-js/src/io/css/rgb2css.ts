@@ -3,6 +3,7 @@ import last from '../../utils/last';
 import hsl2css from './hsl2css';
 import rgb2hsl from '../hsl/rgb2hsl';
 import { IColorSpaces } from '../../types';
+
 const { round } = Math;
 
 export type IRgb2CssMode = keyof IColorSpaces;

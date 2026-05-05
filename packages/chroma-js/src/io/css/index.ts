@@ -2,7 +2,6 @@ import chroma from '../../chroma';
 import Color from '../../Color';
 import input, { setupInputAutodetect } from '../input';
 
-
 import rgb2css from './rgb2css';
 import css2rgb from './css2rgb';
 import { IRgb2HexMode } from '../hex/rgb2hex';
@@ -51,6 +50,7 @@ declare module '../../chroma'
 		 * ```
 		 */
 		css(col: string): Color;
+
 		css(...args): Color
 	}
 }

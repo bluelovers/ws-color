@@ -15,7 +15,10 @@ declare module '../Color'
 		 * // double Lch saturation
 		 * chroma('darkseagreen').set('lch.c', '*2')
 		 */
-		set<T extends Color | ReturnType<Color[IInterpolationMode]> = ReturnType<Color[IInterpolationMode]>>(mc: string, value?: string | number, mutate?: boolean): T;
+		set<T extends Color | ReturnType<Color[IInterpolationMode]> = ReturnType<Color[IInterpolationMode]>>(mc: string,
+			value?: string | number,
+			mutate?: boolean,
+		): T;
 	}
 }
 

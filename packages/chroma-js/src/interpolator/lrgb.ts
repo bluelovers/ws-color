@@ -1,5 +1,6 @@
 import Color from '../Color';
 import interpolator from './index';
+
 const { sqrt, pow } = Math;
 
 declare module './index'
